@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace E_PupilStdMgt
+namespace E_PupilStdMgt.forms
 {
     public partial class RolePickingForm : Form
     {
@@ -96,6 +96,11 @@ namespace E_PupilStdMgt
             LoginForm LoginForm = new LoginForm(2);
             LoginForm.Show();
             Hide();
+        }
+
+        private void formPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using E_PupilStdMgt.forms;
 
 namespace E_PupilStdMgt
 {
@@ -17,8 +18,8 @@ namespace E_PupilStdMgt
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RolePickingForm());
-            // Application.Run(new LoginForm());
+            // Application.Run(new RolePickingForm());
+             Application.Run(new dashboardForm(2));
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-namespace E_PupilStdMgt
+namespace E_PupilStdMgt.forms
 {
     partial class RolePickingForm
     {
@@ -64,6 +64,7 @@ namespace E_PupilStdMgt
             this.formPanel.Name = "formPanel";
             this.formPanel.Size = new System.Drawing.Size(800, 450);
             this.formPanel.TabIndex = 1;
+            this.formPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.formPanel_Paint);
             this.formPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.formPanel_MouseDown);
             // 
             // continueAsStuffButton

@@ -73,6 +73,16 @@ namespace E_PupilStdMgt.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap outline_badge_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_badge_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap outline_cancel_white_36dp {
             get {
                 object obj = ResourceManager.GetObject("outline_cancel_white_36dp", resourceCulture);
@@ -83,9 +93,69 @@ namespace E_PupilStdMgt.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap outline_dashboard_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_dashboard_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap outline_login_white_24dp {
             get {
                 object obj = ResourceManager.GetObject("outline_login_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_manage_accounts_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_manage_accounts_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_room_preferences_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_room_preferences_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_school_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_school_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_school_white_36dp1 {
+            get {
+                object obj = ResourceManager.GetObject("outline_school_white_36dp1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_title_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_title_white_36dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

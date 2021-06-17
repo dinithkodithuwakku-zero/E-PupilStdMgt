@@ -1,5 +1,5 @@
 ﻿
-namespace E_PupilStdMgt
+namespace E_PupilStdMgt.forms
 {
     partial class LoginForm
     {
@@ -64,6 +64,7 @@ namespace E_PupilStdMgt
             this.backgroundPanel.Name = "backgroundPanel";
             this.backgroundPanel.Size = new System.Drawing.Size(500, 597);
             this.backgroundPanel.TabIndex = 0;
+            this.backgroundPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.backgroundPanel_Paint);
             // 
             // loginButton
             // 

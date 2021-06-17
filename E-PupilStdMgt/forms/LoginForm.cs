@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace E_PupilStdMgt
+namespace E_PupilStdMgt.forms
 {
     public partial class LoginForm : Form
     {
@@ -77,6 +77,11 @@ namespace E_PupilStdMgt
         private void loginButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show(_loginType.ToString());
+        }
+
+        private void backgroundPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
