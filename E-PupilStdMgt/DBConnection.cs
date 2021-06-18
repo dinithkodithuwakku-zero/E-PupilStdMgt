@@ -5,6 +5,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
+using E_PupilStdMgt.src;
 
 namespace E_PupilStdMgt
 {
@@ -32,6 +33,12 @@ namespace E_PupilStdMgt
             }
             return false;
         }
+
+        public MySqlConnection getConnection()
+        {
+            return conn;
+        }
+
         public void Close()
         {
             conn.Close();
@@ -82,6 +89,32 @@ namespace E_PupilStdMgt
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            return -1;
+        }
+
+        public int ExecuteQueryWithParameters(String query, ParameterClass[] parameters)
+        {
+            try
+            {
+                int affected;
+                MySqlTransaction mytransaction = conn.BeginTransaction();
+
+                MySqlCommand updateCommand = new MySqlCommand(query, conn);
+
+                for(int i =0; i<parameters.Length; i++)
+                {
+
+                    updateCommand.Parameters.AddWithValue(parameters[i].getParameterKey(), parameters[i].getParameterValue());
+                }
+
+                affected = updateCommand.ExecuteNonQuery();
+                mytransaction.Commit();
+                return affected;
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
             }
             return -1;
         }
