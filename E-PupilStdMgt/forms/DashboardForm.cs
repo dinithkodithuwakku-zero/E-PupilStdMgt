@@ -60,34 +60,50 @@ namespace E_PupilStdMgt.forms
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ResetNavigationButtonColors()
         {
-
+            dashboardPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            schoolMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            studentMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            stuffMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            classMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            subjectMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
         }
 
-        private void label2_Click_1(object sender, EventArgs e)
+        private void dashboardPanelButton_MouseClick(object sender, MouseEventArgs e)
         {
-
+            ResetNavigationButtonColors();
+            dashboardPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void schoolMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
         {
-
+            ResetNavigationButtonColors();
+            schoolMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
 
-        private void userTypeLabel_Click(object sender, EventArgs e)
+        private void studentMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
         {
-
+            ResetNavigationButtonColors();
+            studentMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void stuffMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
         {
-
+            ResetNavigationButtonColors();
+            stuffMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
 
-        private void sidePanel_Paint(object sender, PaintEventArgs e)
+        private void classMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
         {
+            ResetNavigationButtonColors();
+            classMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+        }
 
+        private void subjectMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            ResetNavigationButtonColors();
+            subjectMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
     }
 }

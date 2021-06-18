@@ -30,43 +30,44 @@ namespace E_PupilStdMgt.forms
         private void InitializeComponent()
         {
             this.sidePanel = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.subjectMgtPanelButton = new System.Windows.Forms.Panel();
+            this.subjectMgtButtonLabel = new System.Windows.Forms.Label();
+            this.subjectMgtButtonImage = new System.Windows.Forms.PictureBox();
+            this.classMgtPanelButton = new System.Windows.Forms.Panel();
+            this.classMgtButtonLabel = new System.Windows.Forms.Label();
+            this.classMgtButtonImage = new System.Windows.Forms.PictureBox();
+            this.stuffMgtPanelButton = new System.Windows.Forms.Panel();
+            this.stuffMgtButtonLabel = new System.Windows.Forms.Label();
+            this.stuffMgtButtonImage = new System.Windows.Forms.PictureBox();
+            this.studentMgtPanelButton = new System.Windows.Forms.Panel();
+            this.studentMgtButtonLabel = new System.Windows.Forms.Label();
+            this.studentMgtButtonImage = new System.Windows.Forms.PictureBox();
+            this.schoolMgtPanelButton = new System.Windows.Forms.Panel();
+            this.schoolMgtButtonLabel = new System.Windows.Forms.Label();
+            this.schoolMgtButtonImage = new System.Windows.Forms.PictureBox();
             this.dashboardPanelButton = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dashboardButtonLabel = new System.Windows.Forms.Label();
+            this.dashboardButtonImage = new System.Windows.Forms.PictureBox();
             this.userPanel = new System.Windows.Forms.Panel();
             this.userNameLabel = new System.Windows.Forms.Label();
             this.userNameImage = new System.Windows.Forms.PictureBox();
             this.topPanel = new System.Windows.Forms.Panel();
             this.userTypeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.formLoaderPanel = new System.Windows.Forms.Panel();
             this.sidePanel.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.subjectMgtPanelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectMgtButtonImage)).BeginInit();
+            this.classMgtPanelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.classMgtButtonImage)).BeginInit();
+            this.stuffMgtPanelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stuffMgtButtonImage)).BeginInit();
+            this.studentMgtPanelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentMgtButtonImage)).BeginInit();
+            this.schoolMgtPanelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.schoolMgtButtonImage)).BeginInit();
             this.dashboardPanelButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dashboardButtonImage)).BeginInit();
             this.userPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userNameImage)).BeginInit();
             this.topPanel.SuspendLayout();
@@ -75,11 +76,11 @@ namespace E_PupilStdMgt.forms
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.sidePanel.Controls.Add(this.panel5);
-            this.sidePanel.Controls.Add(this.panel4);
-            this.sidePanel.Controls.Add(this.panel3);
-            this.sidePanel.Controls.Add(this.panel2);
-            this.sidePanel.Controls.Add(this.panel1);
+            this.sidePanel.Controls.Add(this.subjectMgtPanelButton);
+            this.sidePanel.Controls.Add(this.classMgtPanelButton);
+            this.sidePanel.Controls.Add(this.stuffMgtPanelButton);
+            this.sidePanel.Controls.Add(this.studentMgtPanelButton);
+            this.sidePanel.Controls.Add(this.schoolMgtPanelButton);
             this.sidePanel.Controls.Add(this.dashboardPanelButton);
             this.sidePanel.Controls.Add(this.userPanel);
             this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -87,208 +88,216 @@ namespace E_PupilStdMgt.forms
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(249, 651);
             this.sidePanel.TabIndex = 0;
-            this.sidePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.sidePanel_Paint);
             // 
-            // panel5
+            // subjectMgtPanelButton
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.pictureBox6);
-            this.panel5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel5.Location = new System.Drawing.Point(2, 584);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(244, 50);
-            this.panel5.TabIndex = 6;
+            this.subjectMgtPanelButton.Controls.Add(this.subjectMgtButtonLabel);
+            this.subjectMgtPanelButton.Controls.Add(this.subjectMgtButtonImage);
+            this.subjectMgtPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.subjectMgtPanelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subjectMgtPanelButton.Location = new System.Drawing.Point(0, 349);
+            this.subjectMgtPanelButton.Name = "subjectMgtPanelButton";
+            this.subjectMgtPanelButton.Size = new System.Drawing.Size(249, 50);
+            this.subjectMgtPanelButton.TabIndex = 6;
+            this.subjectMgtPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMgtPanelButton_MouseClick);
             // 
-            // label7
+            // subjectMgtButtonLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.SystemColors.Info;
-            this.label7.Location = new System.Drawing.Point(96, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 23);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Subject Mgt";
+            this.subjectMgtButtonLabel.AutoSize = true;
+            this.subjectMgtButtonLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.subjectMgtButtonLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.subjectMgtButtonLabel.Location = new System.Drawing.Point(96, 15);
+            this.subjectMgtButtonLabel.Name = "subjectMgtButtonLabel";
+            this.subjectMgtButtonLabel.Size = new System.Drawing.Size(102, 23);
+            this.subjectMgtButtonLabel.TabIndex = 1;
+            this.subjectMgtButtonLabel.Text = "Subject Mgt";
+            this.subjectMgtButtonLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMgtPanelButton_MouseClick);
             // 
-            // pictureBox6
+            // subjectMgtButtonImage
             // 
-            this.pictureBox6.Image = global::E_PupilStdMgt.Properties.Resources.outline_title_white_36dp;
-            this.pictureBox6.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(63, 47);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
+            this.subjectMgtButtonImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_title_white_36dp;
+            this.subjectMgtButtonImage.Location = new System.Drawing.Point(1, 2);
+            this.subjectMgtButtonImage.Name = "subjectMgtButtonImage";
+            this.subjectMgtButtonImage.Size = new System.Drawing.Size(63, 47);
+            this.subjectMgtButtonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.subjectMgtButtonImage.TabIndex = 0;
+            this.subjectMgtButtonImage.TabStop = false;
+            this.subjectMgtButtonImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMgtPanelButton_MouseClick);
             // 
-            // panel4
+            // classMgtPanelButton
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.pictureBox5);
-            this.panel4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel4.Location = new System.Drawing.Point(0, 494);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(244, 50);
-            this.panel4.TabIndex = 5;
+            this.classMgtPanelButton.Controls.Add(this.classMgtButtonLabel);
+            this.classMgtPanelButton.Controls.Add(this.classMgtButtonImage);
+            this.classMgtPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.classMgtPanelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.classMgtPanelButton.Location = new System.Drawing.Point(0, 299);
+            this.classMgtPanelButton.Name = "classMgtPanelButton";
+            this.classMgtPanelButton.Size = new System.Drawing.Size(249, 50);
+            this.classMgtPanelButton.TabIndex = 5;
+            this.classMgtPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.classMgtPanelButton_MouseClick);
             // 
-            // label6
+            // classMgtButtonLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.SystemColors.Info;
-            this.label6.Location = new System.Drawing.Point(96, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 23);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Class Mgt";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.classMgtButtonLabel.AutoSize = true;
+            this.classMgtButtonLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.classMgtButtonLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.classMgtButtonLabel.Location = new System.Drawing.Point(96, 15);
+            this.classMgtButtonLabel.Name = "classMgtButtonLabel";
+            this.classMgtButtonLabel.Size = new System.Drawing.Size(84, 23);
+            this.classMgtButtonLabel.TabIndex = 1;
+            this.classMgtButtonLabel.Text = "Class Mgt";
+            this.classMgtButtonLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.classMgtPanelButton_MouseClick);
             // 
-            // pictureBox5
+            // classMgtButtonImage
             // 
-            this.pictureBox5.Image = global::E_PupilStdMgt.Properties.Resources.outline_room_preferences_white_36dp;
-            this.pictureBox5.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(63, 47);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
+            this.classMgtButtonImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_room_preferences_white_36dp;
+            this.classMgtButtonImage.Location = new System.Drawing.Point(1, 2);
+            this.classMgtButtonImage.Name = "classMgtButtonImage";
+            this.classMgtButtonImage.Size = new System.Drawing.Size(63, 47);
+            this.classMgtButtonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.classMgtButtonImage.TabIndex = 0;
+            this.classMgtButtonImage.TabStop = false;
+            this.classMgtButtonImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.classMgtPanelButton_MouseClick);
             // 
-            // panel3
+            // stuffMgtPanelButton
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.pictureBox4);
-            this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel3.Location = new System.Drawing.Point(2, 400);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(244, 50);
-            this.panel3.TabIndex = 4;
+            this.stuffMgtPanelButton.Controls.Add(this.stuffMgtButtonLabel);
+            this.stuffMgtPanelButton.Controls.Add(this.stuffMgtButtonImage);
+            this.stuffMgtPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.stuffMgtPanelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.stuffMgtPanelButton.Location = new System.Drawing.Point(0, 249);
+            this.stuffMgtPanelButton.Name = "stuffMgtPanelButton";
+            this.stuffMgtPanelButton.Size = new System.Drawing.Size(249, 50);
+            this.stuffMgtPanelButton.TabIndex = 4;
+            this.stuffMgtPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.stuffMgtPanelButton_MouseClick);
             // 
-            // label5
+            // stuffMgtButtonLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.Info;
-            this.label5.Location = new System.Drawing.Point(96, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 23);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Stuff Mgt";
+            this.stuffMgtButtonLabel.AutoSize = true;
+            this.stuffMgtButtonLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.stuffMgtButtonLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.stuffMgtButtonLabel.Location = new System.Drawing.Point(96, 15);
+            this.stuffMgtButtonLabel.Name = "stuffMgtButtonLabel";
+            this.stuffMgtButtonLabel.Size = new System.Drawing.Size(80, 23);
+            this.stuffMgtButtonLabel.TabIndex = 1;
+            this.stuffMgtButtonLabel.Text = "Stuff Mgt";
+            this.stuffMgtButtonLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.stuffMgtPanelButton_MouseClick);
             // 
-            // pictureBox4
+            // stuffMgtButtonImage
             // 
-            this.pictureBox4.Image = global::E_PupilStdMgt.Properties.Resources.outline_manage_accounts_white_36dp;
-            this.pictureBox4.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(63, 47);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
+            this.stuffMgtButtonImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_manage_accounts_white_36dp;
+            this.stuffMgtButtonImage.Location = new System.Drawing.Point(1, 2);
+            this.stuffMgtButtonImage.Name = "stuffMgtButtonImage";
+            this.stuffMgtButtonImage.Size = new System.Drawing.Size(63, 47);
+            this.stuffMgtButtonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.stuffMgtButtonImage.TabIndex = 0;
+            this.stuffMgtButtonImage.TabStop = false;
+            this.stuffMgtButtonImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.stuffMgtPanelButton_MouseClick);
             // 
-            // panel2
+            // studentMgtPanelButton
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel2.Location = new System.Drawing.Point(1, 306);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(244, 50);
-            this.panel2.TabIndex = 3;
+            this.studentMgtPanelButton.Controls.Add(this.studentMgtButtonLabel);
+            this.studentMgtPanelButton.Controls.Add(this.studentMgtButtonImage);
+            this.studentMgtPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.studentMgtPanelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.studentMgtPanelButton.Location = new System.Drawing.Point(0, 199);
+            this.studentMgtPanelButton.Name = "studentMgtPanelButton";
+            this.studentMgtPanelButton.Size = new System.Drawing.Size(249, 50);
+            this.studentMgtPanelButton.TabIndex = 3;
+            this.studentMgtPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMgtPanelButton_MouseClick);
             // 
-            // label4
+            // studentMgtButtonLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.SystemColors.Info;
-            this.label4.Location = new System.Drawing.Point(96, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 23);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Student Mgt";
+            this.studentMgtButtonLabel.AutoSize = true;
+            this.studentMgtButtonLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.studentMgtButtonLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.studentMgtButtonLabel.Location = new System.Drawing.Point(96, 15);
+            this.studentMgtButtonLabel.Name = "studentMgtButtonLabel";
+            this.studentMgtButtonLabel.Size = new System.Drawing.Size(105, 23);
+            this.studentMgtButtonLabel.TabIndex = 1;
+            this.studentMgtButtonLabel.Text = "Student Mgt";
+            this.studentMgtButtonLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMgtPanelButton_MouseClick);
             // 
-            // pictureBox3
+            // studentMgtButtonImage
             // 
-            this.pictureBox3.Image = global::E_PupilStdMgt.Properties.Resources.outline_badge_white_36dp;
-            this.pictureBox3.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(63, 47);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
+            this.studentMgtButtonImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_badge_white_36dp;
+            this.studentMgtButtonImage.Location = new System.Drawing.Point(1, 2);
+            this.studentMgtButtonImage.Name = "studentMgtButtonImage";
+            this.studentMgtButtonImage.Size = new System.Drawing.Size(63, 47);
+            this.studentMgtButtonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.studentMgtButtonImage.TabIndex = 0;
+            this.studentMgtButtonImage.TabStop = false;
+            this.studentMgtButtonImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMgtPanelButton_MouseClick);
             // 
-            // panel1
+            // schoolMgtPanelButton
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel1.Location = new System.Drawing.Point(0, 211);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(244, 50);
-            this.panel1.TabIndex = 2;
+            this.schoolMgtPanelButton.Controls.Add(this.schoolMgtButtonLabel);
+            this.schoolMgtPanelButton.Controls.Add(this.schoolMgtButtonImage);
+            this.schoolMgtPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.schoolMgtPanelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.schoolMgtPanelButton.Location = new System.Drawing.Point(0, 149);
+            this.schoolMgtPanelButton.Name = "schoolMgtPanelButton";
+            this.schoolMgtPanelButton.Size = new System.Drawing.Size(249, 50);
+            this.schoolMgtPanelButton.TabIndex = 2;
+            this.schoolMgtPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.schoolMgtPanelButton_MouseClick);
             // 
-            // label3
+            // schoolMgtButtonLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.SystemColors.Info;
-            this.label3.Location = new System.Drawing.Point(96, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 23);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "School Mgt";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.schoolMgtButtonLabel.AutoSize = true;
+            this.schoolMgtButtonLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.schoolMgtButtonLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.schoolMgtButtonLabel.Location = new System.Drawing.Point(96, 15);
+            this.schoolMgtButtonLabel.Name = "schoolMgtButtonLabel";
+            this.schoolMgtButtonLabel.Size = new System.Drawing.Size(97, 23);
+            this.schoolMgtButtonLabel.TabIndex = 1;
+            this.schoolMgtButtonLabel.Text = "School Mgt";
+            this.schoolMgtButtonLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.schoolMgtPanelButton_MouseClick);
             // 
-            // pictureBox2
+            // schoolMgtButtonImage
             // 
-            this.pictureBox2.Image = global::E_PupilStdMgt.Properties.Resources.outline_school_white_36dp1;
-            this.pictureBox2.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(63, 47);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.schoolMgtButtonImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_school_white_36dp1;
+            this.schoolMgtButtonImage.Location = new System.Drawing.Point(1, 2);
+            this.schoolMgtButtonImage.Name = "schoolMgtButtonImage";
+            this.schoolMgtButtonImage.Size = new System.Drawing.Size(63, 47);
+            this.schoolMgtButtonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.schoolMgtButtonImage.TabIndex = 0;
+            this.schoolMgtButtonImage.TabStop = false;
+            this.schoolMgtButtonImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.schoolMgtPanelButton_MouseClick);
             // 
             // dashboardPanelButton
             // 
-            this.dashboardPanelButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dashboardPanelButton.Controls.Add(this.label2);
-            this.dashboardPanelButton.Controls.Add(this.pictureBox1);
+            this.dashboardPanelButton.Controls.Add(this.dashboardButtonLabel);
+            this.dashboardPanelButton.Controls.Add(this.dashboardButtonImage);
             this.dashboardPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dashboardPanelButton.Location = new System.Drawing.Point(0, 123);
+            this.dashboardPanelButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dashboardPanelButton.Location = new System.Drawing.Point(0, 99);
             this.dashboardPanelButton.Name = "dashboardPanelButton";
-            this.dashboardPanelButton.Size = new System.Drawing.Size(244, 50);
+            this.dashboardPanelButton.Size = new System.Drawing.Size(249, 50);
             this.dashboardPanelButton.TabIndex = 1;
+            this.dashboardPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dashboardPanelButton_MouseClick);
             // 
-            // label2
+            // dashboardButtonLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(96, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Dashboard";
-            this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            this.dashboardButtonLabel.AutoSize = true;
+            this.dashboardButtonLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dashboardButtonLabel.ForeColor = System.Drawing.SystemColors.Info;
+            this.dashboardButtonLabel.Location = new System.Drawing.Point(96, 14);
+            this.dashboardButtonLabel.Name = "dashboardButtonLabel";
+            this.dashboardButtonLabel.Size = new System.Drawing.Size(93, 23);
+            this.dashboardButtonLabel.TabIndex = 1;
+            this.dashboardButtonLabel.Text = "Dashboard";
+            this.dashboardButtonLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dashboardPanelButton_MouseClick);
             // 
-            // pictureBox1
+            // dashboardButtonImage
             // 
-            this.pictureBox1.Image = global::E_PupilStdMgt.Properties.Resources.outline_dashboard_white_36dp;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 47);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.dashboardButtonImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_dashboard_white_36dp;
+            this.dashboardButtonImage.Location = new System.Drawing.Point(1, 2);
+            this.dashboardButtonImage.Name = "dashboardButtonImage";
+            this.dashboardButtonImage.Size = new System.Drawing.Size(63, 47);
+            this.dashboardButtonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.dashboardButtonImage.TabIndex = 0;
+            this.dashboardButtonImage.TabStop = false;
+            this.dashboardButtonImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dashboardPanelButton_MouseClick);
             // 
             // userPanel
             // 
@@ -310,7 +319,6 @@ namespace E_PupilStdMgt.forms
             this.userNameLabel.Size = new System.Drawing.Size(83, 20);
             this.userNameLabel.TabIndex = 3;
             this.userNameLabel.Text = "UserName";
-            this.userNameLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // userNameImage
             // 
@@ -345,7 +353,6 @@ namespace E_PupilStdMgt.forms
             this.userTypeLabel.TabIndex = 1;
             this.userTypeLabel.Text = "an Admin user";
             this.userTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.userTypeLabel.Click += new System.EventHandler(this.userTypeLabel_Click);
             // 
             // label1
             // 
@@ -360,12 +367,21 @@ namespace E_PupilStdMgt.forms
             this.label1.Text = "You are currently logged in as";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // formLoaderPanel
+            // 
+            this.formLoaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formLoaderPanel.Location = new System.Drawing.Point(249, 40);
+            this.formLoaderPanel.Name = "formLoaderPanel";
+            this.formLoaderPanel.Size = new System.Drawing.Size(916, 611);
+            this.formLoaderPanel.TabIndex = 1;
+            // 
             // dashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1165, 651);
+            this.Controls.Add(this.formLoaderPanel);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.sidePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -375,24 +391,24 @@ namespace E_PupilStdMgt.forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dashboardForm_MouseDown);
             this.sidePanel.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.subjectMgtPanelButton.ResumeLayout(false);
+            this.subjectMgtPanelButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectMgtButtonImage)).EndInit();
+            this.classMgtPanelButton.ResumeLayout(false);
+            this.classMgtPanelButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.classMgtButtonImage)).EndInit();
+            this.stuffMgtPanelButton.ResumeLayout(false);
+            this.stuffMgtPanelButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stuffMgtButtonImage)).EndInit();
+            this.studentMgtPanelButton.ResumeLayout(false);
+            this.studentMgtPanelButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentMgtButtonImage)).EndInit();
+            this.schoolMgtPanelButton.ResumeLayout(false);
+            this.schoolMgtPanelButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.schoolMgtButtonImage)).EndInit();
             this.dashboardPanelButton.ResumeLayout(false);
             this.dashboardPanelButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dashboardButtonImage)).EndInit();
             this.userPanel.ResumeLayout(false);
             this.userPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userNameImage)).EndInit();
@@ -412,22 +428,23 @@ namespace E_PupilStdMgt.forms
         private System.Windows.Forms.Label userNameLabel;
         private System.Windows.Forms.PictureBox userNameImage;
         private System.Windows.Forms.Panel dashboardPanelButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label dashboardButtonLabel;
+        private System.Windows.Forms.PictureBox dashboardButtonImage;
+        private System.Windows.Forms.Panel schoolMgtPanelButton;
+        private System.Windows.Forms.Label schoolMgtButtonLabel;
+        private System.Windows.Forms.PictureBox schoolMgtButtonImage;
+        private System.Windows.Forms.Panel studentMgtPanelButton;
+        private System.Windows.Forms.Label studentMgtButtonLabel;
+        private System.Windows.Forms.PictureBox studentMgtButtonImage;
+        private System.Windows.Forms.Panel classMgtPanelButton;
+        private System.Windows.Forms.Label classMgtButtonLabel;
+        private System.Windows.Forms.PictureBox classMgtButtonImage;
+        private System.Windows.Forms.Panel stuffMgtPanelButton;
+        private System.Windows.Forms.Label stuffMgtButtonLabel;
+        private System.Windows.Forms.PictureBox stuffMgtButtonImage;
+        private System.Windows.Forms.Panel subjectMgtPanelButton;
+        private System.Windows.Forms.Label subjectMgtButtonLabel;
+        private System.Windows.Forms.PictureBox subjectMgtButtonImage;
+        private System.Windows.Forms.Panel formLoaderPanel;
     }
 }
