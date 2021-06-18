@@ -112,9 +112,9 @@ namespace E_PupilStdMgt
                 mytransaction.Commit();
                 return affected;
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Connection Error", "Error!");
+                MessageBox.Show("Connection Error: "+ ex.Message, "Error!");
             }
             return -1;
         }

@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using E_PupilStdMgt.src;
-using static E_PupilStdMgt.DBConnection;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -21,7 +20,6 @@ namespace E_PupilStdMgt.forms.screens
             InitializeComponent();
 
             LoadSchoolDetails();
-
 
             ButtonProperties();
         }
