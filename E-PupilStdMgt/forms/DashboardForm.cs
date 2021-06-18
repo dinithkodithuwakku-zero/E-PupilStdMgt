@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using E_PupilStdMgt.forms.screens;
 
 namespace E_PupilStdMgt.forms
 {
@@ -26,6 +27,8 @@ namespace E_PupilStdMgt.forms
             {
                 userTypeLabel.Text = "a Stuff user";
             }
+
+           LoadDashboardScreen();
         }
 
         private void DashboardForm_KeyDown(object sender, KeyEventArgs e)
@@ -41,6 +44,20 @@ namespace E_PupilStdMgt.forms
                     this.Close();
                 }
             }
+        }
+
+        private void LoadDashboardScreen()
+        {
+            dashboardPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            this.formLoaderPanel.Controls.Clear();
+            currentPanelTitleLabel.Text = "Dashboard";
+
+            DashboardScreenForm dashboardScreenForm = new DashboardScreenForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            dashboardScreenForm.FormBorderStyle = FormBorderStyle.None;
+
+            this.formLoaderPanel.Controls.Add(dashboardScreenForm);
+            dashboardScreenForm.Show();
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -74,12 +91,30 @@ namespace E_PupilStdMgt.forms
         {
             ResetNavigationButtonColors();
             dashboardPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            this.formLoaderPanel.Controls.Clear();
+            currentPanelTitleLabel.Text = "Dashboard";
+
+            DashboardScreenForm dashboardScreenForm = new DashboardScreenForm() { Dock=DockStyle.Fill,TopLevel=false,TopMost=true };
+            dashboardScreenForm.FormBorderStyle = FormBorderStyle.None;
+
+            this.formLoaderPanel.Controls.Add(dashboardScreenForm);
+            dashboardScreenForm.Show();
         }
 
         private void schoolMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
         {
             ResetNavigationButtonColors();
             schoolMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            this.formLoaderPanel.Controls.Clear();
+            currentPanelTitleLabel.Text = "School Management";
+
+            SchoolMgtScreenForm schoolMgtScreenForm = new SchoolMgtScreenForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            schoolMgtScreenForm.FormBorderStyle = FormBorderStyle.None;
+
+            this.formLoaderPanel.Controls.Add(schoolMgtScreenForm);
+            schoolMgtScreenForm.Show();
         }
 
         private void studentMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
@@ -105,5 +140,6 @@ namespace E_PupilStdMgt.forms
             ResetNavigationButtonColors();
             subjectMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
+
     }
 }

@@ -52,6 +52,7 @@ namespace E_PupilStdMgt.forms
             this.userNameLabel = new System.Windows.Forms.Label();
             this.userNameImage = new System.Windows.Forms.PictureBox();
             this.topPanel = new System.Windows.Forms.Panel();
+            this.currentPanelTitleLabel = new System.Windows.Forms.Label();
             this.userTypeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.formLoaderPanel = new System.Windows.Forms.Panel();
@@ -333,6 +334,7 @@ namespace E_PupilStdMgt.forms
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.topPanel.Controls.Add(this.currentPanelTitleLabel);
             this.topPanel.Controls.Add(this.userTypeLabel);
             this.topPanel.Controls.Add(this.label1);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -340,6 +342,18 @@ namespace E_PupilStdMgt.forms
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(916, 40);
             this.topPanel.TabIndex = 0;
+            this.topPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dashboardForm_MouseDown);
+            // 
+            // currentPanelTitleLabel
+            // 
+            this.currentPanelTitleLabel.AutoSize = true;
+            this.currentPanelTitleLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.currentPanelTitleLabel.ForeColor = System.Drawing.Color.White;
+            this.currentPanelTitleLabel.Location = new System.Drawing.Point(16, 9);
+            this.currentPanelTitleLabel.Name = "currentPanelTitleLabel";
+            this.currentPanelTitleLabel.Size = new System.Drawing.Size(121, 20);
+            this.currentPanelTitleLabel.TabIndex = 2;
+            this.currentPanelTitleLabel.Text = "Click menu item";
             // 
             // userTypeLabel
             // 
@@ -446,5 +460,6 @@ namespace E_PupilStdMgt.forms
         private System.Windows.Forms.Label subjectMgtButtonLabel;
         private System.Windows.Forms.PictureBox subjectMgtButtonImage;
         private System.Windows.Forms.Panel formLoaderPanel;
+        private System.Windows.Forms.Label currentPanelTitleLabel;
     }
 }
