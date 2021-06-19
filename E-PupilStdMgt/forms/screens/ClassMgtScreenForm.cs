@@ -20,6 +20,8 @@ namespace E_PupilStdMgt.forms.screens
             InitializeComponent();
 
             LoadClassDetails();
+
+            ButtonProperties();
         }
 
         private void LoadClassDetails()
@@ -45,6 +47,21 @@ namespace E_PupilStdMgt.forms.screens
             {
                 con.Close();
             }
+        }
+
+        public void ButtonProperties()
+        {
+            createNewClassButton.TabStop = false;
+            createNewClassButton.FlatStyle = FlatStyle.Flat;
+            createNewClassButton.FlatAppearance.BorderSize = 0;
+
+            createPanelButton.TabStop = false;
+            createPanelButton.FlatStyle = FlatStyle.Flat;
+            createPanelButton.FlatAppearance.BorderSize = 0;
+
+            closePanelButton.TabStop = false;
+            closePanelButton.FlatStyle = FlatStyle.Flat;
+            closePanelButton.FlatAppearance.BorderSize = 0;
         }
 
 

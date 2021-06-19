@@ -126,6 +126,7 @@ namespace E_PupilStdMgt.forms.screens
             // 
             this.updateSchoolDetailsButton.AutoSize = true;
             this.updateSchoolDetailsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
+            this.updateSchoolDetailsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updateSchoolDetailsButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
             this.updateSchoolDetailsButton.FlatAppearance.BorderSize = 0;
             this.updateSchoolDetailsButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

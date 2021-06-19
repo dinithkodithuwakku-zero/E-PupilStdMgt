@@ -12,7 +12,6 @@ namespace E_PupilStdMgt
     class DBConnection
     {
         MySql.Data.MySqlClient.MySqlConnection conn;
-        string myConnectionString;
         static string host = "localhost";
         static string database = "omp_sms";
         static string userDB = "root";

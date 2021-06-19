@@ -121,6 +121,15 @@ namespace E_PupilStdMgt.forms
         {
             ResetNavigationButtonColors();
             studentMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            this.formLoaderPanel.Controls.Clear();
+            currentPanelTitleLabel.Text = "Student Management";
+
+            StudentMgtScreenForm studentMgtScreenForm = new StudentMgtScreenForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            studentMgtScreenForm.FormBorderStyle = FormBorderStyle.None;
+
+            this.formLoaderPanel.Controls.Add(studentMgtScreenForm);
+            studentMgtScreenForm.Show();
         }
 
         private void stuffMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
