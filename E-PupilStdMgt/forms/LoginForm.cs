@@ -24,7 +24,7 @@ namespace E_PupilStdMgt.forms
             userNameInput.Focus();
         }
 
-       public void AlignComponent()
+        public void AlignComponent()
         {
             backgroundPanel.Left = (this.ClientSize.Width - backgroundPanel.Width) / 2;
             inputPanel.Left = (this.ClientSize.Width - inputPanel.Width) / 2;
@@ -51,7 +51,7 @@ namespace E_PupilStdMgt.forms
 
         public void InputStyles()
         {
-           userNameInput.ForeColor = Color.White;
+            userNameInput.ForeColor = Color.White;
             passwordInput.ForeColor = Color.White;
             passwordInput.PasswordChar = '*';
         }

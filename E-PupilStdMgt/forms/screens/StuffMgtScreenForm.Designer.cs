@@ -39,7 +39,11 @@ namespace E_PupilStdMgt.forms.screens
             this.MOBILE_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EMAIL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PERMANENT_ADDRESS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.userCreatePanel = new System.Windows.Forms.Panel();
+            this.closePanelButton = new System.Windows.Forms.Button();
+            this.createPanelButton = new System.Windows.Forms.Button();
+            this.permanentAddressInput = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.emailInput = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.mobileNoInput = new System.Windows.Forms.TextBox();
@@ -56,12 +60,8 @@ namespace E_PupilStdMgt.forms.screens
             this.userNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.createNewUserLabel = new System.Windows.Forms.Label();
-            this.permanentAddressInput = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.closePanelButton = new System.Windows.Forms.Button();
-            this.createPanelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.userCreatePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // createNewUserButton
@@ -79,6 +79,7 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewUserButton.TabIndex = 11;
             this.createNewUserButton.Text = "Create New User";
             this.createNewUserButton.UseVisualStyleBackColor = false;
+            this.createNewUserButton.Click += new System.EventHandler(this.createNewUserButton_Click);
             // 
             // userDataGrid
             // 
@@ -168,33 +169,88 @@ namespace E_PupilStdMgt.forms.screens
             this.PERMANENT_ADDRESS.ReadOnly = true;
             this.PERMANENT_ADDRESS.Width = 250;
             // 
-            // panel1
+            // userCreatePanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.closePanelButton);
-            this.panel1.Controls.Add(this.createPanelButton);
-            this.panel1.Controls.Add(this.permanentAddressInput);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.emailInput);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.mobileNoInput);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.jobTitlePicker);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.nicInput);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.fullNameInput);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.passwordInput);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.userNameInput);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.createNewUserLabel);
-            this.panel1.Location = new System.Drawing.Point(39, 42);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(828, 505);
-            this.panel1.TabIndex = 13;
+            this.userCreatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userCreatePanel.Controls.Add(this.closePanelButton);
+            this.userCreatePanel.Controls.Add(this.createPanelButton);
+            this.userCreatePanel.Controls.Add(this.permanentAddressInput);
+            this.userCreatePanel.Controls.Add(this.label9);
+            this.userCreatePanel.Controls.Add(this.emailInput);
+            this.userCreatePanel.Controls.Add(this.label8);
+            this.userCreatePanel.Controls.Add(this.mobileNoInput);
+            this.userCreatePanel.Controls.Add(this.label7);
+            this.userCreatePanel.Controls.Add(this.jobTitlePicker);
+            this.userCreatePanel.Controls.Add(this.label6);
+            this.userCreatePanel.Controls.Add(this.label5);
+            this.userCreatePanel.Controls.Add(this.nicInput);
+            this.userCreatePanel.Controls.Add(this.label4);
+            this.userCreatePanel.Controls.Add(this.fullNameInput);
+            this.userCreatePanel.Controls.Add(this.label3);
+            this.userCreatePanel.Controls.Add(this.passwordInput);
+            this.userCreatePanel.Controls.Add(this.label1);
+            this.userCreatePanel.Controls.Add(this.userNameInput);
+            this.userCreatePanel.Controls.Add(this.label2);
+            this.userCreatePanel.Controls.Add(this.createNewUserLabel);
+            this.userCreatePanel.Location = new System.Drawing.Point(39, 42);
+            this.userCreatePanel.Name = "userCreatePanel";
+            this.userCreatePanel.Size = new System.Drawing.Size(828, 505);
+            this.userCreatePanel.TabIndex = 13;
+            this.userCreatePanel.Visible = false;
+            // 
+            // closePanelButton
+            // 
+            this.closePanelButton.AutoSize = true;
+            this.closePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.closePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.closePanelButton.FlatAppearance.BorderSize = 0;
+            this.closePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.closePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.closePanelButton.Location = new System.Drawing.Point(636, 414);
+            this.closePanelButton.Name = "closePanelButton";
+            this.closePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.closePanelButton.TabIndex = 36;
+            this.closePanelButton.Text = "Cancel";
+            this.closePanelButton.UseVisualStyleBackColor = false;
+            this.closePanelButton.Click += new System.EventHandler(this.closePanelButton_Click);
+            // 
+            // createPanelButton
+            // 
+            this.createPanelButton.AutoSize = true;
+            this.createPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
+            this.createPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.createPanelButton.FlatAppearance.BorderSize = 0;
+            this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.createPanelButton.Location = new System.Drawing.Point(470, 414);
+            this.createPanelButton.Name = "createPanelButton";
+            this.createPanelButton.Size = new System.Drawing.Size(149, 53);
+            this.createPanelButton.TabIndex = 35;
+            this.createPanelButton.Text = "Create";
+            this.createPanelButton.UseVisualStyleBackColor = false;
+            this.createPanelButton.Click += new System.EventHandler(this.createPanelButton_Click);
+            // 
+            // permanentAddressInput
+            // 
+            this.permanentAddressInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.permanentAddressInput.Location = new System.Drawing.Point(192, 315);
+            this.permanentAddressInput.Multiline = true;
+            this.permanentAddressInput.Name = "permanentAddressInput";
+            this.permanentAddressInput.Size = new System.Drawing.Size(593, 59);
+            this.permanentAddressInput.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(23, 315);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 20);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Permanent Address";
             // 
             // emailInput
             // 
@@ -236,6 +292,7 @@ namespace E_PupilStdMgt.forms.screens
             // 
             // jobTitlePicker
             // 
+            this.jobTitlePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.jobTitlePicker.FormattingEnabled = true;
             this.jobTitlePicker.Items.AddRange(new object[] {
             "Reception",
@@ -293,7 +350,6 @@ namespace E_PupilStdMgt.forms.screens
             this.fullNameInput.Name = "fullNameInput";
             this.fullNameInput.Size = new System.Drawing.Size(593, 27);
             this.fullNameInput.TabIndex = 23;
-            this.fullNameInput.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -355,73 +411,21 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewUserLabel.TabIndex = 15;
             this.createNewUserLabel.Text = "Create New User";
             // 
-            // permanentAddressInput
-            // 
-            this.permanentAddressInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.permanentAddressInput.Location = new System.Drawing.Point(192, 315);
-            this.permanentAddressInput.Multiline = true;
-            this.permanentAddressInput.Name = "permanentAddressInput";
-            this.permanentAddressInput.Size = new System.Drawing.Size(593, 59);
-            this.permanentAddressInput.TabIndex = 34;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(23, 315);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(147, 20);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Permanent Address";
-            // 
-            // closePanelButton
-            // 
-            this.closePanelButton.AutoSize = true;
-            this.closePanelButton.BackColor = System.Drawing.Color.IndianRed;
-            this.closePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.closePanelButton.FlatAppearance.BorderSize = 0;
-            this.closePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.closePanelButton.Location = new System.Drawing.Point(636, 414);
-            this.closePanelButton.Name = "closePanelButton";
-            this.closePanelButton.Size = new System.Drawing.Size(149, 53);
-            this.closePanelButton.TabIndex = 36;
-            this.closePanelButton.Text = "Cancel";
-            this.closePanelButton.UseVisualStyleBackColor = false;
-            // 
-            // createPanelButton
-            // 
-            this.createPanelButton.AutoSize = true;
-            this.createPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
-            this.createPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.createPanelButton.FlatAppearance.BorderSize = 0;
-            this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.createPanelButton.Location = new System.Drawing.Point(470, 414);
-            this.createPanelButton.Name = "createPanelButton";
-            this.createPanelButton.Size = new System.Drawing.Size(149, 53);
-            this.createPanelButton.TabIndex = 35;
-            this.createPanelButton.Text = "Create";
-            this.createPanelButton.UseVisualStyleBackColor = false;
-            // 
             // StuffMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(916, 611);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.userCreatePanel);
             this.Controls.Add(this.userDataGrid);
             this.Controls.Add(this.createNewUserButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StuffMgtScreenForm";
             this.Text = "StuffMgtScreenForm";
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.userCreatePanel.ResumeLayout(false);
+            this.userCreatePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,7 +443,7 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.DataGridViewTextBoxColumn MOBILE_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn EMAIL;
         private System.Windows.Forms.DataGridViewTextBoxColumn PERMANENT_ADDRESS;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel userCreatePanel;
         private System.Windows.Forms.Label createNewUserLabel;
         private System.Windows.Forms.TextBox fullNameInput;
         private System.Windows.Forms.Label label3;
