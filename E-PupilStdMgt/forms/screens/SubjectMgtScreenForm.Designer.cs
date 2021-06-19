@@ -31,23 +31,24 @@ namespace E_PupilStdMgt.forms.screens
         {
             this.createNewSubjectButton = new System.Windows.Forms.Button();
             this.subjectDataGrid = new System.Windows.Forms.DataGridView();
-            this.ID_SUBJECT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_TOTAL_POINTS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_DURATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectCreatePanel = new System.Windows.Forms.Panel();
+            this.closePanelButton = new System.Windows.Forms.Button();
+            this.createPanelButton = new System.Windows.Forms.Button();
+            this.subjectTotalPointsInput = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.subjectDurationInput = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.subjectCodeInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.subjectNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.createNewSubjectLabel = new System.Windows.Forms.Label();
-            this.subjectDurationInput = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.subjectTotalPointsInput = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.closePanelButton = new System.Windows.Forms.Button();
-            this.createPanelButton = new System.Windows.Forms.Button();
+            this.ID_SUBJECT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_DURATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_TOTAL_POINTS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subjectDataGrid)).BeginInit();
             this.subjectCreatePanel.SuspendLayout();
             this.SuspendLayout();
@@ -78,10 +79,10 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.subjectDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_SUBJECT,
-            this.SUBJECT_TOTAL_POINTS,
             this.SUBJECT_NAME,
             this.SUBJECT_CODE,
-            this.SUBJECT_DURATION});
+            this.SUBJECT_DURATION,
+            this.SUBJECT_TOTAL_POINTS});
             this.subjectDataGrid.Location = new System.Drawing.Point(50, 154);
             this.subjectDataGrid.Name = "subjectDataGrid";
             this.subjectDataGrid.ReadOnly = true;
@@ -90,49 +91,10 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectDataGrid.Size = new System.Drawing.Size(802, 256);
             this.subjectDataGrid.TabIndex = 12;
             // 
-            // ID_SUBJECT
-            // 
-            this.ID_SUBJECT.HeaderText = "Subject Id";
-            this.ID_SUBJECT.MinimumWidth = 6;
-            this.ID_SUBJECT.Name = "ID_SUBJECT";
-            this.ID_SUBJECT.ReadOnly = true;
-            this.ID_SUBJECT.Width = 125;
-            // 
-            // SUBJECT_TOTAL_POINTS
-            // 
-            this.SUBJECT_TOTAL_POINTS.HeaderText = "Subject Total Points";
-            this.SUBJECT_TOTAL_POINTS.MinimumWidth = 6;
-            this.SUBJECT_TOTAL_POINTS.Name = "SUBJECT_TOTAL_POINTS";
-            this.SUBJECT_TOTAL_POINTS.ReadOnly = true;
-            this.SUBJECT_TOTAL_POINTS.Width = 125;
-            // 
-            // SUBJECT_NAME
-            // 
-            this.SUBJECT_NAME.HeaderText = "Subject Name";
-            this.SUBJECT_NAME.MinimumWidth = 6;
-            this.SUBJECT_NAME.Name = "SUBJECT_NAME";
-            this.SUBJECT_NAME.ReadOnly = true;
-            this.SUBJECT_NAME.Width = 250;
-            // 
-            // SUBJECT_CODE
-            // 
-            this.SUBJECT_CODE.HeaderText = "Subject Code";
-            this.SUBJECT_CODE.MinimumWidth = 6;
-            this.SUBJECT_CODE.Name = "SUBJECT_CODE";
-            this.SUBJECT_CODE.ReadOnly = true;
-            this.SUBJECT_CODE.Width = 175;
-            // 
-            // SUBJECT_DURATION
-            // 
-            this.SUBJECT_DURATION.HeaderText = "Subject Duration";
-            this.SUBJECT_DURATION.MinimumWidth = 6;
-            this.SUBJECT_DURATION.Name = "SUBJECT_DURATION";
-            this.SUBJECT_DURATION.ReadOnly = true;
-            this.SUBJECT_DURATION.Width = 125;
-            // 
             // subjectCreatePanel
             // 
             this.subjectCreatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.subjectCreatePanel.Controls.Add(this.label5);
             this.subjectCreatePanel.Controls.Add(this.closePanelButton);
             this.subjectCreatePanel.Controls.Add(this.createPanelButton);
             this.subjectCreatePanel.Controls.Add(this.subjectTotalPointsInput);
@@ -149,6 +111,78 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectCreatePanel.Size = new System.Drawing.Size(688, 417);
             this.subjectCreatePanel.TabIndex = 13;
             this.subjectCreatePanel.Visible = false;
+            // 
+            // closePanelButton
+            // 
+            this.closePanelButton.AutoSize = true;
+            this.closePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.closePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.closePanelButton.FlatAppearance.BorderSize = 0;
+            this.closePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.closePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.closePanelButton.Location = new System.Drawing.Point(482, 318);
+            this.closePanelButton.Name = "closePanelButton";
+            this.closePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.closePanelButton.TabIndex = 31;
+            this.closePanelButton.Text = "Cancel";
+            this.closePanelButton.UseVisualStyleBackColor = false;
+            this.closePanelButton.Click += new System.EventHandler(this.closePanelButton_Click);
+            // 
+            // createPanelButton
+            // 
+            this.createPanelButton.AutoSize = true;
+            this.createPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
+            this.createPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.createPanelButton.FlatAppearance.BorderSize = 0;
+            this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.createPanelButton.Location = new System.Drawing.Point(316, 318);
+            this.createPanelButton.Name = "createPanelButton";
+            this.createPanelButton.Size = new System.Drawing.Size(149, 53);
+            this.createPanelButton.TabIndex = 30;
+            this.createPanelButton.Text = "Create";
+            this.createPanelButton.UseVisualStyleBackColor = false;
+            this.createPanelButton.Click += new System.EventHandler(this.createPanelButton_Click);
+            // 
+            // subjectTotalPointsInput
+            // 
+            this.subjectTotalPointsInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.subjectTotalPointsInput.Location = new System.Drawing.Point(555, 204);
+            this.subjectTotalPointsInput.Name = "subjectTotalPointsInput";
+            this.subjectTotalPointsInput.Size = new System.Drawing.Size(76, 27);
+            this.subjectTotalPointsInput.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(362, 204);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(147, 20);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Subject Total Points";
+            // 
+            // subjectDurationInput
+            // 
+            this.subjectDurationInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.subjectDurationInput.Location = new System.Drawing.Point(249, 204);
+            this.subjectDurationInput.Name = "subjectDurationInput";
+            this.subjectDurationInput.Size = new System.Drawing.Size(76, 27);
+            this.subjectDurationInput.TabIndex = 23;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(56, 204);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 20);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Subject Duration";
             // 
             // subjectCodeInput
             // 
@@ -199,77 +233,56 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewSubjectLabel.TabIndex = 15;
             this.createNewSubjectLabel.Text = "Create New Subject";
             // 
-            // subjectDurationInput
+            // ID_SUBJECT
             // 
-            this.subjectDurationInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subjectDurationInput.Location = new System.Drawing.Point(249, 204);
-            this.subjectDurationInput.Name = "subjectDurationInput";
-            this.subjectDurationInput.Size = new System.Drawing.Size(76, 27);
-            this.subjectDurationInput.TabIndex = 23;
+            this.ID_SUBJECT.HeaderText = "Subject Id";
+            this.ID_SUBJECT.MinimumWidth = 6;
+            this.ID_SUBJECT.Name = "ID_SUBJECT";
+            this.ID_SUBJECT.ReadOnly = true;
+            this.ID_SUBJECT.Width = 125;
             // 
-            // label3
+            // SUBJECT_NAME
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(56, 204);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 20);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Subject Duration";
+            this.SUBJECT_NAME.HeaderText = "Subject Name";
+            this.SUBJECT_NAME.MinimumWidth = 6;
+            this.SUBJECT_NAME.Name = "SUBJECT_NAME";
+            this.SUBJECT_NAME.ReadOnly = true;
+            this.SUBJECT_NAME.Width = 250;
             // 
-            // subjectTotalPointsInput
+            // SUBJECT_CODE
             // 
-            this.subjectTotalPointsInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subjectTotalPointsInput.Location = new System.Drawing.Point(555, 204);
-            this.subjectTotalPointsInput.Name = "subjectTotalPointsInput";
-            this.subjectTotalPointsInput.Size = new System.Drawing.Size(76, 27);
-            this.subjectTotalPointsInput.TabIndex = 25;
+            this.SUBJECT_CODE.HeaderText = "Subject Code";
+            this.SUBJECT_CODE.MinimumWidth = 6;
+            this.SUBJECT_CODE.Name = "SUBJECT_CODE";
+            this.SUBJECT_CODE.ReadOnly = true;
+            this.SUBJECT_CODE.Width = 175;
             // 
-            // label4
+            // SUBJECT_DURATION
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(362, 204);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(147, 20);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Subject Total Points";
+            this.SUBJECT_DURATION.HeaderText = "Subject Duration";
+            this.SUBJECT_DURATION.MinimumWidth = 6;
+            this.SUBJECT_DURATION.Name = "SUBJECT_DURATION";
+            this.SUBJECT_DURATION.ReadOnly = true;
+            this.SUBJECT_DURATION.Width = 125;
             // 
-            // closePanelButton
+            // SUBJECT_TOTAL_POINTS
             // 
-            this.closePanelButton.AutoSize = true;
-            this.closePanelButton.BackColor = System.Drawing.Color.IndianRed;
-            this.closePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.closePanelButton.FlatAppearance.BorderSize = 0;
-            this.closePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.closePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.closePanelButton.Location = new System.Drawing.Point(482, 318);
-            this.closePanelButton.Name = "closePanelButton";
-            this.closePanelButton.Size = new System.Drawing.Size(149, 53);
-            this.closePanelButton.TabIndex = 31;
-            this.closePanelButton.Text = "Cancel";
-            this.closePanelButton.UseVisualStyleBackColor = false;
-            this.closePanelButton.Click += new System.EventHandler(this.closePanelButton_Click);
+            this.SUBJECT_TOTAL_POINTS.HeaderText = "Subject Total Points";
+            this.SUBJECT_TOTAL_POINTS.MinimumWidth = 6;
+            this.SUBJECT_TOTAL_POINTS.Name = "SUBJECT_TOTAL_POINTS";
+            this.SUBJECT_TOTAL_POINTS.ReadOnly = true;
+            this.SUBJECT_TOTAL_POINTS.Width = 125;
             // 
-            // createPanelButton
+            // label5
             // 
-            this.createPanelButton.AutoSize = true;
-            this.createPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
-            this.createPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.createPanelButton.FlatAppearance.BorderSize = 0;
-            this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.createPanelButton.Location = new System.Drawing.Point(316, 318);
-            this.createPanelButton.Name = "createPanelButton";
-            this.createPanelButton.Size = new System.Drawing.Size(149, 53);
-            this.createPanelButton.TabIndex = 30;
-            this.createPanelButton.Text = "Create";
-            this.createPanelButton.UseVisualStyleBackColor = false;
-            this.createPanelButton.Click += new System.EventHandler(this.createPanelButton_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(56, 224);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "(Weeks)";
             // 
             // SubjectMgtScreenForm
             // 
@@ -295,11 +308,6 @@ namespace E_PupilStdMgt.forms.screens
 
         private System.Windows.Forms.Button createNewSubjectButton;
         private System.Windows.Forms.DataGridView subjectDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_SUBJECT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_TOTAL_POINTS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_CODE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_DURATION;
         private System.Windows.Forms.Panel subjectCreatePanel;
         private System.Windows.Forms.Label createNewSubjectLabel;
         private System.Windows.Forms.TextBox subjectCodeInput;
@@ -312,5 +320,11 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button closePanelButton;
         private System.Windows.Forms.Button createPanelButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_SUBJECT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_CODE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_DURATION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_TOTAL_POINTS;
+        private System.Windows.Forms.Label label5;
     }
 }
