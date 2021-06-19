@@ -136,6 +136,15 @@ namespace E_PupilStdMgt.forms
         {
             ResetNavigationButtonColors();
             stuffMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            this.formLoaderPanel.Controls.Clear();
+            currentPanelTitleLabel.Text = "Stuff Management";
+
+            StuffMgtScreenForm stuffMgtScreenForm = new StuffMgtScreenForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            stuffMgtScreenForm.FormBorderStyle = FormBorderStyle.None;
+
+            this.formLoaderPanel.Controls.Add(stuffMgtScreenForm);
+            stuffMgtScreenForm.Show();
         }
 
         private void classMgtPanelButton_MouseClick(object sender, MouseEventArgs e)
@@ -167,6 +176,5 @@ namespace E_PupilStdMgt.forms
             this.formLoaderPanel.Controls.Add(subjectMgtScreenForm);
             subjectMgtScreenForm.Show();
         }
-
     }
 }
