@@ -36,6 +36,7 @@ namespace E_PupilStdMgt.forms.screens
             this.IS_ACTIVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createNewClassButton = new System.Windows.Forms.Button();
             this.classCreatePanel = new System.Windows.Forms.Panel();
+            this.isActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.classCodeInput = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.classNameInput = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@ namespace E_PupilStdMgt.forms.screens
             this.label1 = new System.Windows.Forms.Label();
             this.closePanelButton = new System.Windows.Forms.Button();
             this.createPanelButton = new System.Windows.Forms.Button();
-            this.isActiveCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.classDataGrid)).BeginInit();
             this.classCreatePanel.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +136,18 @@ namespace E_PupilStdMgt.forms.screens
             this.classCreatePanel.TabIndex = 10;
             this.classCreatePanel.Visible = false;
             // 
+            // isActiveCheckBox
+            // 
+            this.isActiveCheckBox.AutoSize = true;
+            this.isActiveCheckBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.isActiveCheckBox.ForeColor = System.Drawing.SystemColors.Info;
+            this.isActiveCheckBox.Location = new System.Drawing.Point(209, 185);
+            this.isActiveCheckBox.Name = "isActiveCheckBox";
+            this.isActiveCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.isActiveCheckBox.TabIndex = 20;
+            this.isActiveCheckBox.Text = "Active";
+            this.isActiveCheckBox.UseVisualStyleBackColor = true;
+            // 
             // classCodeInput
             // 
             this.classCodeInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -219,24 +231,12 @@ namespace E_PupilStdMgt.forms.screens
             this.createPanelButton.UseVisualStyleBackColor = false;
             this.createPanelButton.Click += new System.EventHandler(this.createPanelButton_Click);
             // 
-            // isActiveCheckBox
-            // 
-            this.isActiveCheckBox.AutoSize = true;
-            this.isActiveCheckBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.isActiveCheckBox.ForeColor = System.Drawing.SystemColors.Info;
-            this.isActiveCheckBox.Location = new System.Drawing.Point(209, 185);
-            this.isActiveCheckBox.Name = "isActiveCheckBox";
-            this.isActiveCheckBox.Size = new System.Drawing.Size(75, 24);
-            this.isActiveCheckBox.TabIndex = 20;
-            this.isActiveCheckBox.Text = "Active";
-            this.isActiveCheckBox.UseVisualStyleBackColor = true;
-            // 
             // ClassMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(898, 564);
+            this.ClientSize = new System.Drawing.Size(916, 611);
             this.Controls.Add(this.classCreatePanel);
             this.Controls.Add(this.createNewClassButton);
             this.Controls.Add(this.classDataGrid);

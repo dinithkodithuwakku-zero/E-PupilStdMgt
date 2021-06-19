@@ -347,7 +347,7 @@ namespace E_PupilStdMgt.forms.screens
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(898, 564);
+            this.ClientSize = new System.Drawing.Size(916, 611);
             this.Controls.Add(this.studentCreatePanel);
             this.Controls.Add(this.createNewStudentButton);
             this.Controls.Add(this.studentDataGrid);

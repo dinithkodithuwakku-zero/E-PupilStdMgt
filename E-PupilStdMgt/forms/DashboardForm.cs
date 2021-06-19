@@ -157,6 +157,15 @@ namespace E_PupilStdMgt.forms
         {
             ResetNavigationButtonColors();
             subjectMgtPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            this.formLoaderPanel.Controls.Clear();
+            currentPanelTitleLabel.Text = "Subject Management";
+
+            SubjectMgtScreenForm subjectMgtScreenForm = new SubjectMgtScreenForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            subjectMgtScreenForm.FormBorderStyle = FormBorderStyle.None;
+
+            this.formLoaderPanel.Controls.Add(subjectMgtScreenForm);
+            subjectMgtScreenForm.Show();
         }
 
     }
