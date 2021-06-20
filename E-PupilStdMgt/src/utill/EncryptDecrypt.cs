@@ -4,7 +4,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace E_PupilStdMgt.src
+namespace E_PupilStdMgt.src.utill
 {
     class EncryptDecrypt
     {

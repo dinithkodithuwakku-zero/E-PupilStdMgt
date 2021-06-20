@@ -7,6 +7,7 @@ namespace E_PupilStdMgt.src.service.custom
 {
     interface ISchoolServiceCustom: ISuperService
     {
+        public SchoolDTO GetSchoolDetails();
         public Boolean UpdateSchool(SchoolDTO schoolDTO);
     }
 }

@@ -26,7 +26,7 @@ namespace E_PupilStdMgt.src.service
             return serviceFactory;
         }
 
-        public T GetRepo<T>(ServiceTypes serviceTypes) where T : ISuperService
+        public T GetService<T>(ServiceTypes serviceTypes) where T : ISuperService
         {
             switch (serviceTypes)
             {

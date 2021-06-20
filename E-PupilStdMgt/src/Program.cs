@@ -19,7 +19,7 @@ namespace E_PupilStdMgt
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new RolePickingForm());
-             Application.Run(new dashboardForm(2));
+             Application.Run(new dashboardForm(1));
         }
     }
 }

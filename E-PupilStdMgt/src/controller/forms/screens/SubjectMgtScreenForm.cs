@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using E_PupilStdMgt.src;
+using E_PupilStdMgt.src.db;
+using E_PupilStdMgt.src.utill;
 
 
 namespace E_PupilStdMgt.forms.screens

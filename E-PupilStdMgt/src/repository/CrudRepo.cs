@@ -15,6 +15,8 @@ namespace E_PupilStdMgt.src.repository
 
         public T Search(ID id);
 
+        public T GetOne();
+
         public ArrayList GetAll();
     }
 }

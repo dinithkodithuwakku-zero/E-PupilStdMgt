@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace E_PupilStdMgt.src
+namespace E_PupilStdMgt.src.utill
 {
     class ParameterClass
     {

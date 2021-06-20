@@ -5,9 +5,9 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
-using E_PupilStdMgt.src;
+using E_PupilStdMgt.src.utill;
 
-namespace E_PupilStdMgt
+namespace E_PupilStdMgt.src.db
 {
     class DBConnection
     {
