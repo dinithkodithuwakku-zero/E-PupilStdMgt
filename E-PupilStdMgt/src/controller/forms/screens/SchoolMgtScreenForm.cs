@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using E_PupilStdMgt.src.db;
 using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
@@ -16,8 +10,7 @@ namespace E_PupilStdMgt.forms.screens
 {
     public partial class SchoolMgtScreenForm : Form
     {
-        DBConnection con = new DBConnection();
-        String schoolId, schoolName, schoolDescription, schoolBadgeFilePath, schoolAddress, schoolContactNo;
+        String schoolId, schoolBadgeFilePath;
 
         private ISchoolServiceCustom iSchoolServiceCustom;
 
