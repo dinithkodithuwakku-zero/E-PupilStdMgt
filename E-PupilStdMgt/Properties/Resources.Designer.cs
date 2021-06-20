@@ -163,6 +163,16 @@ namespace E_PupilStdMgt.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap outline_share_white_36dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_share_white_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap outline_title_white_36dp {
             get {
                 object obj = ResourceManager.GetObject("outline_title_white_36dp", resourceCulture);
