@@ -27,8 +27,27 @@ namespace E_PupilStdMgt.forms
             {
                 userTypeLabel.Text = "a Stuff user";
             }
+            DisableOptionalTasksByUser();
 
            LoadDashboardScreen();
+        }
+
+        private void DisableOptionalTasksByUser()
+        {
+            if (_loginType == 1)
+            {
+                subjectMappingPanelButton.Enabled = false;
+                studentMappingPanelButton.Enabled = false;
+                studentMarksPanelButton.Enabled = false;
+            }
+            else if (_loginType == 2)
+            {
+                schoolMgtPanelButton.Enabled = false;
+                studentMgtPanelButton.Enabled = false;
+                stuffMgtPanelButton.Enabled = false;
+                classMgtPanelButton.Enabled = false;
+                subjectMgtPanelButton.Enabled = false;
+            }
         }
 
         private void DashboardForm_KeyDown(object sender, KeyEventArgs e)
@@ -85,6 +104,10 @@ namespace E_PupilStdMgt.forms
             stuffMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
             classMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
             subjectMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+
+            subjectMappingPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            studentMappingPanelButton.BackColor = Color.FromArgb(24, 30, 54);
+            studentMarksPanelButton.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         private void dashboardPanelButton_MouseClick(object sender, MouseEventArgs e)
@@ -175,6 +198,24 @@ namespace E_PupilStdMgt.forms
 
             this.formLoaderPanel.Controls.Add(subjectMgtScreenForm);
             subjectMgtScreenForm.Show();
+        }
+
+        private void subjectMappingPanelButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            ResetNavigationButtonColors();
+            subjectMappingPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+        }
+
+        private void studentMappingPanelButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            ResetNavigationButtonColors();
+            studentMappingPanelButton.BackColor = Color.FromArgb(46, 51, 73);
+        }
+
+        private void studentMarksPanelButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            ResetNavigationButtonColors();
+            studentMarksPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
     }
 }

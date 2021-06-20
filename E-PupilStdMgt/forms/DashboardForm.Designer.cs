@@ -118,6 +118,7 @@ namespace E_PupilStdMgt.forms
             this.subjectMappingPanelButton.Name = "subjectMappingPanelButton";
             this.subjectMappingPanelButton.Size = new System.Drawing.Size(273, 56);
             this.subjectMappingPanelButton.TabIndex = 9;
+            this.subjectMappingPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMappingPanelButton_MouseClick);
             // 
             // subjectMappingPanelLabel
             // 
@@ -130,6 +131,7 @@ namespace E_PupilStdMgt.forms
             this.subjectMappingPanelLabel.Size = new System.Drawing.Size(148, 23);
             this.subjectMappingPanelLabel.TabIndex = 2;
             this.subjectMappingPanelLabel.Text = "Subject Mapping";
+            this.subjectMappingPanelLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMappingPanelButton_MouseClick);
             // 
             // subjectMappingPanelImage
             // 
@@ -141,6 +143,7 @@ namespace E_PupilStdMgt.forms
             this.subjectMappingPanelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.subjectMappingPanelImage.TabIndex = 2;
             this.subjectMappingPanelImage.TabStop = false;
+            this.subjectMappingPanelImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMappingPanelButton_MouseClick);
             // 
             // studentMappingPanelButton
             // 
@@ -152,6 +155,7 @@ namespace E_PupilStdMgt.forms
             this.studentMappingPanelButton.Name = "studentMappingPanelButton";
             this.studentMappingPanelButton.Size = new System.Drawing.Size(273, 57);
             this.studentMappingPanelButton.TabIndex = 8;
+            this.studentMappingPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMappingPanelButton_MouseClick);
             // 
             // studentMappingPanelLabel
             // 
@@ -164,6 +168,7 @@ namespace E_PupilStdMgt.forms
             this.studentMappingPanelLabel.Size = new System.Drawing.Size(152, 23);
             this.studentMappingPanelLabel.TabIndex = 3;
             this.studentMappingPanelLabel.Text = "Student Mapping";
+            this.studentMappingPanelLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMappingPanelButton_MouseClick);
             // 
             // studentMappingPanelImage
             // 
@@ -175,6 +180,7 @@ namespace E_PupilStdMgt.forms
             this.studentMappingPanelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.studentMappingPanelImage.TabIndex = 4;
             this.studentMappingPanelImage.TabStop = false;
+            this.studentMappingPanelImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMappingPanelButton_MouseClick);
             // 
             // studentMarksPanelButton
             // 
@@ -186,6 +192,7 @@ namespace E_PupilStdMgt.forms
             this.studentMarksPanelButton.Name = "studentMarksPanelButton";
             this.studentMarksPanelButton.Size = new System.Drawing.Size(273, 52);
             this.studentMarksPanelButton.TabIndex = 7;
+            this.studentMarksPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMarksPanelButton_MouseClick);
             // 
             // studentMarksPanelLabel
             // 
@@ -198,6 +205,7 @@ namespace E_PupilStdMgt.forms
             this.studentMarksPanelLabel.Size = new System.Drawing.Size(128, 23);
             this.studentMarksPanelLabel.TabIndex = 5;
             this.studentMarksPanelLabel.Text = "Student Marks";
+            this.studentMarksPanelLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMarksPanelButton_MouseClick);
             // 
             // studentMarksPanelImage
             // 
@@ -209,6 +217,7 @@ namespace E_PupilStdMgt.forms
             this.studentMarksPanelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.studentMarksPanelImage.TabIndex = 6;
             this.studentMarksPanelImage.TabStop = false;
+            this.studentMarksPanelImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMarksPanelButton_MouseClick);
             // 
             // subjectMgtPanelButton
             // 
