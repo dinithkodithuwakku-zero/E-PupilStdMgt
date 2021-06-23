@@ -5,19 +5,25 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Diagnostics;
 using E_PupilStdMgt.src.db;
 using E_PupilStdMgt.src.utill;
+using E_PupilStdMgt.src.payload;
+using E_PupilStdMgt.src.service;
+using E_PupilStdMgt.src.service.custom;
+using E_PupilStdMgt.src.service.custom.impl;
 
 namespace E_PupilStdMgt.forms.screens
 {
     public partial class ClassMgtScreenForm : Form
     {
         DBConnection con = new DBConnection();
+        private IClassServiceCustom iClassServiceCustom;
+
 
         public ClassMgtScreenForm()
         {
+            iClassServiceCustom = ServiceFactory.GetInstance().GetService<ClassServiceImpl>(ServiceFactory.ServiceTypes.CLASS);
+
             InitializeComponent();
 
             LoadClassDetails();
@@ -31,22 +37,16 @@ namespace E_PupilStdMgt.forms.screens
             {
                 classDataGrid.Rows.Clear();
 
-                con.Open();
-                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class";
+                List<ClassDTO> list = iClassServiceCustom.FindAllClasses();
 
-                MySqlDataReader reader = con.ExecuteReader(query);
-                while (reader.Read())
+                foreach (ClassDTO dto in list)
                 {
-                    this.classDataGrid.Rows.Add(reader["ID_CLASS"].ToString(), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), reader["IS_ACTIVE"].ToString());
+                    this.classDataGrid.Rows.Add(dto.ClassId, dto.ClassName, dto.ClassCode, dto.IsActive);
                 }
             }
             catch
             {
-                MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Unable to load class details!", "Error!");
             }
         }
 
@@ -80,17 +80,15 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                con.Open();
-                string query = "INSERT INTO core_class(CLASS_NAME, CLASS_CODE, IS_ACTIVE) VALUES(@className, @classCode, @isActive)";
 
-                ParameterClass[] parameterClasses = {
-                    new ParameterClass("@className", classNameInput.Text),
-                    new ParameterClass("@classCode", classCodeInput.Text),
-                    new ParameterClass("@isActive", isActiveCheckBox.Checked ? 1.ToString(): 0.ToString())
-                };
-                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+                ClassDTO classDTO = new ClassDTO();
+                classDTO.ClassName = classNameInput.Text;
+                classDTO.ClassCode = classCodeInput.Text;
+                classDTO.IsActive = isActiveCheckBox.Checked ? 1 : 0;
 
-                if (affected != -1)
+                bool isCreated = iClassServiceCustom.CreateClass(classDTO);
+
+                if (isCreated)
                 {
                     MessageBox.Show("New Class Created!");
                     LoadClassDetails();
@@ -105,10 +103,6 @@ namespace E_PupilStdMgt.forms.screens
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
             }
         }
 

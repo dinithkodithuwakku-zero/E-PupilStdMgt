@@ -10,7 +10,7 @@ namespace E_PupilStdMgt.src.repository
         private static RepoFactory repoFactory;
         public enum RepoTypes
         {
-            SCHOOL
+            SCHOOL, CLASS
         }
 
         public RepoFactory()
@@ -32,6 +32,8 @@ namespace E_PupilStdMgt.src.repository
             {
                 case RepoTypes.SCHOOL:
                     return (T)Convert.ChangeType(new SchoolRepoImpl(), typeof(T));
+                case RepoTypes.CLASS:
+                    return (T)Convert.ChangeType(new ClassRepoImpl(), typeof(T));
                 default:
                     return default;
             }
