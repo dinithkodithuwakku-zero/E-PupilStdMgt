@@ -6,7 +6,6 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using E_PupilStdMgt.src.db;
 using E_PupilStdMgt.src.utill;
-using System.Diagnostics;
 
 namespace E_PupilStdMgt.src.repository.custom.impl
 {
@@ -27,7 +26,6 @@ namespace E_PupilStdMgt.src.repository.custom.impl
                 string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
-                Debug.WriteLine("sadasd");
                 while (reader.Read())
                 {
                     list.Add(new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())));

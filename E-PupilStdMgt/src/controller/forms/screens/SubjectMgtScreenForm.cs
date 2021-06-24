@@ -5,18 +5,24 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using E_PupilStdMgt.src.db;
-using E_PupilStdMgt.src.utill;
+using E_PupilStdMgt.src.payload;
+using E_PupilStdMgt.src.service;
+using E_PupilStdMgt.src.service.custom;
+using E_PupilStdMgt.src.service.custom.impl;
 
 
 namespace E_PupilStdMgt.forms.screens
 {
     public partial class SubjectMgtScreenForm : Form
     {
+        private ISubjectServiceCustom iSubjectServiceCustom;
+
         DBConnection con = new DBConnection();
         public SubjectMgtScreenForm()
         {
+            iSubjectServiceCustom = ServiceFactory.GetInstance().GetService<SubjectServiceImpl>(ServiceFactory.ServiceTypes.SUBJECT);
+
             InitializeComponent();
             LoadSubjectDetails();
             ButtonProperties();
@@ -28,22 +34,16 @@ namespace E_PupilStdMgt.forms.screens
             {
                 subjectDataGrid.Rows.Clear();
 
-                con.Open();
-                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject";
+                List<SubjectDTO> list = iSubjectServiceCustom.FindAllSubjects();
 
-                MySqlDataReader reader = con.ExecuteReader(query);
-                while (reader.Read())
+                foreach (SubjectDTO dto in list)
                 {
-                    this.subjectDataGrid.Rows.Add(reader["ID_SUBJECT"].ToString(), reader["SUBJECT_NAME"].ToString(), reader["SUBJECT_CODE"].ToString(), reader["SUBJECT_DURATION"].ToString(), reader["SUBJECT_TOTAL_POINTS"].ToString());
+                    this.subjectDataGrid.Rows.Add(dto.SubjectId, dto.SubjectName, dto.SubjectCode, dto.SubjectDuration, dto.SubjectTotalPoints);
                 }
             }
             catch
             {
-                MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Unable to load subject details!", "Error!");
             }
         }
 
@@ -76,19 +76,9 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                con.Open();
-                string query = "INSERT INTO core_subject(SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS)" +
-                    " VALUES(@subjectName, @subjectCode, @subjectDuration, @subjectTotalPoints)";
+                bool isCreated = iSubjectServiceCustom.CreateNewSubject(new SubjectDTO(subjectNameInput.Text, subjectCodeInput.Text, Int16.Parse(subjectDurationInput.Text), Double.Parse(subjectTotalPointsInput.Text)));
 
-                ParameterClass[] parameterClasses = {
-                    new ParameterClass("@subjectName", subjectNameInput.Text),
-                    new ParameterClass("@subjectCode", subjectCodeInput.Text),
-                    new ParameterClass("@subjectDuration", Int16.Parse(subjectDurationInput.Text).ToString()),
-                    new ParameterClass("@subjectTotalPoints", Double.Parse(subjectTotalPointsInput.Text).ToString("0.00")),
-                };
-                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
-
-                if (affected != -1)
+                if (isCreated)
                 {
                     MessageBox.Show("New Subject Created!");
                     LoadSubjectDetails();
@@ -103,10 +93,6 @@ namespace E_PupilStdMgt.forms.screens
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
             }
         }
 
