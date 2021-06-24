@@ -5,18 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using E_PupilStdMgt.src.db;
+using E_PupilStdMgt.src.payload;
+using E_PupilStdMgt.src.service;
+using E_PupilStdMgt.src.service.custom;
+using E_PupilStdMgt.src.service.custom.impl;
 using E_PupilStdMgt.src.utill;
 
 namespace E_PupilStdMgt.forms.screens
 {
     public partial class StuffMgtScreenForm : Form
     {
-        DBConnection con = new DBConnection();
+        private IStuffServiceCustom iStuffServiceCustom;
         EncryptDecrypt encryptDecrypt = new EncryptDecrypt();
         public StuffMgtScreenForm()
         {
+            iStuffServiceCustom = ServiceFactory.GetInstance().GetService<StuffServiceImpl>(ServiceFactory.ServiceTypes.STUFF);
             InitializeComponent();
             LoadStuffDetails();
             ButtonProperties();
@@ -30,22 +33,16 @@ namespace E_PupilStdMgt.forms.screens
             {
                 userDataGrid.Rows.Clear();
 
-                con.Open();
-                string query = "select ID_STUFF, USER_NAME, FULL_NAME, NIC, JOB_TITLE, MOBILE_NO, EMAIL, PERMANENT_ADDRESS from core_stuff";
+                List<StuffDTO> list = iStuffServiceCustom.FindAllStuff();
 
-                MySqlDataReader reader = con.ExecuteReader(query);
-                while (reader.Read())
+                foreach (StuffDTO dto in list)
                 {
-                    this.userDataGrid.Rows.Add(reader["ID_STUFF"].ToString(), reader["USER_NAME"].ToString(), reader["FULL_NAME"].ToString(), reader["NIC"].ToString(), reader["JOB_TITLE"].ToString(), reader["MOBILE_NO"].ToString(), reader["EMAIL"].ToString(), reader["PERMANENT_ADDRESS"].ToString());
+                    this.userDataGrid.Rows.Add(dto.StuffId, dto.UserName, dto.FullName, dto.Nic, dto.JobTitle, dto.MobileNo, dto.Email, dto.PermanentAddress);
                 }
             }
             catch
             {
-                MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Unable to load stuff details!", "Error!");
             }
         }
 
@@ -73,23 +70,9 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                con.Open();
-                string query = "INSERT INTO core_stuff(USER_NAME, PASSWORD, FULL_NAME, NIC, JOB_TITLE, MOBILE_NO, EMAIL, PERMANENT_ADDRESS)" +
-                    " VALUES(@userName, @password, @fullName, @nic, @jobTitle, @mobileNo, @email, @permanentAddress)";
+                bool isCreated = iStuffServiceCustom.CreateNewStuff(new StuffDTO(userNameInput.Text, encryptDecrypt.Encrypt(passwordInput.Text), fullNameInput.Text, nicInput.Text, jobTitlePicker.SelectedItem.ToString(), mobileNoInput.Text, emailInput.Text, permanentAddressInput.Text));
 
-                ParameterClass[] parameterClasses = {
-                    new ParameterClass("@userName", userNameInput.Text),
-                    new ParameterClass("@password", encryptDecrypt.Encrypt(passwordInput.Text)),
-                    new ParameterClass("@fullName", fullNameInput.Text),
-                    new ParameterClass("@nic", nicInput.Text),
-                    new ParameterClass("@jobTitle", jobTitlePicker.SelectedItem.ToString()),
-                    new ParameterClass("@mobileNo", mobileNoInput.Text),
-                    new ParameterClass("@email", emailInput.Text),
-                    new ParameterClass("@permanentAddress", permanentAddressInput.Text),
-                };
-                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
-
-                if (affected != -1)
+                if (isCreated)
                 {
                     MessageBox.Show("New User Created!");
                     LoadStuffDetails();
@@ -104,10 +87,6 @@ namespace E_PupilStdMgt.forms.screens
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
             }
         }
 
