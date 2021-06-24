@@ -5,17 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using E_PupilStdMgt.src.db;
-using E_PupilStdMgt.src.utill;
+using E_PupilStdMgt.src.payload;
+using E_PupilStdMgt.src.service;
+using E_PupilStdMgt.src.service.custom;
+using E_PupilStdMgt.src.service.custom.impl;
 
 namespace E_PupilStdMgt.forms.screens
 {
     public partial class StudentMgtScreenForm : Form
     {
-        DBConnection con = new DBConnection();
+        private IStudentServiceCustom iStudentServiceCustom;
         public StudentMgtScreenForm()
         {
+            iStudentServiceCustom = ServiceFactory.GetInstance().GetService<StudentServiceImpl>(ServiceFactory.ServiceTypes.STUDENT);
             InitializeComponent();
             LoadStudentDetails();
             ButtonProperties();
@@ -27,22 +29,16 @@ namespace E_PupilStdMgt.forms.screens
             {
                 studentDataGrid.Rows.Clear();
 
-                con.Open();
-                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student";
+                List<StudentDTO> list = iStudentServiceCustom.FindAllStudents();
 
-                MySqlDataReader reader = con.ExecuteReader(query);
-                while (reader.Read())
+                foreach (StudentDTO dto in list)
                 {
-                    this.studentDataGrid.Rows.Add(reader["ID_STUDENT"].ToString(), reader["STUDENT_REG_NO"].ToString(), reader["STUDENT_NAME"].ToString(), reader["STUDENT_MOBILE_NO"].ToString(), reader["STUDENT_EMAIL"].ToString(), reader["PERMANENT_ADDRESS"].ToString(), reader["GENDER"].ToString());
+                    this.studentDataGrid.Rows.Add(dto.StudentId, dto.StudentRegNo, dto.StudentName, dto.MobileNo, dto.Email, dto.PermanentAddress, dto.Gender);
                 }
             }
             catch
             {
-                MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Unable to load student details!", "Error!");
             }
         }
 
@@ -65,23 +61,15 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                con.Open();
-                string query = "select ID_STUDENT from core_student ORDER BY ID_STUDENT DESC LIMIT 1";
+                int nextRegNo = iStudentServiceCustom.GenerateNextRegNo();
 
-                MySqlDataReader reader = con.ExecuteReader(query);
-                if (reader.Read())
-                {
-                    stdRegNoInput.Text = "REG" + (Int16.Parse(reader["ID_STUDENT"].ToString()) + 1);
-                    studentCreatePanel.Visible = true;
-                }
+                stdRegNoInput.Text = "REG" + nextRegNo;
+                studentCreatePanel.Visible = true;
+
             }
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
             }
 
         }
@@ -95,21 +83,9 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                con.Open();
-                string query = "INSERT INTO core_student(STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, GENDER, STUDENT_EMAIL, PERMANENT_ADDRESS)" +
-                    " VALUES(@stdRegNo, @stdName, @stdMobileNo, @gender, @stdEmail, @stdPermanentAddress)";
+                bool isCreated = iStudentServiceCustom.CreateNewStudent(new StudentDTO(stdRegNoInput.Text, stdNameInput.Text, stdMobileNoInput.Text, genderPicker.SelectedItem.ToString(), stdEmailInput.Text, permentAddressInput.Text));
 
-                ParameterClass[] parameterClasses = {
-                    new ParameterClass("@stdRegNo", stdRegNoInput.Text),
-                    new ParameterClass("@stdName", stdNameInput.Text),
-                    new ParameterClass("@stdMobileNo", stdMobileNoInput.Text),
-                    new ParameterClass("@gender", genderPicker.SelectedItem.ToString()),
-                    new ParameterClass("@stdEmail", stdEmailInput.Text),
-                    new ParameterClass("@stdPermanentAddress", permentAddressInput.Text),
-                };
-                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
-
-                if (affected != -1)
+                if (isCreated)
                 {
                     MessageBox.Show("New Student Created!");
                     LoadStudentDetails();
@@ -119,15 +95,10 @@ namespace E_PupilStdMgt.forms.screens
                 {
                     MessageBox.Show("Unable to Create new Student!", "Error!");
                 }
-
             }
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
-            }
-            finally
-            {
-                con.Close();
             }
         }
 

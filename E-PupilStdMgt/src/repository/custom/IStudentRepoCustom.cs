@@ -7,5 +7,6 @@ namespace E_PupilStdMgt.src.repository.custom
 {
     interface IStudentRepoCustom : ICrudRepo<Student, int>
     {
+        public int GenerateNextRegNo();
     }
 }

@@ -27,6 +27,16 @@ namespace E_PupilStdMgt.src.payload
             this.permanentAddress = permanentAddress;
         }
 
+        public StudentDTO(string studentRegNo, string studentName, string mobileNo, string gender, string email, string permanentAddress)
+        {
+            StudentRegNo = studentRegNo;
+            StudentName = studentName;
+            MobileNo = mobileNo;
+            Gender = gender;
+            Email = email;
+            PermanentAddress = permanentAddress;
+        }
+
         public int StudentId { get => studentId; set => studentId = value; }
         public string StudentRegNo { get => studentRegNo; set => studentRegNo = value; }
         public string StudentName { get => studentName; set => studentName = value; }
