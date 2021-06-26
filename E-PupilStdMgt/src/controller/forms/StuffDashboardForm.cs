@@ -11,6 +11,16 @@ namespace E_PupilStdMgt.src.controller.forms
 {
     public partial class StuffDashboardForm : Form
     {
+        private Point p1, p2;
+        List<Point> p1List = new List<Point>();
+        List<Point> p2List = new List<Point>();
+
+        Dictionary<string,Label> lClassDict = new Dictionary<string, Label>();
+        Dictionary<string, Label> lSubjectDict = new Dictionary<string, Label>();
+
+        private string subjectCodePoint, classCodePoint;
+        List<string> subjectCodePointList = new List<string>();
+        List<string> classCodePointList = new List<string>();
 
         public StuffDashboardForm()
         {
@@ -23,99 +33,128 @@ namespace E_PupilStdMgt.src.controller.forms
 
         private void AddClassesToPanel()
         {
-            this.classListPanel.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
 
             for (int i = 0; i < 5; i++)
             {
                 Label label = new Label();
 
-                label.Name = i.ToString();
-                label.Text = "Class new " + i;
+                label.Name = "ccode " + i;
+                label.Text = "Class " + i;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
                 // label.Anchor = AnchorStyles.Left;
                 // label.Anchor = AnchorStyles.Right;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
-                label.Width = this.classListPanel.Width;
                 label.Top = i * 60;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
                 label.Click += new EventHandler(this.ClassLabelClicked);
 
-                classListPanel.Controls.Add(label);
+                label.Left = this.parentPanel.Width / 2;
+
+                lClassDict[label.Name] = label;
+
+                parentPanel.Controls.Add(label);
             }
         }
 
         void ClassLabelClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            MessageBox.Show(label.Name);
+
+            if (string.IsNullOrEmpty(this.classCodePoint))
+            {
+                this.classCodePoint = label.Name;
+                classCodePointList.Add(label.Name);
+            }
+            else
+            {
+                MessageBox.Show("Already selected a class, Please select a Subject!");
+            }
+
+            if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
+            {
+                this.subjectCodePoint = null;
+                this.classCodePoint = null;
+                parentPanel.Invalidate();
+            }
         }
+
 
         private void AddSubjectsToPanel()
         {
-            this.subjectListPanel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
 
             for (int i = 0; i < 3; i++)
             {
                 Label label = new Label();
 
-                label.Text = "Subject" + i;
+                label.Name = "scode " + i;
+                label.Text = "Subject " + i;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
                 // label.Anchor = AnchorStyles.Left;
                 // label.Anchor = AnchorStyles.Right;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
-                label.Width = this.subjectListPanel.Width;
                 label.Top = i * 60;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
+                label.Click += new EventHandler(this.SubjectLabelClicked);
+                lSubjectDict[label.Name] = label;
 
-                subjectListPanel.Controls.Add(label);
+                parentPanel.Controls.Add(label);
             }
         }
 
-        private void StuffDashboardForm_Load(object sender, EventArgs e)
+        void SubjectLabelClicked(object sender, EventArgs e)
         {
+            Label label = (Label)sender;
 
-        }
-
-        private Point p1, p2;
-        List<Point> p1List = new List<Point>();
-        List<Point> p2List = new List<Point>();
-
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (p1.X == 0)
+            if (string.IsNullOrEmpty(this.subjectCodePoint))
             {
-                p1.X = e.X;
-                p1.Y = e.Y;
+                this.subjectCodePoint = label.Name;
+                subjectCodePointList.Add(label.Name);
             }
             else
             {
-                p2.X = e.X;
-                p2.Y = e.Y;
+                MessageBox.Show("Already selected a subject, Please select a Class!");
+            }
 
-                p1List.Add(p1);
-                p2List.Add(p2);
-
+            if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
+               {
+                this.subjectCodePoint = null;
+                this.classCodePoint = null;
                 parentPanel.Invalidate();
-                p1.X = 0;
             }
         }
 
         private void parentPanel_Paint(object sender, PaintEventArgs e)
         {
+            /* using (var p = new Pen(Color.Blue, 4))
+             {
+                 for (int x = 0; x < p1List.Count; x++)
+                 {
+                     e.Graphics.DrawLine(p, p1List[x], p2List[x]);
+                 }
+             }*/
+
             using (var p = new Pen(Color.Blue, 4))
             {
-                for (int x = 0; x < p1List.Count; x++)
+                for (int i = 0; i < classCodePointList.Count; i++)
                 {
-                    e.Graphics.DrawLine(p, p1List[x], p2List[x]);
+                    var classLabel = lClassDict[classCodePointList[i]];
+                    var subjectLabel = lSubjectDict[subjectCodePointList[i]];
+
+                    //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
+                    Point sbPoint = subjectLabel.Location;
+                    sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
+                    sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height/2);
+
+
+                    e.Graphics.DrawLine(p, classLabel.Location, sbPoint);
                 }
             }
         }

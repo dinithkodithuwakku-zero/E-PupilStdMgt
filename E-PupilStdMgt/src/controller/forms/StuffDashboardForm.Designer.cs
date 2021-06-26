@@ -34,10 +34,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.parentPanel = new System.Windows.Forms.Panel();
-            this.subjectListPanel = new System.Windows.Forms.Panel();
-            this.classListPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.parentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,33 +87,12 @@ namespace E_PupilStdMgt.src.controller.forms
             // 
             // parentPanel
             // 
-            this.parentPanel.AutoScroll = true;
-            this.parentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.parentPanel.Controls.Add(this.subjectListPanel);
-            this.parentPanel.Controls.Add(this.classListPanel);
-            this.parentPanel.Location = new System.Drawing.Point(32, 83);
+            this.parentPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.parentPanel.Location = new System.Drawing.Point(0, 41);
             this.parentPanel.Name = "parentPanel";
-            this.parentPanel.Size = new System.Drawing.Size(851, 517);
-            this.parentPanel.TabIndex = 1;
+            this.parentPanel.Size = new System.Drawing.Size(937, 583);
+            this.parentPanel.TabIndex = 2;
             this.parentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.parentPanel_Paint);
-            this.parentPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            // 
-            // subjectListPanel
-            // 
-            this.subjectListPanel.AutoScroll = true;
-            this.subjectListPanel.Location = new System.Drawing.Point(12, 8);
-            this.subjectListPanel.Name = "subjectListPanel";
-            this.subjectListPanel.Size = new System.Drawing.Size(231, 499);
-            this.subjectListPanel.TabIndex = 1;
-            // 
-            // classListPanel
-            // 
-            this.classListPanel.AutoScroll = true;
-            this.classListPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.classListPanel.Location = new System.Drawing.Point(319, 8);
-            this.classListPanel.Name = "classListPanel";
-            this.classListPanel.Size = new System.Drawing.Size(215, 499);
-            this.classListPanel.TabIndex = 0;
             // 
             // StuffDashboardForm
             // 
@@ -132,7 +108,6 @@ namespace E_PupilStdMgt.src.controller.forms
             this.Load += new System.EventHandler(this.StuffDashboardForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.parentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -144,7 +119,5 @@ namespace E_PupilStdMgt.src.controller.forms
         private System.Windows.Forms.Label userTypeLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel parentPanel;
-        private System.Windows.Forms.Panel classListPanel;
-        private System.Windows.Forms.Panel subjectListPanel;
     }
 }
