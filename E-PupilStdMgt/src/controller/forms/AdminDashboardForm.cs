@@ -9,46 +9,18 @@ using E_PupilStdMgt.forms.screens;
 
 namespace E_PupilStdMgt.forms
 {
-    public partial class dashboardForm : Form
+    public partial class AdminDashboardForm : Form
     {
         private Int16 _loginType; // 1 is admin, 2 is stuff 
-        public dashboardForm(Int16 loginType)
+        public AdminDashboardForm()
         {
-            _loginType = loginType;
 
             // this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
-
-            if (_loginType == 1)
-            {
-                userTypeLabel.Text = "an Admin user";
-            }
-            else if (_loginType == 2)
-            {
-                userTypeLabel.Text = "a Stuff user";
-            }
-            DisableOptionalTasksByUser();
-
-           LoadDashboardScreen();
+            LoadDashboardScreen();
         }
 
-        private void DisableOptionalTasksByUser()
-        {
-            if (_loginType == 1)
-            {
-                subjectMappingPanelButton.Enabled = false;
-                studentMappingPanelButton.Enabled = false;
-                studentMarksPanelButton.Enabled = false;
-            }
-            else if (_loginType == 2)
-            {
-                schoolMgtPanelButton.Enabled = false;
-                studentMgtPanelButton.Enabled = false;
-                stuffMgtPanelButton.Enabled = false;
-                classMgtPanelButton.Enabled = false;
-                subjectMgtPanelButton.Enabled = false;
-            }
-        }
+
 
         private void DashboardForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -105,9 +77,6 @@ namespace E_PupilStdMgt.forms
             classMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
             subjectMgtPanelButton.BackColor = Color.FromArgb(24, 30, 54);
 
-            subjectMappingPanelButton.BackColor = Color.FromArgb(24, 30, 54);
-            studentMappingPanelButton.BackColor = Color.FromArgb(24, 30, 54);
-            studentMarksPanelButton.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         private void dashboardPanelButton_MouseClick(object sender, MouseEventArgs e)
@@ -118,7 +87,7 @@ namespace E_PupilStdMgt.forms
             this.formLoaderPanel.Controls.Clear();
             currentPanelTitleLabel.Text = "Dashboard";
 
-            DashboardScreenForm dashboardScreenForm = new DashboardScreenForm() { Dock=DockStyle.Fill,TopLevel=false,TopMost=true };
+            DashboardScreenForm dashboardScreenForm = new DashboardScreenForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             dashboardScreenForm.FormBorderStyle = FormBorderStyle.None;
 
             this.formLoaderPanel.Controls.Add(dashboardScreenForm);
@@ -198,24 +167,6 @@ namespace E_PupilStdMgt.forms
 
             this.formLoaderPanel.Controls.Add(subjectMgtScreenForm);
             subjectMgtScreenForm.Show();
-        }
-
-        private void subjectMappingPanelButton_MouseClick(object sender, MouseEventArgs e)
-        {
-            ResetNavigationButtonColors();
-            subjectMappingPanelButton.BackColor = Color.FromArgb(46, 51, 73);
-        }
-
-        private void studentMappingPanelButton_MouseClick(object sender, MouseEventArgs e)
-        {
-            ResetNavigationButtonColors();
-            studentMappingPanelButton.BackColor = Color.FromArgb(46, 51, 73);
-        }
-
-        private void studentMarksPanelButton_MouseClick(object sender, MouseEventArgs e)
-        {
-            ResetNavigationButtonColors();
-            studentMarksPanelButton.BackColor = Color.FromArgb(46, 51, 73);
         }
     }
 }

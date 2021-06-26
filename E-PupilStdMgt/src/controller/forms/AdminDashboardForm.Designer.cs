@@ -1,7 +1,7 @@
 ﻿
 namespace E_PupilStdMgt.forms
 {
-    partial class dashboardForm
+    partial class AdminDashboardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,6 @@ namespace E_PupilStdMgt.forms
         private void InitializeComponent()
         {
             this.sidePanel = new System.Windows.Forms.Panel();
-            this.subjectMappingPanelButton = new System.Windows.Forms.Panel();
-            this.subjectMappingPanelLabel = new System.Windows.Forms.Label();
-            this.subjectMappingPanelImage = new System.Windows.Forms.PictureBox();
-            this.studentMappingPanelButton = new System.Windows.Forms.Panel();
-            this.studentMappingPanelLabel = new System.Windows.Forms.Label();
-            this.studentMappingPanelImage = new System.Windows.Forms.PictureBox();
-            this.studentMarksPanelButton = new System.Windows.Forms.Panel();
-            this.studentMarksPanelLabel = new System.Windows.Forms.Label();
-            this.studentMarksPanelImage = new System.Windows.Forms.PictureBox();
             this.subjectMgtPanelButton = new System.Windows.Forms.Panel();
             this.subjectMgtButtonLabel = new System.Windows.Forms.Label();
             this.subjectMgtButtonImage = new System.Windows.Forms.PictureBox();
@@ -66,12 +57,6 @@ namespace E_PupilStdMgt.forms
             this.label1 = new System.Windows.Forms.Label();
             this.formLoaderPanel = new System.Windows.Forms.Panel();
             this.sidePanel.SuspendLayout();
-            this.subjectMappingPanelButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.subjectMappingPanelImage)).BeginInit();
-            this.studentMappingPanelButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentMappingPanelImage)).BeginInit();
-            this.studentMarksPanelButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentMarksPanelImage)).BeginInit();
             this.subjectMgtPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subjectMgtButtonImage)).BeginInit();
             this.classMgtPanelButton.SuspendLayout();
@@ -92,9 +77,6 @@ namespace E_PupilStdMgt.forms
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.sidePanel.Controls.Add(this.subjectMappingPanelButton);
-            this.sidePanel.Controls.Add(this.studentMappingPanelButton);
-            this.sidePanel.Controls.Add(this.studentMarksPanelButton);
             this.sidePanel.Controls.Add(this.subjectMgtPanelButton);
             this.sidePanel.Controls.Add(this.classMgtPanelButton);
             this.sidePanel.Controls.Add(this.stuffMgtPanelButton);
@@ -107,117 +89,6 @@ namespace E_PupilStdMgt.forms
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(273, 726);
             this.sidePanel.TabIndex = 0;
-            // 
-            // subjectMappingPanelButton
-            // 
-            this.subjectMappingPanelButton.Controls.Add(this.subjectMappingPanelLabel);
-            this.subjectMappingPanelButton.Controls.Add(this.subjectMappingPanelImage);
-            this.subjectMappingPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.subjectMappingPanelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.subjectMappingPanelButton.Location = new System.Drawing.Point(0, 561);
-            this.subjectMappingPanelButton.Name = "subjectMappingPanelButton";
-            this.subjectMappingPanelButton.Size = new System.Drawing.Size(273, 56);
-            this.subjectMappingPanelButton.TabIndex = 9;
-            this.subjectMappingPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMappingPanelButton_MouseClick);
-            // 
-            // subjectMappingPanelLabel
-            // 
-            this.subjectMappingPanelLabel.AutoSize = true;
-            this.subjectMappingPanelLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.subjectMappingPanelLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subjectMappingPanelLabel.ForeColor = System.Drawing.SystemColors.Info;
-            this.subjectMappingPanelLabel.Location = new System.Drawing.Point(96, 17);
-            this.subjectMappingPanelLabel.Name = "subjectMappingPanelLabel";
-            this.subjectMappingPanelLabel.Size = new System.Drawing.Size(148, 23);
-            this.subjectMappingPanelLabel.TabIndex = 2;
-            this.subjectMappingPanelLabel.Text = "Subject Mapping";
-            this.subjectMappingPanelLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMappingPanelButton_MouseClick);
-            // 
-            // subjectMappingPanelImage
-            // 
-            this.subjectMappingPanelImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.subjectMappingPanelImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_share_white_36dp;
-            this.subjectMappingPanelImage.Location = new System.Drawing.Point(12, 10);
-            this.subjectMappingPanelImage.Name = "subjectMappingPanelImage";
-            this.subjectMappingPanelImage.Size = new System.Drawing.Size(40, 40);
-            this.subjectMappingPanelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.subjectMappingPanelImage.TabIndex = 2;
-            this.subjectMappingPanelImage.TabStop = false;
-            this.subjectMappingPanelImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.subjectMappingPanelButton_MouseClick);
-            // 
-            // studentMappingPanelButton
-            // 
-            this.studentMappingPanelButton.Controls.Add(this.studentMappingPanelLabel);
-            this.studentMappingPanelButton.Controls.Add(this.studentMappingPanelImage);
-            this.studentMappingPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentMappingPanelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.studentMappingPanelButton.Location = new System.Drawing.Point(0, 617);
-            this.studentMappingPanelButton.Name = "studentMappingPanelButton";
-            this.studentMappingPanelButton.Size = new System.Drawing.Size(273, 57);
-            this.studentMappingPanelButton.TabIndex = 8;
-            this.studentMappingPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMappingPanelButton_MouseClick);
-            // 
-            // studentMappingPanelLabel
-            // 
-            this.studentMappingPanelLabel.AutoSize = true;
-            this.studentMappingPanelLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentMappingPanelLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.studentMappingPanelLabel.ForeColor = System.Drawing.SystemColors.Info;
-            this.studentMappingPanelLabel.Location = new System.Drawing.Point(96, 18);
-            this.studentMappingPanelLabel.Name = "studentMappingPanelLabel";
-            this.studentMappingPanelLabel.Size = new System.Drawing.Size(152, 23);
-            this.studentMappingPanelLabel.TabIndex = 3;
-            this.studentMappingPanelLabel.Text = "Student Mapping";
-            this.studentMappingPanelLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMappingPanelButton_MouseClick);
-            // 
-            // studentMappingPanelImage
-            // 
-            this.studentMappingPanelImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentMappingPanelImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_share_white_36dp;
-            this.studentMappingPanelImage.Location = new System.Drawing.Point(12, 11);
-            this.studentMappingPanelImage.Name = "studentMappingPanelImage";
-            this.studentMappingPanelImage.Size = new System.Drawing.Size(40, 40);
-            this.studentMappingPanelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.studentMappingPanelImage.TabIndex = 4;
-            this.studentMappingPanelImage.TabStop = false;
-            this.studentMappingPanelImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMappingPanelButton_MouseClick);
-            // 
-            // studentMarksPanelButton
-            // 
-            this.studentMarksPanelButton.Controls.Add(this.studentMarksPanelLabel);
-            this.studentMarksPanelButton.Controls.Add(this.studentMarksPanelImage);
-            this.studentMarksPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentMarksPanelButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.studentMarksPanelButton.Location = new System.Drawing.Point(0, 674);
-            this.studentMarksPanelButton.Name = "studentMarksPanelButton";
-            this.studentMarksPanelButton.Size = new System.Drawing.Size(273, 52);
-            this.studentMarksPanelButton.TabIndex = 7;
-            this.studentMarksPanelButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMarksPanelButton_MouseClick);
-            // 
-            // studentMarksPanelLabel
-            // 
-            this.studentMarksPanelLabel.AutoSize = true;
-            this.studentMarksPanelLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentMarksPanelLabel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.studentMarksPanelLabel.ForeColor = System.Drawing.SystemColors.Info;
-            this.studentMarksPanelLabel.Location = new System.Drawing.Point(96, 14);
-            this.studentMarksPanelLabel.Name = "studentMarksPanelLabel";
-            this.studentMarksPanelLabel.Size = new System.Drawing.Size(128, 23);
-            this.studentMarksPanelLabel.TabIndex = 5;
-            this.studentMarksPanelLabel.Text = "Student Marks";
-            this.studentMarksPanelLabel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMarksPanelButton_MouseClick);
-            // 
-            // studentMarksPanelImage
-            // 
-            this.studentMarksPanelImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentMarksPanelImage.Image = global::E_PupilStdMgt.Properties.Resources.outline_share_white_36dp;
-            this.studentMarksPanelImage.Location = new System.Drawing.Point(12, 7);
-            this.studentMarksPanelImage.Name = "studentMarksPanelImage";
-            this.studentMarksPanelImage.Size = new System.Drawing.Size(40, 40);
-            this.studentMarksPanelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.studentMarksPanelImage.TabIndex = 6;
-            this.studentMarksPanelImage.TabStop = false;
-            this.studentMarksPanelImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.studentMarksPanelButton_MouseClick);
             // 
             // subjectMgtPanelButton
             // 
@@ -534,15 +405,6 @@ namespace E_PupilStdMgt.forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dashboardForm_MouseDown);
             this.sidePanel.ResumeLayout(false);
-            this.subjectMappingPanelButton.ResumeLayout(false);
-            this.subjectMappingPanelButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.subjectMappingPanelImage)).EndInit();
-            this.studentMappingPanelButton.ResumeLayout(false);
-            this.studentMappingPanelButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentMappingPanelImage)).EndInit();
-            this.studentMarksPanelButton.ResumeLayout(false);
-            this.studentMarksPanelButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentMarksPanelImage)).EndInit();
             this.subjectMgtPanelButton.ResumeLayout(false);
             this.subjectMgtPanelButton.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subjectMgtButtonImage)).EndInit();
@@ -599,14 +461,5 @@ namespace E_PupilStdMgt.forms
         private System.Windows.Forms.PictureBox subjectMgtButtonImage;
         private System.Windows.Forms.Panel formLoaderPanel;
         private System.Windows.Forms.Label currentPanelTitleLabel;
-        private System.Windows.Forms.Panel subjectMappingPanelButton;
-        private System.Windows.Forms.Label subjectMappingPanelLabel;
-        private System.Windows.Forms.PictureBox subjectMappingPanelImage;
-        private System.Windows.Forms.Panel studentMappingPanelButton;
-        private System.Windows.Forms.Label studentMappingPanelLabel;
-        private System.Windows.Forms.PictureBox studentMappingPanelImage;
-        private System.Windows.Forms.Panel studentMarksPanelButton;
-        private System.Windows.Forms.Label studentMarksPanelLabel;
-        private System.Windows.Forms.PictureBox studentMarksPanelImage;
     }
 }
