@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using E_PupilStdMgt.src.controller.forms.screens;
 
 namespace E_PupilStdMgt.src.controller.forms
 {
@@ -102,9 +103,21 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
-                label.Click += new EventHandler(this.StudentLabelClicked);
+                // label.Click += new EventHandler(this.StudentLabelClicked);
                 lStudentDict[label.Name] = label;
                 label.Left = (int)(this.parentPanel.Width / 1.5);
+                // label.DoubleClick += new EventHandler(this.StudentLabelDoubleClicked);
+                label.MouseUp += (s, args) =>
+                {
+                    if (args.Button == MouseButtons.Right)
+                    {
+                        this.StudentLabelRightClicked(s, args);
+                    }
+                    else
+                    {
+                        this.StudentLabelLeftClicked(s, args);
+                    }
+                };
 
                 parentPanel.Controls.Add(label);
             }
@@ -206,7 +219,7 @@ namespace E_PupilStdMgt.src.controller.forms
         }
 
 
-        void StudentLabelClicked(object sender, EventArgs e)
+        void StudentLabelLeftClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
 
@@ -313,6 +326,14 @@ namespace E_PupilStdMgt.src.controller.forms
                     }
                 }
             }
+        }
+
+
+        void StudentLabelRightClicked(object sender, EventArgs e)
+        {
+            StudentMarkMgtScreenForm studentMarkMgtScreenForm = new StudentMarkMgtScreenForm();
+
+            studentMarkMgtScreenForm.Show();
         }
     }
 }

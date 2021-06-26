@@ -35,6 +35,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.parentPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.createPanelButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -106,12 +107,29 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel2.Size = new System.Drawing.Size(1032, 599);
             this.panel2.TabIndex = 7;
             // 
+            // createPanelButton
+            // 
+            this.createPanelButton.AutoSize = true;
+            this.createPanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
+            this.createPanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.createPanelButton.FlatAppearance.BorderSize = 0;
+            this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.createPanelButton.Location = new System.Drawing.Point(808, 62);
+            this.createPanelButton.Name = "createPanelButton";
+            this.createPanelButton.Size = new System.Drawing.Size(206, 53);
+            this.createPanelButton.TabIndex = 12;
+            this.createPanelButton.Text = "Report Window";
+            this.createPanelButton.UseVisualStyleBackColor = false;
+            // 
             // StuffDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1033, 740);
+            this.Controls.Add(this.createPanelButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -122,6 +140,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -134,5 +153,6 @@ namespace E_PupilStdMgt.src.controller.forms
         private System.Windows.Forms.Panel parentPanel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button createPanelButton;
     }
 }
