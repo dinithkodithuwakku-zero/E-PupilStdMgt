@@ -32,20 +32,21 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.userTypeLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.parentPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.userTypeLabel);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(937, 41);
+            this.panel1.Size = new System.Drawing.Size(1033, 41);
             this.panel1.TabIndex = 0;
             // 
             // userTypeLabel
@@ -54,7 +55,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.userTypeLabel.AutoSize = true;
             this.userTypeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.userTypeLabel.ForeColor = System.Drawing.SystemColors.Info;
-            this.userTypeLabel.Location = new System.Drawing.Point(834, 9);
+            this.userTypeLabel.Location = new System.Drawing.Point(930, 9);
             this.userTypeLabel.Name = "userTypeLabel";
             this.userTypeLabel.Size = new System.Drawing.Size(91, 20);
             this.userTypeLabel.TabIndex = 5;
@@ -67,47 +68,59 @@ namespace E_PupilStdMgt.src.controller.forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(619, 9);
+            this.label2.Location = new System.Drawing.Point(715, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(216, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "You are currently logged in as";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Click menu item";
-            // 
             // parentPanel
             // 
-            this.parentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.parentPanel.Location = new System.Drawing.Point(0, 41);
+            this.parentPanel.AutoScroll = true;
+            this.parentPanel.Location = new System.Drawing.Point(12, 41);
             this.parentPanel.Name = "parentPanel";
-            this.parentPanel.Size = new System.Drawing.Size(937, 583);
+            this.parentPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.parentPanel.Size = new System.Drawing.Size(1000, 549);
             this.parentPanel.TabIndex = 2;
             this.parentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.parentPanel_Paint);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Class Mapping";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.parentPanel);
+            this.panel2.Location = new System.Drawing.Point(1, 141);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1032, 599);
+            this.panel2.TabIndex = 7;
             // 
             // StuffDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(937, 629);
-            this.Controls.Add(this.parentPanel);
+            this.ClientSize = new System.Drawing.Size(1033, 740);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StuffDashboardForm";
             this.Text = "StuffDashboardForm";
-            this.Load += new System.EventHandler(this.StuffDashboardForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +132,7 @@ namespace E_PupilStdMgt.src.controller.forms
         private System.Windows.Forms.Label userTypeLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel parentPanel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

@@ -11,16 +11,15 @@ namespace E_PupilStdMgt.src.controller.forms
 {
     public partial class StuffDashboardForm : Form
     {
-        private Point p1, p2;
-        List<Point> p1List = new List<Point>();
-        List<Point> p2List = new List<Point>();
 
-        Dictionary<string,Label> lClassDict = new Dictionary<string, Label>();
+        Dictionary<string, Label> lClassDict = new Dictionary<string, Label>();
         Dictionary<string, Label> lSubjectDict = new Dictionary<string, Label>();
 
         private string subjectCodePoint, classCodePoint;
         List<string> subjectCodePointList = new List<string>();
         List<string> classCodePointList = new List<string>();
+
+        Dictionary<string, List<string>> classesToSubjectMapping = new Dictionary<string, List<string>>();
 
         public StuffDashboardForm()
         {
@@ -42,11 +41,10 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.Text = "Class " + i;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
-                // label.Anchor = AnchorStyles.Left;
-                // label.Anchor = AnchorStyles.Right;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
                 label.Top = i * 60;
+                label.Left = 10;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
@@ -76,6 +74,19 @@ namespace E_PupilStdMgt.src.controller.forms
 
             if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
+                if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                {
+                    List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
+                    classSubjects.Add(this.subjectCodePoint);
+
+                    classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                }
+                else
+                {
+                    classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
+                }
+               
+
                 this.subjectCodePoint = null;
                 this.classCodePoint = null;
                 parentPanel.Invalidate();
@@ -86,7 +97,7 @@ namespace E_PupilStdMgt.src.controller.forms
         private void AddSubjectsToPanel()
         {
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 30; i++)
             {
                 Label label = new Label();
 
@@ -94,8 +105,6 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.Text = "Subject " + i;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
-                // label.Anchor = AnchorStyles.Left;
-                // label.Anchor = AnchorStyles.Right;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
                 label.Top = i * 60;
@@ -124,7 +133,19 @@ namespace E_PupilStdMgt.src.controller.forms
             }
 
             if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
-               {
+            {
+                if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                {
+                    List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
+                    classSubjects.Add(this.subjectCodePoint);
+
+                    classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                }
+                else
+                {
+                    classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
+                }
+
                 this.subjectCodePoint = null;
                 this.classCodePoint = null;
                 parentPanel.Invalidate();
@@ -141,20 +162,26 @@ namespace E_PupilStdMgt.src.controller.forms
                  }
              }*/
 
-            using (var p = new Pen(Color.Blue, 4))
+            using (var p = new Pen(Color.White, 4))
             {
                 for (int i = 0; i < classCodePointList.Count; i++)
                 {
-                    var classLabel = lClassDict[classCodePointList[i]];
-                    var subjectLabel = lSubjectDict[subjectCodePointList[i]];
 
-                    //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
-                    Point sbPoint = subjectLabel.Location;
-                    sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
-                    sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height/2);
+                    List<string> classSubjects = classesToSubjectMapping[classCodePointList[i]];
 
+                    foreach(string subjectCode in classSubjects)
+                    {
+                        var classLabel = lClassDict[classCodePointList[i]];
+                        var subjectLabel = lSubjectDict[subjectCode];
 
-                    e.Graphics.DrawLine(p, classLabel.Location, sbPoint);
+                        //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
+                        Point sbPoint = subjectLabel.Location;
+                        sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
+                        sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height / 2);
+
+                        e.Graphics.DrawLine(p, classLabel.Location, sbPoint);
+                    }
+                    
                 }
             }
         }
