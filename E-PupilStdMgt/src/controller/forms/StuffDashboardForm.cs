@@ -12,14 +12,17 @@ namespace E_PupilStdMgt.src.controller.forms
     public partial class StuffDashboardForm : Form
     {
 
-        Dictionary<string, Label> lClassDict = new Dictionary<string, Label>();
-        Dictionary<string, Label> lSubjectDict = new Dictionary<string, Label>();
+        private Dictionary<string, Label> lClassDict = new Dictionary<string, Label>();
+        private Dictionary<string, Label> lSubjectDict = new Dictionary<string, Label>();
+        private Dictionary<string, Label> lStudentDict = new Dictionary<string, Label>();
 
-        private string subjectCodePoint, classCodePoint;
-        List<string> subjectCodePointList = new List<string>();
-        List<string> classCodePointList = new List<string>();
+        private string subjectCodePoint, classCodePoint, studentRegNoPoint;
+        private List<string> subjectCodePointList = new List<string>();
+        private List<string> classCodePointList = new List<string>();
+        private List<string> studentRegNoPointList = new List<string>();
 
         Dictionary<string, List<string>> classesToSubjectMapping = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> classesToStudentMapping = new Dictionary<string, List<string>>();
 
         public StuffDashboardForm()
         {
@@ -27,6 +30,7 @@ namespace E_PupilStdMgt.src.controller.forms
 
             AddSubjectsToPanel();
             AddClassesToPanel();
+            AddStudentsToPanel();
         }
 
 
@@ -44,15 +48,63 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
                 label.Top = i * 60;
-                label.Left = 10;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
                 label.Click += new EventHandler(this.ClassLabelClicked);
 
-                label.Left = this.parentPanel.Width / 2;
+                label.Left = this.parentPanel.Width / 3;
 
                 lClassDict[label.Name] = label;
+
+                parentPanel.Controls.Add(label);
+            }
+        }
+
+        private void AddSubjectsToPanel()
+        {
+
+            for (int i = 0; i < 10; i++)
+            {
+                Label label = new Label();
+
+                label.Name = "scode " + i;
+                label.Text = "Subject " + i;
+                label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                label.ForeColor = Color.White;
+                label.AutoSize = true;
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.Top = i * 60;
+                label.BorderStyle = BorderStyle.FixedSingle;
+                label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+                label.Cursor = Cursors.Hand;
+                label.Click += new EventHandler(this.SubjectLabelClicked);
+                lSubjectDict[label.Name] = label;
+
+                parentPanel.Controls.Add(label);
+            }
+        }
+
+        private void AddStudentsToPanel()
+        {
+
+            for (int i = 0; i < 20; i++)
+            {
+                Label label = new Label();
+
+                label.Name = "regno " + i;
+                label.Text = "Student " + i;
+                label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                label.ForeColor = Color.White;
+                label.AutoSize = true;
+                label.TextAlign = ContentAlignment.MiddleLeft;
+                label.Top = i * 60;
+                label.BorderStyle = BorderStyle.FixedSingle;
+                label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
+                label.Cursor = Cursors.Hand;
+                label.Click += new EventHandler(this.StudentLabelClicked);
+                lStudentDict[label.Name] = label;
+                label.Left = (int)(this.parentPanel.Width / 1.5);
 
                 parentPanel.Controls.Add(label);
             }
@@ -85,36 +137,30 @@ namespace E_PupilStdMgt.src.controller.forms
                 {
                     classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
                 }
-               
+
 
                 this.subjectCodePoint = null;
                 this.classCodePoint = null;
                 parentPanel.Invalidate();
             }
-        }
 
-
-        private void AddSubjectsToPanel()
-        {
-
-            for (int i = 0; i < 30; i++)
+            if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
-                Label label = new Label();
+                if (classesToStudentMapping.ContainsKey(this.classCodePoint))
+                {
+                    List<string> classSubjects = classesToStudentMapping[this.classCodePoint];
+                    classSubjects.Add(this.studentRegNoPoint);
 
-                label.Name = "scode " + i;
-                label.Text = "Subject " + i;
-                label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-                label.ForeColor = Color.White;
-                label.AutoSize = true;
-                label.TextAlign = ContentAlignment.MiddleCenter;
-                label.Top = i * 60;
-                label.BorderStyle = BorderStyle.FixedSingle;
-                label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-                label.Cursor = Cursors.Hand;
-                label.Click += new EventHandler(this.SubjectLabelClicked);
-                lSubjectDict[label.Name] = label;
+                    classesToStudentMapping[this.classCodePoint] = classSubjects;
+                }
+                else
+                {
+                    classesToStudentMapping.Add(this.classCodePoint, new List<string>() { this.studentRegNoPoint });
+                }
 
-                parentPanel.Controls.Add(label);
+                this.studentRegNoPoint = null;
+                this.classCodePoint = null;
+                parentPanel.Invalidate();
             }
         }
 
@@ -122,33 +168,82 @@ namespace E_PupilStdMgt.src.controller.forms
         {
             Label label = (Label)sender;
 
-            if (string.IsNullOrEmpty(this.subjectCodePoint))
+            if (string.IsNullOrEmpty(this.studentRegNoPoint))
             {
-                this.subjectCodePoint = label.Name;
-                subjectCodePointList.Add(label.Name);
-            }
-            else
-            {
-                MessageBox.Show("Already selected a subject, Please select a Class!");
-            }
-
-            if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
-            {
-                if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                if (string.IsNullOrEmpty(this.subjectCodePoint))
                 {
-                    List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
-                    classSubjects.Add(this.subjectCodePoint);
-
-                    classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                    this.subjectCodePoint = label.Name;
+                    subjectCodePointList.Add(label.Name);
                 }
                 else
                 {
-                    classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
+                    MessageBox.Show("Already selected a subject, Please select a Class!");
                 }
 
-                this.subjectCodePoint = null;
-                this.classCodePoint = null;
-                parentPanel.Invalidate();
+                if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
+                {
+                    if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                    {
+                        List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
+                        classSubjects.Add(this.subjectCodePoint);
+
+                        classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                    }
+                    else
+                    {
+                        classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
+                    }
+
+                    this.subjectCodePoint = null;
+                    this.classCodePoint = null;
+                    parentPanel.Invalidate();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You should select a Class to map Student");
+            }
+        }
+
+
+        void StudentLabelClicked(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+
+            if (string.IsNullOrEmpty(this.subjectCodePoint))
+            {
+                if (string.IsNullOrEmpty(this.studentRegNoPoint))
+                {
+                    this.studentRegNoPoint = label.Name;
+                    studentRegNoPointList.Add(label.Name);
+                }
+                else
+                {
+                    MessageBox.Show("Already selected a Student, Please select a Class!");
+                }
+
+                if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
+                {
+                    if (classesToStudentMapping.ContainsKey(this.classCodePoint))
+                    {
+                        List<string> classSubjects = classesToStudentMapping[this.classCodePoint];
+                        classSubjects.Add(this.studentRegNoPoint);
+
+                        classesToStudentMapping[this.classCodePoint] = classSubjects;
+                    }
+                    else
+                    {
+                        classesToStudentMapping.Add(this.classCodePoint, new List<string>() { this.studentRegNoPoint });
+                    }
+
+                    this.studentRegNoPoint = null;
+                    this.classCodePoint = null;
+                    parentPanel.Invalidate();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You should select a Class to map Subject");
             }
         }
 
@@ -166,22 +261,56 @@ namespace E_PupilStdMgt.src.controller.forms
             {
                 for (int i = 0; i < classCodePointList.Count; i++)
                 {
-
-                    List<string> classSubjects = classesToSubjectMapping[classCodePointList[i]];
-
-                    foreach(string subjectCode in classSubjects)
+                    if (classesToSubjectMapping.ContainsKey(classCodePointList[i]))
                     {
-                        var classLabel = lClassDict[classCodePointList[i]];
-                        var subjectLabel = lSubjectDict[subjectCode];
+                        List<string> classSubjects = classesToSubjectMapping[classCodePointList[i]];
 
-                        //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
-                        Point sbPoint = subjectLabel.Location;
-                        sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
-                        sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height / 2);
+                        foreach (string subjectCode in classSubjects)
+                        {
+                            var classLabel = lClassDict[classCodePointList[i]];
+                            var subjectLabel = lSubjectDict[subjectCode];
 
-                        e.Graphics.DrawLine(p, classLabel.Location, sbPoint);
+                            //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
+                            Point sbPoint = subjectLabel.Location;
+                            sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
+                            sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height / 2);
+
+                            Point clPoint = classLabel.Location;
+                            clPoint.X = classLabel.Location.X;
+                            clPoint.Y = classLabel.Location.Y + (classLabel.Size.Height / 2);
+
+                            e.Graphics.DrawLine(p, clPoint, sbPoint);
+                        }
                     }
-                    
+                }
+            }
+
+            using (var p = new Pen(Color.Red, 4))
+            {
+                for (int i = 0; i < classCodePointList.Count; i++)
+                {
+                    if (classesToStudentMapping.ContainsKey(classCodePointList[i]))
+                    {
+
+                        List<string> classStudents = classesToStudentMapping[classCodePointList[i]];
+
+                        foreach (string studentRegNo in classStudents)
+                        {
+                            var classLabel = lClassDict[classCodePointList[i]];
+                            var studentLabel = lStudentDict[studentRegNo];
+
+                            //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
+                            Point stPoint = studentLabel.Location;
+                            stPoint.X = studentLabel.Location.X;
+                            stPoint.Y = studentLabel.Location.Y + (studentLabel.Size.Height / 2);
+
+                            Point clPoint = classLabel.Location;
+                            clPoint.X = classLabel.Location.X + classLabel.Size.Width;
+                            clPoint.Y = classLabel.Location.Y + (classLabel.Size.Height / 2);
+
+                            e.Graphics.DrawLine(p, clPoint, stPoint);
+                        }
+                    }
                 }
             }
         }
