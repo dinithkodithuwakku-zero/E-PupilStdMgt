@@ -14,5 +14,7 @@ namespace E_PupilStdMgt.src.service.custom
         public int GenerateNextRegNo();
 
         public List<StudentDTO> FindStudents(StudentDTO studentDTO);
+
+        public StudentDTO FindStudentByRegNo(string regNo);
     }
 }

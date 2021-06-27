@@ -45,6 +45,38 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             }
         }
 
+        public bool AddStudentMapping(ClassStudent classStudent)
+        {
+            try
+            {
+                con.Open();
+                string query = "INSERT INTO core_class_student(ID_CLASS, ID_STUDENT) VALUES(@classId, @studentId)";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@classId", classStudent.ClassEntity.ClassId.ToString()),
+                    new ParameterClass("@studentId", classStudent.StudentEntity.StudentId.ToString()),
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public bool Delete(int id)
         {
             throw new NotImplementedException();

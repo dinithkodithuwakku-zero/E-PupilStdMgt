@@ -160,24 +160,7 @@ namespace E_PupilStdMgt.src.controller.forms
 
             AddClassSubjectMapping();
 
-            if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
-            {
-                if (classesToStudentMapping.ContainsKey(this.classCodePoint))
-                {
-                    List<string> classSubjects = classesToStudentMapping[this.classCodePoint];
-                    classSubjects.Add(this.studentRegNoPoint);
-
-                    classesToStudentMapping[this.classCodePoint] = classSubjects;
-                }
-                else
-                {
-                    classesToStudentMapping.Add(this.classCodePoint, new List<string>() { this.studentRegNoPoint });
-                }
-
-                this.studentRegNoPoint = null;
-                this.classCodePoint = null;
-                parentPanel.Invalidate();
-            }
+            AddClassStudentMapping();
         }
 
         private void AddClassSubjectMapping()
@@ -194,7 +177,7 @@ namespace E_PupilStdMgt.src.controller.forms
 
                 SubjectDTO subjectDTO = new SubjectDTO();
                 subjectDTO.SubjectCode = this.subjectCodePoint;
-                classSubjectDTO.SubjectDTO= subjectDTO;
+                classSubjectDTO.SubjectDTO = subjectDTO;
 
                 bool isMapCreated = iClassServiceCustom.AddSubjectMapping(classSubjectDTO);
 
@@ -284,7 +267,32 @@ namespace E_PupilStdMgt.src.controller.forms
                     MessageBox.Show("Already selected a Student, Please select a Class!");
                 }
 
-                if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
+                AddClassStudentMapping();
+            }
+            else
+            {
+                MessageBox.Show("You should select a Class to map Subject");
+            }
+        }
+
+        private void AddClassStudentMapping()
+        {
+            if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
+            {
+
+                ClassStudentDTO classStudentDTO = new ClassStudentDTO();
+
+                ClassDTO classDTO = new ClassDTO();
+                classDTO.ClassCode = this.classCodePoint;
+                classStudentDTO.ClassDTO = classDTO;
+
+                StudentDTO studentDTO = new StudentDTO();
+                studentDTO.StudentRegNo = this.studentRegNoPoint;
+                classStudentDTO.StudentDTO = studentDTO;
+
+                bool isMapCreated = iClassServiceCustom.AddStudentMapping(classStudentDTO);
+
+                if (isMapCreated)
                 {
                     if (classesToStudentMapping.ContainsKey(this.classCodePoint))
                     {
@@ -302,11 +310,31 @@ namespace E_PupilStdMgt.src.controller.forms
                     this.classCodePoint = null;
                     parentPanel.Invalidate();
                 }
+                else
+                {
+                    MessageBox.Show("Unable to create class - student mapping");
+                }
             }
-            else
+
+
+            /*if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
-                MessageBox.Show("You should select a Class to map Subject");
-            }
+                if (classesToStudentMapping.ContainsKey(this.classCodePoint))
+                {
+                    List<string> classSubjects = classesToStudentMapping[this.classCodePoint];
+                    classSubjects.Add(this.studentRegNoPoint);
+
+                    classesToStudentMapping[this.classCodePoint] = classSubjects;
+                }
+                else
+                {
+                    classesToStudentMapping.Add(this.classCodePoint, new List<string>() { this.studentRegNoPoint });
+                }
+
+                this.studentRegNoPoint = null;
+                this.classCodePoint = null;
+                parentPanel.Invalidate();
+            }*/
         }
 
         private void parentPanel_Paint(object sender, PaintEventArgs e)

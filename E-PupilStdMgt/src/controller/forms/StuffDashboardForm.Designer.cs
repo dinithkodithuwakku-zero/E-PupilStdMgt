@@ -47,7 +47,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1033, 41);
+            this.panel1.Size = new System.Drawing.Size(1235, 41);
             this.panel1.TabIndex = 0;
             // 
             // userTypeLabel
@@ -56,7 +56,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.userTypeLabel.AutoSize = true;
             this.userTypeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.userTypeLabel.ForeColor = System.Drawing.SystemColors.Info;
-            this.userTypeLabel.Location = new System.Drawing.Point(930, 9);
+            this.userTypeLabel.Location = new System.Drawing.Point(1132, 9);
             this.userTypeLabel.Name = "userTypeLabel";
             this.userTypeLabel.Size = new System.Drawing.Size(91, 20);
             this.userTypeLabel.TabIndex = 5;
@@ -69,7 +69,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.Info;
-            this.label2.Location = new System.Drawing.Point(715, 9);
+            this.label2.Location = new System.Drawing.Point(917, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(216, 20);
             this.label2.TabIndex = 4;
@@ -82,7 +82,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.parentPanel.Location = new System.Drawing.Point(12, 41);
             this.parentPanel.Name = "parentPanel";
             this.parentPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.parentPanel.Size = new System.Drawing.Size(1000, 549);
+            this.parentPanel.Size = new System.Drawing.Size(1191, 549);
             this.parentPanel.TabIndex = 2;
             this.parentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.parentPanel_Paint);
             // 
@@ -104,7 +104,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel2.Controls.Add(this.parentPanel);
             this.panel2.Location = new System.Drawing.Point(1, 141);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1032, 599);
+            this.panel2.Size = new System.Drawing.Size(1222, 599);
             this.panel2.TabIndex = 7;
             // 
             // createPanelButton
@@ -116,7 +116,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.createPanelButton.FlatAppearance.BorderSize = 0;
             this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.createPanelButton.Location = new System.Drawing.Point(808, 62);
+            this.createPanelButton.Location = new System.Drawing.Point(999, 57);
             this.createPanelButton.Name = "createPanelButton";
             this.createPanelButton.Size = new System.Drawing.Size(206, 53);
             this.createPanelButton.TabIndex = 12;
@@ -128,7 +128,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1033, 740);
+            this.ClientSize = new System.Drawing.Size(1235, 740);
             this.Controls.Add(this.createPanelButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

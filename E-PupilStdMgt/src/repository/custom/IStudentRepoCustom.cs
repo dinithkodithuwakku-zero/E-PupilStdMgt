@@ -11,5 +11,7 @@ namespace E_PupilStdMgt.src.repository.custom
         public int GenerateNextRegNo();
 
         public ArrayList FindStudents(Student student);
+
+        public Student FindStudentByRegNo(string regNo);
     }
 }

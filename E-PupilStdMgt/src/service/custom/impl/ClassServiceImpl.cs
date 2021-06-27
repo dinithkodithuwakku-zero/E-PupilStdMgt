@@ -14,11 +14,13 @@ namespace E_PupilStdMgt.src.service.custom.impl
     {
         private IClassRepoCustom iClassRepoCustom;
         private ISubjectServiceCustom iSubjectServiceCustom;
+        private IStudentServiceCustom iStudentServiceCustom;
 
         public ClassServiceImpl()
         {
             iClassRepoCustom = RepoFactory.GetInstance().GetRepo<ClassRepoImpl>(RepoFactory.RepoTypes.CLASS);
             iSubjectServiceCustom = ServiceFactory.GetInstance().GetService<SubjectServiceImpl>(ServiceFactory.ServiceTypes.SUBJECT);
+            iStudentServiceCustom = ServiceFactory.GetInstance().GetService<StudentServiceImpl>(ServiceFactory.ServiceTypes.STUDENT);
         }
 
         public bool AddSubjectMapping(ClassSubjectDTO classSubjectDTO)
@@ -29,6 +31,16 @@ namespace E_PupilStdMgt.src.service.custom.impl
             classSubject.SubjectEntity = new Subject(subjectDTO.SubjectId, subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints); ;
 
             return iClassRepoCustom.AddSubjectMapping(classSubject);
+        }
+
+        public bool AddStudentMapping(ClassStudentDTO classStudentDTO)
+        {
+            ClassStudent classStudent= new ClassStudent();
+            classStudent.ClassEntity = iClassRepoCustom.FindClassByCode(classStudentDTO.ClassDTO.ClassCode);
+            StudentDTO studentDTO = iStudentServiceCustom.FindStudentByRegNo(classStudentDTO.StudentDTO.StudentRegNo);
+            classStudent.StudentEntity = new Student(studentDTO.StudentId, studentDTO.StudentRegNo, studentDTO.StudentName, studentDTO.MobileNo, studentDTO.Gender, studentDTO.Email, studentDTO.PermanentAddress);
+
+            return iClassRepoCustom.AddStudentMapping(classStudent);
         }
 
         public bool CreateClass(ClassDTO classDTO)

@@ -56,5 +56,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
         {
             return iStudentRepoCustom.GenerateNextRegNo() + 1;
         }
+
+        public StudentDTO FindStudentByRegNo(string regNo)
+        {
+            Student student = iStudentRepoCustom.FindStudentByRegNo(regNo);
+            return new StudentDTO(student.StudentId, student.StudentRegNo, student.StudentName, student.MobileNo, student.Gender, student.Email, student.PermanentAddress);
+        }
     }
 }
