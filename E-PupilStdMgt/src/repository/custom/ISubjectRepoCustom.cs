@@ -7,5 +7,6 @@ namespace E_PupilStdMgt.src.repository.custom
 {
     interface ISubjectRepoCustom : ICrudRepo<Subject, int>
     {
+        public Subject FindSubjectByCode(string code);
     }
 }

@@ -12,9 +12,43 @@ namespace E_PupilStdMgt.src.repository.custom.impl
     class ClassRepoImpl : IClassRepoCustom
     {
         DBConnection con = new DBConnection();
+
+        public bool AddSubjectMapping(ClassSubject classSubject)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public Class FindClassByCode(string code)
+        {
+            try
+            {
+                con.Open();
+                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE CLASS_CODE = " + code;
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                if (reader.Read())
+                {
+                    return new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public ArrayList GetAll()

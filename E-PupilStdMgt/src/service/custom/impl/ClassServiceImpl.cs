@@ -13,10 +13,22 @@ namespace E_PupilStdMgt.src.service.custom.impl
     class ClassServiceImpl : IClassServiceCustom
     {
         private IClassRepoCustom iClassRepoCustom;
+        private ISubjectServiceCustom iSubjectServiceCustom;
 
         public ClassServiceImpl()
         {
             iClassRepoCustom = RepoFactory.GetInstance().GetRepo<ClassRepoImpl>(RepoFactory.RepoTypes.CLASS);
+            iSubjectServiceCustom = ServiceFactory.GetInstance().GetService<SubjectServiceImpl>(ServiceFactory.ServiceTypes.SUBJECT);
+        }
+
+        public bool AddSubjectMapping(ClassSubjectDTO classSubjectDTO)
+        {
+            ClassSubject classSubject = new ClassSubject();
+            classSubject.ClassEntity = iClassRepoCustom.FindClassByCode(classSubjectDTO.ClassDTO.ClassCode);
+            SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectByCode(classSubjectDTO.SubjectDTO.SubjectCode);
+            classSubject.SubjectEntity = new Subject(subjectDTO.SubjectId, subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints); ;
+
+            return iClassRepoCustom.AddSubjectMapping(classSubject);
         }
 
         public bool CreateClass(ClassDTO classDTO)

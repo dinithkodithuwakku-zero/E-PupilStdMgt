@@ -10,5 +10,7 @@ namespace E_PupilStdMgt.src.service.custom
         public List<SubjectDTO> FindAllSubjects();
 
         public bool CreateNewSubject(SubjectDTO subjectDTO);
+
+        public SubjectDTO FindSubjectByCode(string code);
     }
 }

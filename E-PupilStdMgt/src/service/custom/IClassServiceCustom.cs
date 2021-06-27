@@ -10,5 +10,7 @@ namespace E_PupilStdMgt.src.service.custom
         public List<ClassDTO> FindAllClasses();
 
         public bool CreateClass(ClassDTO classDTO);
+
+        public bool AddSubjectMapping(ClassSubjectDTO classSubjectDTO);
     }
 }
