@@ -79,7 +79,7 @@ namespace E_PupilStdMgt.src.controller.forms
         private void AddSubjectsToPanel()
         {
             // GET ACTIVE SUBJECT
-            List<SubjectDTO> list = iSubjectServiceCustom.FindAllSubjects() ;
+            List<SubjectDTO> list = iSubjectServiceCustom.FindAllSubjects();
 
             for (int i = 0; i < list.Count; i++)
             {
@@ -158,25 +158,7 @@ namespace E_PupilStdMgt.src.controller.forms
                 MessageBox.Show("Already selected a class, Please select a Subject!");
             }
 
-            if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
-            {
-                if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
-                {
-                    List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
-                    classSubjects.Add(this.subjectCodePoint);
-
-                    classesToSubjectMapping[this.classCodePoint] = classSubjects;
-                }
-                else
-                {
-                    classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
-                }
-
-
-                this.subjectCodePoint = null;
-                this.classCodePoint = null;
-                parentPanel.Invalidate();
-            }
+            AddClassSubjectMapping();
 
             if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
@@ -198,6 +180,69 @@ namespace E_PupilStdMgt.src.controller.forms
             }
         }
 
+        private void AddClassSubjectMapping()
+        {
+            if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
+            {
+                Debug.WriteLine(this.classCodePoint);
+
+                ClassSubjectDTO classSubjectDTO = new ClassSubjectDTO();
+
+                ClassDTO classDTO = new ClassDTO();
+                classDTO.ClassCode = this.classCodePoint;
+                classSubjectDTO.ClassDTO = classDTO;
+
+                SubjectDTO subjectDTO = new SubjectDTO();
+                subjectDTO.SubjectCode = this.subjectCodePoint;
+                classSubjectDTO.SubjectDTO= subjectDTO;
+
+                bool isMapCreated = iClassServiceCustom.AddSubjectMapping(classSubjectDTO);
+
+                if (isMapCreated)
+                {
+                    if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                    {
+                        List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
+                        classSubjects.Add(this.subjectCodePoint);
+
+                        classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                    }
+                    else
+                    {
+                        classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
+                    }
+
+
+                    this.subjectCodePoint = null;
+                    this.classCodePoint = null;
+                    parentPanel.Invalidate();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to create class - subject mapping");
+                }
+            }
+
+            /*if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
+            {
+                if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                {
+                    List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
+                    classSubjects.Add(this.subjectCodePoint);
+
+                    classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                }
+                else
+                {
+                    classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
+                }
+
+                this.subjectCodePoint = null;
+                this.classCodePoint = null;
+                parentPanel.Invalidate();
+            }*/
+        }
+
         void SubjectLabelClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
@@ -214,24 +259,7 @@ namespace E_PupilStdMgt.src.controller.forms
                     MessageBox.Show("Already selected a subject, Please select a Class!");
                 }
 
-                if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
-                {
-                    if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
-                    {
-                        List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
-                        classSubjects.Add(this.subjectCodePoint);
-
-                        classesToSubjectMapping[this.classCodePoint] = classSubjects;
-                    }
-                    else
-                    {
-                        classesToSubjectMapping.Add(this.classCodePoint, new List<string>() { this.subjectCodePoint });
-                    }
-
-                    this.subjectCodePoint = null;
-                    this.classCodePoint = null;
-                    parentPanel.Invalidate();
-                }
+                AddClassSubjectMapping();
             }
             else
             {

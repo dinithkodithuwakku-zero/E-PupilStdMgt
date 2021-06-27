@@ -39,7 +39,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
         public SubjectDTO FindSubjectByCode(string code)
         {
-            Subject subject = iSubjectRepoCustom.FindSubjectByCode(string code);
+            Subject subject = iSubjectRepoCustom.FindSubjectByCode(code);
             return new SubjectDTO(subject.SubjectId, subject.SubjectName, subject.SubjectCode, subject.SubjectDuration, subject.SubjectTotalPoints);
         }
     }

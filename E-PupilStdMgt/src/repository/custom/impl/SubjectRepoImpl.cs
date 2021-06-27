@@ -24,7 +24,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE SUBJECT_CODE = " + code;
+                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE SUBJECT_CODE = '" + code + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 

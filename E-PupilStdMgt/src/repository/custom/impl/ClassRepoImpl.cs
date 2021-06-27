@@ -15,7 +15,34 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool AddSubjectMapping(ClassSubject classSubject)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "INSERT INTO core_class_subject(ID_CLASS, ID_SUBJECT) VALUES(@classId, @subjectId)";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@classId", classSubject.ClassEntity.ClassId.ToString()),
+                    new ParameterClass("@subjectId", classSubject.SubjectEntity.SubjectId.ToString()),
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public bool Delete(int id)
@@ -28,7 +55,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             try
             {
                 con.Open();
-                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE CLASS_CODE = " + code;
+                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE CLASS_CODE = '" + code + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 

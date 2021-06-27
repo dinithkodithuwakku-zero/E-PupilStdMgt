@@ -12,7 +12,7 @@ namespace E_PupilStdMgt.src.payload
         private int subjectDuration;
         private double subjectTotalPoints;
 
-        private SubjectDTO() { }
+        public SubjectDTO() { }
 
         public SubjectDTO(int subjectId, string subjectName, string subjectCode, int subjectDuration, double subjectTotalPoints)
         {
