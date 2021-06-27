@@ -47,6 +47,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             }
         }
 
+        public Subject FindSubjectById(int id)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE ID_SUBJECT = '" + id + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                if (reader.Read())
+                {
+                    return new Subject(Int16.Parse(reader["ID_SUBJECT"].ToString()), reader["SUBJECT_NAME"].ToString(), reader["SUBJECT_CODE"].ToString(), Int16.Parse(reader["SUBJECT_DURATION"].ToString()), Double.Parse(reader["SUBJECT_TOTAL_POINTS"].ToString()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public ArrayList GetAll()
         {
             try

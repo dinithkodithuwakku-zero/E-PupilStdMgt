@@ -7,6 +7,7 @@ using E_PupilStdMgt.src.repository;
 using E_PupilStdMgt.src.repository.custom;
 using E_PupilStdMgt.src.repository.custom.impl;
 using System.Collections;
+using System.Diagnostics;
 
 namespace E_PupilStdMgt.src.service.custom.impl
 {
@@ -61,6 +62,19 @@ namespace E_PupilStdMgt.src.service.custom.impl
             foreach (Class c in classList)
             {
                 list.Add(new ClassDTO(c.ClassId, c.ClassName, c.ClassCode, c.IsActive));
+            }
+
+            return list;
+        }
+
+        public List<ClassSubjectDTO> FindSubjectMapping()
+        {
+            ArrayList classSubjectList = iClassRepoCustom.GetSubjectMapping();
+            List<ClassSubjectDTO> list = new List<ClassSubjectDTO>();
+            foreach (ClassSubject cs in classSubjectList)
+            {
+                SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectById(cs.SubjectEntity.SubjectId);
+                list.Add(new ClassSubjectDTO(cs.ClassSubjectId, new ClassDTO(cs.ClassEntity.ClassId, cs.ClassEntity.ClassName, cs.ClassEntity.ClassCode, cs.ClassEntity.IsActive), subjectDTO));
             }
 
             return list;

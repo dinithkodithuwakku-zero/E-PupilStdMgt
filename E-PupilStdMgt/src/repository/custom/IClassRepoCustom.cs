@@ -10,7 +10,7 @@ namespace E_PupilStdMgt.src.repository.custom
     {
         public bool AddSubjectMapping(ClassSubject classSubject);
         public bool AddStudentMapping(ClassStudent classStudent);
-
         public Class FindClassByCode(string code);
+        public ArrayList GetSubjectMapping();
     }
 }

@@ -42,5 +42,13 @@ namespace E_PupilStdMgt.src.service.custom.impl
             Subject subject = iSubjectRepoCustom.FindSubjectByCode(code);
             return new SubjectDTO(subject.SubjectId, subject.SubjectName, subject.SubjectCode, subject.SubjectDuration, subject.SubjectTotalPoints);
         }
+
+        public SubjectDTO FindSubjectById(int id)
+        {
+            Subject subject = iSubjectRepoCustom.FindSubjectById(id);
+            if (subject != null)
+                return new SubjectDTO(subject.SubjectId, subject.SubjectName, subject.SubjectCode, subject.SubjectDuration, subject.SubjectTotalPoints);
+            return null;
+        }
     }
 }

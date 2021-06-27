@@ -8,9 +8,8 @@ namespace E_PupilStdMgt.src.service.custom
     interface ISubjectServiceCustom: ISuperService
     {
         public List<SubjectDTO> FindAllSubjects();
-
         public bool CreateNewSubject(SubjectDTO subjectDTO);
-
         public SubjectDTO FindSubjectByCode(string code);
+        public SubjectDTO FindSubjectById(int id);
     }
 }

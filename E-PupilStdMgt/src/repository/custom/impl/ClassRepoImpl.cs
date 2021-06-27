@@ -45,6 +45,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             }
         }
 
+        public ArrayList GetSubjectMapping()
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select cs.ID_CLASS_SUBJECT, c.ID_CLASS as ID_CLASS, c.CLASS_NAME as CLASS_NAME, c.CLASS_CODE as CLASS_CODE, c.IS_ACTIVE as IS_ACTIVE, cs.ID_SUBJECT from core_class_subject cs INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+                while (reader.Read())
+                {
+
+                    Subject subjectEntity = new Subject();
+                    subjectEntity.SubjectId = Int16.Parse(reader["ID_SUBJECT"].ToString());
+                    list.Add(new ClassSubject(Int16.Parse(reader["ID_CLASS_SUBJECT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())), subjectEntity));
+                }
+
+                return list;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public bool AddStudentMapping(ClassStudent classStudent)
         {
             try

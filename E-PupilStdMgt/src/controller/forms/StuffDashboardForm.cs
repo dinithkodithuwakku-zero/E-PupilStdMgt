@@ -44,6 +44,8 @@ namespace E_PupilStdMgt.src.controller.forms
             AddSubjectsToPanel();
             AddClassesToPanel();
             AddStudentsToPanel();
+
+            GetClassesToSubjectMapping();
         }
 
         private void AddClassesToPanel()
@@ -144,6 +146,33 @@ namespace E_PupilStdMgt.src.controller.forms
             }
         }
 
+        public void GetClassesToSubjectMapping()
+        {
+            List<ClassSubjectDTO> classSubjectList = iClassServiceCustom.FindSubjectMapping();
+
+            foreach(ClassSubjectDTO classSubjectDTO in classSubjectList)
+            {
+                if (classesToSubjectMapping.ContainsKey(classSubjectDTO.ClassDTO.ClassCode))
+                {
+                    List<string> classSubjects = classesToSubjectMapping[classSubjectDTO.ClassDTO.ClassCode];
+                    classSubjects.Add(classSubjectDTO.SubjectDTO.SubjectCode);
+
+                    classesToSubjectMapping[classSubjectDTO.ClassDTO.ClassCode] = classSubjects;
+                }
+                else
+                {
+                    classesToSubjectMapping.Add(classSubjectDTO.ClassDTO.ClassCode, new List<string>() { classSubjectDTO.SubjectDTO.SubjectCode });
+                }
+
+                classCodePointList.Add(classSubjectDTO.ClassDTO.ClassCode);
+                subjectCodePointList.Add(classSubjectDTO.SubjectDTO.SubjectCode);
+            }
+
+            Debug.WriteLine(classesToSubjectMapping.Count);
+
+            parentPanel.Invalidate();
+        }
+
         void ClassLabelClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
@@ -167,7 +196,6 @@ namespace E_PupilStdMgt.src.controller.forms
         {
             if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
-                Debug.WriteLine(this.classCodePoint);
 
                 ClassSubjectDTO classSubjectDTO = new ClassSubjectDTO();
 
