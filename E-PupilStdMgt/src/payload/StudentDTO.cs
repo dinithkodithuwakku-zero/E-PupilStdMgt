@@ -4,7 +4,7 @@ using System.Text;
 
 namespace E_PupilStdMgt.src.payload
 {
-    class StudentDTO
+    class StudentDTO: BaseDTO
     {
         private int studentId;
         private string studentRegNo;

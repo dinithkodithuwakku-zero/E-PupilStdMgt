@@ -23,6 +23,22 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return iStudentRepoCustom.Save(new Student(studentDTO.StudentRegNo, studentDTO.StudentName, studentDTO.MobileNo, studentDTO.Gender, studentDTO.Email, studentDTO.PermanentAddress));
         }
 
+        public List<StudentDTO> FindStudents(StudentDTO studentDTO)
+        {
+            Student student = new Student();
+            student.Status = studentDTO.Status;
+
+            ArrayList studentList = iStudentRepoCustom.FindStudents(student);
+            List<StudentDTO> list = new List<StudentDTO>();
+
+            foreach (Student s in studentList)
+            {
+                list.Add(new StudentDTO(s.StudentId, s.StudentRegNo, s.StudentName, s.MobileNo, s.Gender, s.Email, s.PermanentAddress));
+            }
+
+            return list;
+        }
+
         public List<StudentDTO> FindAllStudents()
         {
             ArrayList studentList = iStudentRepoCustom.GetAll();

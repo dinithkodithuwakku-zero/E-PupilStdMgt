@@ -4,7 +4,7 @@ using System.Text;
 
 namespace E_PupilStdMgt.src.entity
 {
-    class Student
+    class Student: BaseEntity
     {
         private int studentId;
         private string studentRegNo;

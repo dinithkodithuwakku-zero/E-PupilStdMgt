@@ -29,21 +29,18 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.classNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.jobTitlePicker = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.closePanelButton = new System.Windows.Forms.Button();
             this.createPanelButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.studentRegNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
             this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +51,9 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // classNameInput
             // 
             this.classNameInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.classNameInput.Location = new System.Drawing.Point(193, 181);
+            this.classNameInput.Location = new System.Drawing.Point(612, 109);
             this.classNameInput.Name = "classNameInput";
-            this.classNameInput.Size = new System.Drawing.Size(206, 27);
+            this.classNameInput.Size = new System.Drawing.Size(177, 27);
             this.classNameInput.TabIndex = 17;
             // 
             // label2
@@ -64,7 +61,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(35, 181);
+            this.label2.Location = new System.Drawing.Point(454, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 20);
             this.label2.TabIndex = 16;
@@ -79,7 +76,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             "Teacher"});
             this.jobTitlePicker.Location = new System.Drawing.Point(193, 109);
             this.jobTitlePicker.Name = "jobTitlePicker";
-            this.jobTitlePicker.Size = new System.Drawing.Size(206, 28);
+            this.jobTitlePicker.Size = new System.Drawing.Size(224, 28);
             this.jobTitlePicker.TabIndex = 30;
             // 
             // label6
@@ -93,23 +90,12 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label6.TabIndex = 29;
             this.label6.Text = "Select Subject";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(499, 109);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 20);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "Select Student";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(571, 38);
+            this.label3.Location = new System.Drawing.Point(506, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 33;
@@ -118,22 +104,10 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(693, 38);
+            this.dateTimePicker1.Location = new System.Drawing.Point(628, 38);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(161, 27);
             this.dateTimePicker1.TabIndex = 34;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Reception",
-            "Teacher"});
-            this.comboBox1.Location = new System.Drawing.Point(648, 109);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(206, 28);
-            this.comboBox1.TabIndex = 35;
             // 
             // closePanelButton
             // 
@@ -144,7 +118,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.closePanelButton.FlatAppearance.BorderSize = 0;
             this.closePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.closePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.closePanelButton.Location = new System.Drawing.Point(732, 229);
+            this.closePanelButton.Location = new System.Drawing.Point(667, 169);
             this.closePanelButton.Name = "closePanelButton";
             this.closePanelButton.Size = new System.Drawing.Size(122, 43);
             this.closePanelButton.TabIndex = 38;
@@ -160,7 +134,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.createPanelButton.FlatAppearance.BorderSize = 0;
             this.createPanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.createPanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.createPanelButton.Location = new System.Drawing.Point(571, 229);
+            this.createPanelButton.Location = new System.Drawing.Point(506, 169);
             this.createPanelButton.Name = "createPanelButton";
             this.createPanelButton.Size = new System.Drawing.Size(122, 43);
             this.createPanelButton.TabIndex = 37;
@@ -171,53 +145,46 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentRegNo,
-            this.studentName,
             this.subjectCode,
             this.subjectName,
             this.examDate,
             this.studentPoint});
-            this.dataGridView1.Location = new System.Drawing.Point(35, 330);
+            this.dataGridView1.Location = new System.Drawing.Point(35, 256);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(818, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(754, 248);
             this.dataGridView1.TabIndex = 39;
             // 
-            // studentRegNo
+            // label4
             // 
-            this.studentRegNo.HeaderText = "Student Reg No";
-            this.studentRegNo.MinimumWidth = 6;
-            this.studentRegNo.Name = "studentRegNo";
-            this.studentRegNo.ReadOnly = true;
-            this.studentRegNo.Width = 125;
-            // 
-            // studentName
-            // 
-            this.studentName.HeaderText = "Student Name";
-            this.studentName.MinimumWidth = 6;
-            this.studentName.Name = "studentName";
-            this.studentName.ReadOnly = true;
-            this.studentName.Width = 200;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(35, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(256, 25);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Student Name - Reg no 0002";
             // 
             // subjectCode
             // 
@@ -225,7 +192,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.subjectCode.MinimumWidth = 6;
             this.subjectCode.Name = "subjectCode";
             this.subjectCode.ReadOnly = true;
-            this.subjectCode.Width = 125;
+            this.subjectCode.Width = 200;
             // 
             // subjectName
             // 
@@ -233,7 +200,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.subjectName.MinimumWidth = 6;
             this.subjectName.Name = "subjectName";
             this.subjectName.ReadOnly = true;
-            this.subjectName.Width = 200;
+            this.subjectName.Width = 250;
             // 
             // examDate
             // 
@@ -256,14 +223,13 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(883, 587);
+            this.ClientSize = new System.Drawing.Size(833, 545);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.closePanelButton);
             this.Controls.Add(this.createPanelButton);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.jobTitlePicker);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.classNameInput);
@@ -283,18 +249,15 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox jobTitlePicker;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button closePanelButton;
         private System.Windows.Forms.Button createPanelButton;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentRegNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn subjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn examDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn studentPoint;
+        private System.Windows.Forms.Label label4;
     }
 }

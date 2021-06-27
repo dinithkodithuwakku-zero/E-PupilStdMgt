@@ -12,5 +12,7 @@ namespace E_PupilStdMgt.src.service.custom
         public bool CreateNewStudent(StudentDTO studentDTO);
 
         public int GenerateNextRegNo();
+
+        public List<StudentDTO> FindStudents(StudentDTO studentDTO);
     }
 }

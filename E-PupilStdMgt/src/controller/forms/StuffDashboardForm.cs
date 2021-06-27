@@ -7,11 +7,19 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using E_PupilStdMgt.src.controller.forms.screens;
+using E_PupilStdMgt.src.payload;
+using E_PupilStdMgt.src.service;
+using E_PupilStdMgt.src.service.custom;
+using E_PupilStdMgt.src.service.custom.impl;
 
 namespace E_PupilStdMgt.src.controller.forms
 {
     public partial class StuffDashboardForm : Form
     {
+
+        private ISubjectServiceCustom iSubjectServiceCustom;
+        private IStudentServiceCustom iStudentServiceCustom;
+        private IClassServiceCustom iClassServiceCustom;
 
         private Dictionary<string, Label> lClassDict = new Dictionary<string, Label>();
         private Dictionary<string, Label> lSubjectDict = new Dictionary<string, Label>();
@@ -27,6 +35,10 @@ namespace E_PupilStdMgt.src.controller.forms
 
         public StuffDashboardForm()
         {
+            iSubjectServiceCustom = ServiceFactory.GetInstance().GetService<SubjectServiceImpl>(ServiceFactory.ServiceTypes.SUBJECT);
+            iStudentServiceCustom = ServiceFactory.GetInstance().GetService<StudentServiceImpl>(ServiceFactory.ServiceTypes.STUDENT);
+            iClassServiceCustom = ServiceFactory.GetInstance().GetService<ClassServiceImpl>(ServiceFactory.ServiceTypes.CLASS);
+
             InitializeComponent();
 
             AddSubjectsToPanel();
@@ -34,16 +46,18 @@ namespace E_PupilStdMgt.src.controller.forms
             AddStudentsToPanel();
         }
 
-
         private void AddClassesToPanel()
         {
 
-            for (int i = 0; i < 5; i++)
+            // GET ALL CLASSES because IF CLASS CLOSED MEAN IT'S ON REPAIR OR SOMETHING
+            List<ClassDTO> list = iClassServiceCustom.FindAllClasses();
+
+            for (int i = 0; i < list.Count; i++)
             {
                 Label label = new Label();
 
-                label.Name = "ccode " + i;
-                label.Text = "Class " + i;
+                label.Name = list[i].ClassCode;
+                label.Text = list[i].ClassName;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
                 label.AutoSize = true;
@@ -54,7 +68,7 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.Cursor = Cursors.Hand;
                 label.Click += new EventHandler(this.ClassLabelClicked);
 
-                label.Left = this.parentPanel.Width / 3;
+                label.Left = this.parentPanel.Width / 2;
 
                 lClassDict[label.Name] = label;
 
@@ -64,13 +78,15 @@ namespace E_PupilStdMgt.src.controller.forms
 
         private void AddSubjectsToPanel()
         {
+            // GET ACTIVE SUBJECT
+            List<SubjectDTO> list = iSubjectServiceCustom.FindAllSubjects() ;
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 Label label = new Label();
 
-                label.Name = "scode " + i;
-                label.Text = "Subject " + i;
+                label.Name = list[i].SubjectCode;
+                label.Text = list[i].SubjectName;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
                 label.AutoSize = true;
@@ -89,12 +105,17 @@ namespace E_PupilStdMgt.src.controller.forms
         private void AddStudentsToPanel()
         {
 
-            for (int i = 0; i < 20; i++)
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.Status = 1;
+
+            List<StudentDTO> list = iStudentServiceCustom.FindStudents(studentDTO);
+
+            for (int i = 0; i < list.Count; i++)
             {
                 Label label = new Label();
 
-                label.Name = "regno " + i;
-                label.Text = "Student " + i;
+                label.Name = list[i].StudentRegNo;
+                label.Text = list[i].StudentName;
                 label.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
                 label.AutoSize = true;
@@ -105,7 +126,7 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.Cursor = Cursors.Hand;
                 // label.Click += new EventHandler(this.StudentLabelClicked);
                 lStudentDict[label.Name] = label;
-                label.Left = (int)(this.parentPanel.Width / 1.5);
+                label.Left = (int)(this.parentPanel.Width);
                 // label.DoubleClick += new EventHandler(this.StudentLabelDoubleClicked);
                 label.MouseUp += (s, args) =>
                 {
