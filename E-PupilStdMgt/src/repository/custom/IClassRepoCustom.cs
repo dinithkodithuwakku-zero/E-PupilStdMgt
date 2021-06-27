@@ -12,5 +12,6 @@ namespace E_PupilStdMgt.src.repository.custom
         public bool AddStudentMapping(ClassStudent classStudent);
         public Class FindClassByCode(string code);
         public ArrayList GetSubjectMapping();
+        public ArrayList GetStudentMapping();
     }
 }

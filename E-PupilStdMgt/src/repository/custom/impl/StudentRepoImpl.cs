@@ -73,6 +73,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             }
         }
 
+        public Student FindStudentById(int id)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE ID_STUDENT = '" + id + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                if (reader.Read())
+                {
+                    return new Student(Int16.Parse(reader["ID_STUDENT"].ToString()), reader["STUDENT_REG_NO"].ToString(), reader["STUDENT_NAME"].ToString(), reader["STUDENT_MOBILE_NO"].ToString(), reader["GENDER"].ToString(), reader["STUDENT_EMAIL"].ToString(), reader["PERMANENT_ADDRESS"].ToString());
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public int GenerateNextRegNo()
         {
             try

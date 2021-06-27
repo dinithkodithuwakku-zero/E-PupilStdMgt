@@ -46,6 +46,7 @@ namespace E_PupilStdMgt.src.controller.forms
             AddStudentsToPanel();
 
             GetClassesToSubjectMapping();
+            GetClassesToStudentMapping();
         }
 
         private void AddClassesToPanel()
@@ -173,6 +174,33 @@ namespace E_PupilStdMgt.src.controller.forms
             parentPanel.Invalidate();
         }
 
+        public void GetClassesToStudentMapping()
+        {
+            List<ClassStudentDTO> classStudentList = iClassServiceCustom.FindStudentMapping();
+
+            foreach (ClassStudentDTO classStudentDTO in classStudentList)
+            {
+                if (classesToStudentMapping.ContainsKey(classStudentDTO.ClassDTO.ClassCode))
+                {
+                    List<string> classStudents = classesToStudentMapping[classStudentDTO.ClassDTO.ClassCode];
+                    classStudents.Add(classStudentDTO.StudentDTO.StudentRegNo);
+
+                    classesToStudentMapping[classStudentDTO.ClassDTO.ClassCode] = classStudents;
+                }
+                else
+                {
+                    classesToStudentMapping.Add(classStudentDTO.ClassDTO.ClassCode, new List<string>() { classStudentDTO.StudentDTO.StudentRegNo });
+                }
+
+                classCodePointList.Add(classStudentDTO.ClassDTO.ClassCode);
+                studentRegNoPointList.Add(classStudentDTO.StudentDTO.StudentRegNo);
+            }
+
+            Debug.WriteLine(classesToSubjectMapping.Count);
+
+            parentPanel.Invalidate();
+        }
+
         void ClassLabelClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
@@ -254,7 +282,7 @@ namespace E_PupilStdMgt.src.controller.forms
             }*/
         }
 
-        void SubjectLabelClicked(object sender, EventArgs e)
+            void SubjectLabelClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
 

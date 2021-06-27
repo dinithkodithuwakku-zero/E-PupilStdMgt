@@ -79,5 +79,18 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
             return list;
         }
+
+        public List<ClassStudentDTO> FindStudentMapping()
+        {
+            ArrayList classStudentList = iClassRepoCustom.GetStudentMapping();
+            List<ClassStudentDTO> list = new List<ClassStudentDTO>();
+            foreach (ClassStudent cs in classStudentList)
+            {
+                StudentDTO studentDTO = iStudentServiceCustom.FindStudentById(cs.StudentEntity.StudentId);
+                list.Add(new ClassStudentDTO(cs.ClassStudentId, new ClassDTO(cs.ClassEntity.ClassId, cs.ClassEntity.ClassName, cs.ClassEntity.ClassCode, cs.ClassEntity.IsActive), studentDTO));
+            }
+
+            return list;
+        }
     }
 }

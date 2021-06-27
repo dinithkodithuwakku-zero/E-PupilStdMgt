@@ -9,9 +9,8 @@ namespace E_PupilStdMgt.src.repository.custom
     interface IStudentRepoCustom : ICrudRepo<Student, int>
     {
         public int GenerateNextRegNo();
-
         public ArrayList FindStudents(Student student);
-
-        public Student FindStudentByRegNo(string regNo);
+        public Student FindStudentByRegNo(string regNo); 
+        public Student FindStudentById(int id);
     }
 }
