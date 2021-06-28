@@ -47,6 +47,10 @@ namespace E_PupilStdMgt.src.controller.forms
 
             GetClassesToSubjectMapping();
             GetClassesToStudentMapping();
+
+            subjectLabel.Left = 0;
+            classLabel.Left = this.parentPanel.Width / 2;
+            studentLabel.Left = this.parentPanel.Width;
         }
 
         private void AddClassesToPanel()
@@ -65,7 +69,7 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.ForeColor = Color.White;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
-                label.Top = i * 60;
+                label.Top = i * 60 + 50;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
@@ -94,7 +98,7 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.ForeColor = Color.White;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleCenter;
-                label.Top = i * 60;
+                label.Top = i * 60 + 50;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
@@ -123,7 +127,7 @@ namespace E_PupilStdMgt.src.controller.forms
                 label.ForeColor = Color.White;
                 label.AutoSize = true;
                 label.TextAlign = ContentAlignment.MiddleLeft;
-                label.Top = i * 60;
+                label.Top = i * 60 + 50;
                 label.BorderStyle = BorderStyle.FixedSingle;
                 label.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
                 label.Cursor = Cursors.Hand;
