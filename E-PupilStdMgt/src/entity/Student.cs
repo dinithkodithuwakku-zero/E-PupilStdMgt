@@ -15,6 +15,10 @@ namespace E_PupilStdMgt.src.entity
         private string permanentAddress;
 
         public Student() { }
+        public Student(int studentId)
+        {
+            this.studentId = studentId;
+        }
         public Student(int studentId, string studentRegNo, string studentName, string mobileNo, string gender, string email, string permanentAddress)
         {
             this.studentId = studentId;

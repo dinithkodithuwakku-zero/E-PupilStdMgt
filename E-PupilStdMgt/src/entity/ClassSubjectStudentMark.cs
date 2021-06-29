@@ -16,6 +16,14 @@ namespace E_PupilStdMgt.src.entity
         {
         }
 
+        public ClassSubjectStudentMark(DateTime examDate, double studentPoint, ClassSubject classSubject, Student student)
+        {
+            ExamDate = examDate;
+            StudentPoint = studentPoint;
+            ClassSubject = classSubject;
+            Student = student;
+        }
+
         public ClassSubjectStudentMark(int classSubjectStudentMarkId, ClassSubject classSubject, Student student, DateTime examDate, double studentPoint)
         {
             this.classSubjectStudentMarkId = classSubjectStudentMarkId;

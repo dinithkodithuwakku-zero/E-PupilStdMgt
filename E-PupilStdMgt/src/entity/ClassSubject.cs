@@ -14,6 +14,11 @@ namespace E_PupilStdMgt.src.entity
         {
         }
 
+        public ClassSubject(int classSubjectId)
+        {
+            this.classSubjectId = classSubjectId;
+        }
+
         public ClassSubject(int classSubjectId, Class classEntity, Subject subjectEntity)
         {
             this.classSubjectId = classSubjectId;
