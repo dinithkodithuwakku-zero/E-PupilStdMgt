@@ -21,7 +21,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
         public bool CreateStudentMark(ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO)
         {
             return iClassSubjectStudentMarkRepo.Save(new ClassSubjectStudentMark(classSubjectStudentMarkDTO.ExamDate,
-                classSubjectStudentMarkDTO.StudentPoint, new ClassSubject(classSubjectStudentMarkDTO.ClassSubjectDTO.ClassSubjectId), new Student(classSubjectStudentMarkDTO.StudentDTO.StudentId));
+                classSubjectStudentMarkDTO.StudentPoint, new ClassSubject(classSubjectStudentMarkDTO.ClassSubjectDTO.ClassSubjectId), new Student(classSubjectStudentMarkDTO.StudentDTO.StudentId)));
         }
     }
 }

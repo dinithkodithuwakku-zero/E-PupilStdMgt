@@ -7,7 +7,6 @@ using E_PupilStdMgt.src.repository;
 using E_PupilStdMgt.src.repository.custom;
 using E_PupilStdMgt.src.repository.custom.impl;
 using System.Collections;
-using System.Diagnostics;
 
 namespace E_PupilStdMgt.src.service.custom.impl
 {
