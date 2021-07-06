@@ -241,5 +241,66 @@ namespace E_PupilStdMgt.src.repository.custom.impl
         {
             throw new NotImplementedException();
         }
+
+        public ArrayList FindSubjectMappingByStudentAndClass(int classId, int studentId)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select cs.ID_CLASS_SUBJECT, c.ID_CLASS as ID_CLASS, c.CLASS_NAME as CLASS_NAME, c.CLASS_CODE as CLASS_CODE, c.IS_ACTIVE as IS_ACTIVE, cs.ID_SUBJECT from core_class_subject cs INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS INNER JOIN core_class_student cstd ON cstd.ID_CLASS = c.ID_CLASS WHERE c.ID_CLASS = '" + classId + "' and cstd.ID_STUDENT = '" + studentId + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+                while (reader.Read())
+                {
+
+                    Subject subjectEntity = new Subject();
+                    subjectEntity.SubjectId = Int16.Parse(reader["ID_SUBJECT"].ToString());
+                    list.Add(new ClassSubject(Int16.Parse(reader["ID_CLASS_SUBJECT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())), subjectEntity));
+                }
+
+                return list;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public ClassSubject FindClassSubjectByClassCodeAndSubjectCode(string classCode, string subjectCode)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select cs.ID_CLASS_SUBJECT, c.ID_CLASS as ID_CLASS, c.CLASS_NAME as CLASS_NAME, c.CLASS_CODE as CLASS_CODE, c.IS_ACTIVE as IS_ACTIVE, cs.ID_SUBJECT from core_class_subject cs INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS INNER JOIN core_subject s ON cs.ID_SUBJECT = s.ID_SUBJECT WHERE c.CLASS_CODE = '" + classCode + "' and s.SUBJECT_CODE = '" + subjectCode + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+                if (reader.Read())
+                {
+
+                    Subject subjectEntity = new Subject();
+                    subjectEntity.SubjectId = Int16.Parse(reader["ID_SUBJECT"].ToString());
+                    return new ClassSubject(Int16.Parse(reader["ID_CLASS_SUBJECT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())), subjectEntity);
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

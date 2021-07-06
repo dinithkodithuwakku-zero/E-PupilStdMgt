@@ -26,6 +26,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
         public List<StudentDTO> FindStudents(StudentDTO studentDTO)
         {
             Student student = new Student();
+            student.StudentRegNo= studentDTO.StudentRegNo;
             student.Status = studentDTO.Status;
 
             ArrayList studentList = iStudentRepoCustom.FindStudents(student);

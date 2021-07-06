@@ -13,6 +13,11 @@ namespace E_PupilStdMgt.src.payload
 
         public ClassDTO() { }
 
+        public ClassDTO(string classCode)
+        {
+            this.classCode = classCode;
+        }
+
         public ClassDTO(int classId, string className, string classCode, int isActive)
         {
             this.classId = classId;

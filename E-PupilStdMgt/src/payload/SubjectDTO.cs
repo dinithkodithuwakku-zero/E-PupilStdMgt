@@ -14,6 +14,12 @@ namespace E_PupilStdMgt.src.payload
 
         public SubjectDTO() { }
 
+        public SubjectDTO(string subjectCode)
+        {
+            this.subjectCode = subjectCode;
+        }
+
+
         public SubjectDTO(int subjectId, string subjectName, string subjectCode, int subjectDuration, double subjectTotalPoints)
         {
             this.subjectId = subjectId;

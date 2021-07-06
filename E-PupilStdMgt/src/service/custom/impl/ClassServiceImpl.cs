@@ -18,7 +18,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
         public ClassServiceImpl()
         {
-            iClassRepoCustom = RepoFactory.GetInstance().GetRepo<ClassRepoImpl>(RepoFactory.RepoTypes.CLASS);
+            iClassRepoCustom = new ClassRepoImpl();
             iSubjectServiceCustom = ServiceFactory.GetInstance().GetService<SubjectServiceImpl>(ServiceFactory.ServiceTypes.SUBJECT);
             iStudentServiceCustom = ServiceFactory.GetInstance().GetService<StudentServiceImpl>(ServiceFactory.ServiceTypes.STUDENT);
         }
@@ -35,7 +35,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
         public bool AddStudentMapping(ClassStudentDTO classStudentDTO)
         {
-            ClassStudent classStudent= new ClassStudent();
+            ClassStudent classStudent = new ClassStudent();
             classStudent.ClassEntity = iClassRepoCustom.FindClassByCode(classStudentDTO.ClassDTO.ClassCode);
             StudentDTO studentDTO = iStudentServiceCustom.FindStudentByRegNo(classStudentDTO.StudentDTO.StudentRegNo);
             classStudent.StudentEntity = new Student(studentDTO.StudentId, studentDTO.StudentRegNo, studentDTO.StudentName, studentDTO.MobileNo, studentDTO.Gender, studentDTO.Email, studentDTO.PermanentAddress);
@@ -90,6 +90,46 @@ namespace E_PupilStdMgt.src.service.custom.impl
             }
 
             return list;
+        }
+
+        public ClassDTO FindClassByCode(string classCode)
+        {
+            Class classEntity = iClassRepoCustom.FindClassByCode(classCode);
+            return new ClassDTO(classEntity.ClassId, classEntity.ClassName, classEntity.ClassCode, classEntity.IsActive);
+        }
+
+        public List<SubjectDTO> FindAllSubjectsByClassCodeAndStudentId(string classCode, int studentId)
+        {
+            //ClassDTO classDTO = iClassServiceCustom.FindClassByCode(classCode);
+            List<ClassSubjectDTO> classSubjectDTOs = this.FindSubjectMappingByStudentAndClass(classCode, studentId);
+
+            List<SubjectDTO> subjectDTOs = new List<SubjectDTO>();
+            foreach (ClassSubjectDTO csDTO in classSubjectDTOs)
+            {
+                subjectDTOs.Add(iSubjectServiceCustom.FindSubjectById(csDTO.SubjectDTO.SubjectId));
+            }
+
+            return subjectDTOs;
+        }
+
+        public List<ClassSubjectDTO> FindSubjectMappingByStudentAndClass(string classCode, int studentId)
+        {
+            ClassDTO  classDTO = this.FindClassByCode(classCode);
+            ArrayList classSubjectList = iClassRepoCustom.FindSubjectMappingByStudentAndClass(classDTO.ClassId, studentId);
+            List<ClassSubjectDTO> list = new List<ClassSubjectDTO>();
+            foreach (ClassSubject cs in classSubjectList)
+            {
+                SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectById(cs.SubjectEntity.SubjectId);
+                list.Add(new ClassSubjectDTO(cs.ClassSubjectId, new ClassDTO(cs.ClassEntity.ClassId, cs.ClassEntity.ClassName, cs.ClassEntity.ClassCode, cs.ClassEntity.IsActive), subjectDTO));
+            }
+
+            return list;
+        }
+
+        public ClassSubjectDTO FindClassSubjectByClassCodeAndSubjectCode(string classCode, string subjectCode)
+        {
+            ClassSubject classSubject = iClassRepoCustom.FindClassSubjectByClassCodeAndSubjectCode(classCode, subjectCode);
+            return new ClassSubjectDTO(classSubject.ClassSubjectId);
         }
     }
 }

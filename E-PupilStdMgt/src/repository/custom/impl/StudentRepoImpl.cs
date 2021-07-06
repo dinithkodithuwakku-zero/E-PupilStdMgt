@@ -6,6 +6,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using E_PupilStdMgt.src.db;
 using E_PupilStdMgt.src.utill;
+using System.Diagnostics;
 
 namespace E_PupilStdMgt.src.repository.custom.impl
 {
@@ -52,7 +53,18 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STATUS = " + student.Status;
+                string query;
+                if (student.StudentRegNo != null)
+                {
+                    query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STUDENT_REG_NO = '" + student.StudentRegNo + "' AND STATUS = " + student.Status;
+                }
+                else
+                {
+                    query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STATUS = " + student.Status;
+                }
+
+                Debug.WriteLine(query);
+
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 

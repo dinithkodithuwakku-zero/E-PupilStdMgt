@@ -16,6 +16,11 @@ namespace E_PupilStdMgt.src.payload
 
         public StudentDTO() { }
 
+        public StudentDTO(int studentId)
+        {
+            this.studentId = studentId;
+        }
+
         public StudentDTO(int studentId, string studentRegNo, string studentName, string mobileNo, string gender, string email, string permanentAddress)
         {
             this.studentId = studentId;

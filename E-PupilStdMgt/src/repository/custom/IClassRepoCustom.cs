@@ -13,5 +13,7 @@ namespace E_PupilStdMgt.src.repository.custom
         public Class FindClassByCode(string code);
         public ArrayList GetSubjectMapping();
         public ArrayList GetStudentMapping();
+        public ArrayList FindSubjectMappingByStudentAndClass(int classId, int studentId);
+        public ClassSubject FindClassSubjectByClassCodeAndSubjectCode(string classCode, string subjectCode);
     }
 }

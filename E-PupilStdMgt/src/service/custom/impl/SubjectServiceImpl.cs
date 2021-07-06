@@ -37,6 +37,8 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return list;
         }
 
+      
+
         public SubjectDTO FindSubjectByCode(string code)
         {
             Subject subject = iSubjectRepoCustom.FindSubjectByCode(code);

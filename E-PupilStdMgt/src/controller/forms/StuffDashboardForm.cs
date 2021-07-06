@@ -155,7 +155,7 @@ namespace E_PupilStdMgt.src.controller.forms
         {
             List<ClassSubjectDTO> classSubjectList = iClassServiceCustom.FindSubjectMapping();
 
-            foreach(ClassSubjectDTO classSubjectDTO in classSubjectList)
+            foreach (ClassSubjectDTO classSubjectDTO in classSubjectList)
             {
                 if (classesToSubjectMapping.ContainsKey(classSubjectDTO.ClassDTO.ClassCode))
                 {
@@ -286,7 +286,7 @@ namespace E_PupilStdMgt.src.controller.forms
             }*/
         }
 
-            void SubjectLabelClicked(object sender, EventArgs e)
+        void SubjectLabelClicked(object sender, EventArgs e)
         {
             Label label = (Label)sender;
 
@@ -468,9 +468,23 @@ namespace E_PupilStdMgt.src.controller.forms
 
         void StudentLabelRightClicked(object sender, EventArgs e)
         {
-            StudentMarkMgtScreenForm studentMarkMgtScreenForm = new StudentMarkMgtScreenForm();
+            Label label = (Label)sender;
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.StudentRegNo = label.Name;
+            studentDTO.Status = 1;
 
-            studentMarkMgtScreenForm.Show();
+            List<StudentDTO> studentDTOList = iStudentServiceCustom.FindStudents(studentDTO);
+            Debug.WriteLine(studentDTOList.Count);
+            if (studentDTOList.Count > 0)
+            {
+                StudentMarkMgtScreenForm studentMarkMgtScreenForm = new StudentMarkMgtScreenForm(studentDTOList[0]);
+
+                studentMarkMgtScreenForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Student not found!", "Error!");
+            }
         }
     }
 }

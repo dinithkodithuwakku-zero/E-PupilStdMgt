@@ -14,6 +14,17 @@ namespace E_PupilStdMgt.src.payload
         {
         }
 
+        public ClassSubjectDTO(int classSubjectId)
+        {
+            this.classSubjectId = classSubjectId;
+        }
+
+        public ClassSubjectDTO(ClassDTO classDTO, SubjectDTO subjectDTO)
+        {
+            this.classDTO = classDTO;
+            this.subjectDTO = subjectDTO;
+        }
+
         public ClassSubjectDTO(int classSubjectId, ClassDTO classDTO, SubjectDTO subjectDTO)
         {
             this.classSubjectId = classSubjectId;

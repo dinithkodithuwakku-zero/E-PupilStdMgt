@@ -6,6 +6,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using E_PupilStdMgt.src.db;
 using E_PupilStdMgt.src.utill;
+using System.Diagnostics;
 
 namespace E_PupilStdMgt.src.repository.custom.impl
 {
@@ -50,6 +51,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Save(ClassSubjectStudentMark entity)
         {
+            Debug.WriteLine(entity.ExamDate);
             try
             {
                 con.Open();
