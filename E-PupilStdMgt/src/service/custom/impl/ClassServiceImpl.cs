@@ -131,5 +131,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
             ClassSubject classSubject = iClassRepoCustom.FindClassSubjectByClassCodeAndSubjectCode(classCode, subjectCode);
             return new ClassSubjectDTO(classSubject.ClassSubjectId);
         }
+
+        public ClassDTO FindClassById(int id)
+        {
+            Class classEntity = iClassRepoCustom.Search(id);
+            return new ClassDTO(classEntity.ClassId, classEntity.ClassName, classEntity.ClassCode, classEntity.IsActive);
+        }
     }
 }

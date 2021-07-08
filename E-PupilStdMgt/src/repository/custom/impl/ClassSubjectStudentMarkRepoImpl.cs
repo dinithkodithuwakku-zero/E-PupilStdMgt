@@ -24,12 +24,12 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_CLASS_SUBJECT_STUDENT_MARK, ID_CLASS, ID_CLASS_SUBJECT, ID_STUDENT, EXAM_DATE, STUDENT_POINT from core_class_subject_student_mark";
+                string query = "select cssm.ID_CLASS_SUBJECT_STUDENT_MARK, cssm.ID_CLASS_SUBJECT, cssm.ID_STUDENT, cssm.EXAM_DATE, cssm.STUDENT_POINT, c.ID_CLASS, sub.ID_SUBJECT, stud.ID_STUDENT from core_class_subject_student_mark cssm INNER JOIN core_class_subject csub ON cssm.ID_CLASS_SUBJECT = csub.ID_CLASS_SUBJECT INNER JOIN core_class c ON csub.ID_CLASS = c.ID_CLASS INNER JOIN core_subject sub ON csub.ID_SUBJECT = sub.ID_SUBJECT INNER JOIN core_student stud ON cssm.ID_STUDENT = stud.ID_STUDENT";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
                 while (reader.Read())
                 {
-                    list.Add(new ClassSubjectStudentMark(Int16.Parse(reader["ID_CLASS_SUBJECT_STUDENT_MARK"].ToString()), new ClassSubject(Int16.Parse(reader["ID_CLASS_SUBJECT"].ToString())), new Student(Int16.Parse(reader["ID_STUDENT"].ToString())), DateTime.Parse(reader["EXAM_DATE"].ToString()), Double.Parse(reader["STUDENT_POINT"].ToString())));
+                    list.Add(new ClassSubjectStudentMark(Int16.Parse(reader["ID_CLASS_SUBJECT_STUDENT_MARK"].ToString()), new ClassSubject(Int16.Parse(reader["ID_CLASS_SUBJECT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString())), new Subject(Int16.Parse(reader["ID_SUBJECT"].ToString()))), new Student(Int16.Parse(reader["ID_STUDENT"].ToString())), DateTime.Parse(reader["EXAM_DATE"].ToString()), Double.Parse(reader["STUDENT_POINT"].ToString())));
                 }
 
                 return list;

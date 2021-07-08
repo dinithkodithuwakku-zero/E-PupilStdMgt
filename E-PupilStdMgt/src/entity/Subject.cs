@@ -14,6 +14,11 @@ namespace E_PupilStdMgt.src.entity
 
         public Subject() { }
 
+        public Subject(int subjectId)
+        {
+            this.subjectId = subjectId;
+        }
+
         public Subject(int subjectId, string subjectName, string subjectCode, int subjectDuration, double subjectTotalPoints)
         {
             this.subjectId = subjectId;

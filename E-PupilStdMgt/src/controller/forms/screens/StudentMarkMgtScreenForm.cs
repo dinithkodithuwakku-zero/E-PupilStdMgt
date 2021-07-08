@@ -31,6 +31,8 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             studentDetailLable.Text = studentDTO.StudentName + " - Reg no : " + studentDTO.StudentRegNo;
             _studentId = studentDTO.StudentId;
             LoadClassesToPicker();
+
+            LoadClassSubjectStudentMarkDetails();
         }
 
         void LoadClassesToPicker()
@@ -66,6 +68,25 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             catch
             {
                 MessageBox.Show("Unable to load subjects!", "Error!");
+            }
+        }
+
+        void LoadClassSubjectStudentMarkDetails()
+        {
+            try
+            {
+                classSubjectStudentMarkDataGrid.Rows.Clear();
+
+                List<ClassSubjectStudentMarkDTO> list = iClassSubjectStudentMarkServiceCustom.FindClassSubjectStudentMarks();
+
+                foreach (ClassSubjectStudentMarkDTO dto in list)
+                {
+                    this.classSubjectStudentMarkDataGrid.Rows.Add(dto.ClassSubjectDTO.ClassDTO.ClassCode, dto.ClassSubjectDTO.ClassDTO.ClassName, dto.ClassSubjectDTO.SubjectDTO.SubjectCode, dto.ClassSubjectDTO.SubjectDTO.SubjectName, dto.StudentDTO.StudentName, dto.ExamDate.ToShortDateString(), dto.StudentPoint);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Unable to load class details!", "Error!");
             }
         }
 

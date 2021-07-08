@@ -12,6 +12,11 @@ namespace E_PupilStdMgt.src.entity
         private int isActive;
 
         public Class() { }
+
+        public Class(int classId)
+        {
+            this.classId = classId;
+        }
         public Class(int classId, string className, string classCode, int isActive)
         {
             this.classId = classId;

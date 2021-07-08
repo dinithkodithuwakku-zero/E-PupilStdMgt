@@ -234,7 +234,30 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public Class Search(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE ID_CLASS = '" + id + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                if (reader.Read())
+                {
+                    return new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public bool Update(Class entity)

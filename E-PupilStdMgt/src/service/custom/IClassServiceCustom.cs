@@ -14,9 +14,9 @@ namespace E_PupilStdMgt.src.service.custom
         public List<ClassSubjectDTO> FindSubjectMapping();
         public List<ClassStudentDTO> FindStudentMapping();
         public ClassDTO FindClassByCode(string classCode);
-
         public List<SubjectDTO> FindAllSubjectsByClassCodeAndStudentId(string classCode, int studentId);
         public List<ClassSubjectDTO> FindSubjectMappingByStudentAndClass(string classCode, int studentId);
         public ClassSubjectDTO FindClassSubjectByClassCodeAndSubjectCode(string classCode, string subjectCode);
+        public ClassDTO FindClassById(int id);
     }
 }
