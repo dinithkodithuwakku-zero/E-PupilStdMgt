@@ -113,5 +113,25 @@ namespace E_PupilStdMgt.forms.screens
 
             studentCreatePanel.Visible = false;
         }
+
+        private void updatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void studentDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

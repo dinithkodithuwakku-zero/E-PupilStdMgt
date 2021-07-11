@@ -54,8 +54,26 @@ namespace E_PupilStdMgt.forms.screens
             this.stdNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.createNewStudentLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cancelUpdatePanelButton = new System.Windows.Forms.Button();
+            this.updatePanelButton = new System.Windows.Forms.Button();
+            this.updateStudentAddressInput = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.updateStudentEmailInput = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.updateStudentGenderPicker = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.updateStudentRegNoInput = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.updateStudentMobileNoInput = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.updateStudentNameInput = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGrid)).BeginInit();
             this.studentCreatePanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // studentDataGrid
@@ -80,6 +98,7 @@ namespace E_PupilStdMgt.forms.screens
             this.studentDataGrid.RowTemplate.Height = 29;
             this.studentDataGrid.Size = new System.Drawing.Size(847, 262);
             this.studentDataGrid.TabIndex = 0;
+            this.studentDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentDataGrid_CellClick);
             // 
             // ID_STUDENT
             // 
@@ -157,6 +176,7 @@ namespace E_PupilStdMgt.forms.screens
             // studentCreatePanel
             // 
             this.studentCreatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.studentCreatePanel.Controls.Add(this.panel1);
             this.studentCreatePanel.Controls.Add(this.closePanelButton);
             this.studentCreatePanel.Controls.Add(this.createPanelButton);
             this.studentCreatePanel.Controls.Add(this.permentAddressInput);
@@ -342,6 +362,213 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewStudentLabel.TabIndex = 14;
             this.createNewStudentLabel.Text = "Create New Student";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.deleteUpdatePanelButton);
+            this.panel1.Controls.Add(this.cancelUpdatePanelButton);
+            this.panel1.Controls.Add(this.updatePanelButton);
+            this.panel1.Controls.Add(this.updateStudentAddressInput);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.updateStudentEmailInput);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.updateStudentGenderPicker);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.updateStudentRegNoInput);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.updateStudentMobileNoInput);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.updateStudentNameInput);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Location = new System.Drawing.Point(3, 23);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(819, 485);
+            this.panel1.TabIndex = 30;
+            this.panel1.Visible = false;
+            // 
+            // cancelUpdatePanelButton
+            // 
+            this.cancelUpdatePanelButton.AutoSize = true;
+            this.cancelUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.cancelUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.cancelUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.cancelUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cancelUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.cancelUpdatePanelButton.Location = new System.Drawing.Point(619, 391);
+            this.cancelUpdatePanelButton.Name = "cancelUpdatePanelButton";
+            this.cancelUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.cancelUpdatePanelButton.TabIndex = 29;
+            this.cancelUpdatePanelButton.Text = "Cancel";
+            this.cancelUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.cancelUpdatePanelButton.Click += new System.EventHandler(this.cancelUpdatePanelButton_Click);
+            // 
+            // updatePanelButton
+            // 
+            this.updatePanelButton.AutoSize = true;
+            this.updatePanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
+            this.updatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.updatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.updatePanelButton.FlatAppearance.BorderSize = 0;
+            this.updatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.updatePanelButton.Location = new System.Drawing.Point(309, 391);
+            this.updatePanelButton.Name = "updatePanelButton";
+            this.updatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.updatePanelButton.TabIndex = 28;
+            this.updatePanelButton.Text = "Create";
+            this.updatePanelButton.UseVisualStyleBackColor = false;
+            this.updatePanelButton.Click += new System.EventHandler(this.updatePanelButton_Click);
+            // 
+            // updateStudentAddressInput
+            // 
+            this.updateStudentAddressInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateStudentAddressInput.Location = new System.Drawing.Point(207, 285);
+            this.updateStudentAddressInput.Multiline = true;
+            this.updateStudentAddressInput.Name = "updateStudentAddressInput";
+            this.updateStudentAddressInput.Size = new System.Drawing.Size(561, 69);
+            this.updateStudentAddressInput.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(14, 285);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(147, 20);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Permanent Address";
+            // 
+            // updateStudentEmailInput
+            // 
+            this.updateStudentEmailInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateStudentEmailInput.Location = new System.Drawing.Point(207, 232);
+            this.updateStudentEmailInput.Name = "updateStudentEmailInput";
+            this.updateStudentEmailInput.Size = new System.Drawing.Size(561, 27);
+            this.updateStudentEmailInput.TabIndex = 25;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(14, 232);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 20);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Student Email";
+            // 
+            // updateStudentGenderPicker
+            // 
+            this.updateStudentGenderPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateStudentGenderPicker.FormattingEnabled = true;
+            this.updateStudentGenderPicker.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.updateStudentGenderPicker.Location = new System.Drawing.Point(550, 177);
+            this.updateStudentGenderPicker.Name = "updateStudentGenderPicker";
+            this.updateStudentGenderPicker.Size = new System.Drawing.Size(218, 28);
+            this.updateStudentGenderPicker.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(408, 178);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 20);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Student Gender";
+            // 
+            // updateStudentRegNoInput
+            // 
+            this.updateStudentRegNoInput.Enabled = false;
+            this.updateStudentRegNoInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateStudentRegNoInput.Location = new System.Drawing.Point(615, 57);
+            this.updateStudentRegNoInput.Name = "updateStudentRegNoInput";
+            this.updateStudentRegNoInput.Size = new System.Drawing.Size(153, 27);
+            this.updateStudentRegNoInput.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(447, 57);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(120, 20);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Student Reg No";
+            // 
+            // updateStudentMobileNoInput
+            // 
+            this.updateStudentMobileNoInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateStudentMobileNoInput.Location = new System.Drawing.Point(207, 178);
+            this.updateStudentMobileNoInput.Name = "updateStudentMobileNoInput";
+            this.updateStudentMobileNoInput.Size = new System.Drawing.Size(171, 27);
+            this.updateStudentMobileNoInput.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(14, 178);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(141, 20);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Student Mobile No";
+            // 
+            // updateStudentNameInput
+            // 
+            this.updateStudentNameInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateStudentNameInput.Location = new System.Drawing.Point(207, 125);
+            this.updateStudentNameInput.Name = "updateStudentNameInput";
+            this.updateStudentNameInput.Size = new System.Drawing.Size(561, 27);
+            this.updateStudentNameInput.TabIndex = 17;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(14, 125);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(110, 20);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Student Name";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(14, 15);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(119, 20);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "Update Student";
+            // 
+            // deleteUpdatePanelButton
+            // 
+            this.deleteUpdatePanelButton.AutoSize = true;
+            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(464, 391);
+            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
+            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.deleteUpdatePanelButton.TabIndex = 30;
+            this.deleteUpdatePanelButton.Text = "Delete";
+            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
+            // 
             // StudentMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -357,6 +584,8 @@ namespace E_PupilStdMgt.forms.screens
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGrid)).EndInit();
             this.studentCreatePanel.ResumeLayout(false);
             this.studentCreatePanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,5 +618,22 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_MOBILE_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PERMANENT_ADDRESS;
         private System.Windows.Forms.DataGridViewTextBoxColumn GENDER;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button deleteUpdatePanelButton;
+        private System.Windows.Forms.Button cancelUpdatePanelButton;
+        private System.Windows.Forms.Button updatePanelButton;
+        private System.Windows.Forms.TextBox updateStudentAddressInput;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox updateStudentEmailInput;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox updateStudentGenderPicker;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox updateStudentRegNoInput;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox updateStudentMobileNoInput;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox updateStudentNameInput;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
