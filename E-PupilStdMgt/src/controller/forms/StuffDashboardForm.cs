@@ -413,60 +413,58 @@ namespace E_PupilStdMgt.src.controller.forms
                      e.Graphics.DrawLine(p, p1List[x], p2List[x]);
                  }
              }*/
+            
 
-            using (var p = new Pen(Color.White, 4))
+            for (int i = 0; i < classCodePointList.Count; i++)
             {
-                for (int i = 0; i < classCodePointList.Count; i++)
+                if (classesToSubjectMapping.ContainsKey(classCodePointList[i]))
                 {
-                    if (classesToSubjectMapping.ContainsKey(classCodePointList[i]))
+                    List<string> classSubjects = classesToSubjectMapping[classCodePointList[i]];
+
+                    foreach (string subjectCode in classSubjects)
                     {
-                        List<string> classSubjects = classesToSubjectMapping[classCodePointList[i]];
+                        Random rnd = new Random();
+                        var classLabel = lClassDict[classCodePointList[i]];
+                        var subjectLabel = lSubjectDict[subjectCode];
 
-                        foreach (string subjectCode in classSubjects)
-                        {
-                            var classLabel = lClassDict[classCodePointList[i]];
-                            var subjectLabel = lSubjectDict[subjectCode];
+                        //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
+                        Point sbPoint = subjectLabel.Location;
+                        sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
+                        sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height / 2);
 
-                            //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
-                            Point sbPoint = subjectLabel.Location;
-                            sbPoint.X = subjectLabel.Location.X + subjectLabel.Size.Width;
-                            sbPoint.Y = subjectLabel.Location.Y + (subjectLabel.Size.Height / 2);
+                        Point clPoint = classLabel.Location;
+                        clPoint.X = classLabel.Location.X;
+                        clPoint.Y = classLabel.Location.Y + (classLabel.Size.Height / 2);
 
-                            Point clPoint = classLabel.Location;
-                            clPoint.X = classLabel.Location.X;
-                            clPoint.Y = classLabel.Location.Y + (classLabel.Size.Height / 2);
-
-                            e.Graphics.DrawLine(p, clPoint, sbPoint);
-                        }
+                        e.Graphics.DrawLine(new Pen(Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)), 4), clPoint, sbPoint);
                     }
                 }
             }
 
-            using (var p = new Pen(Color.Red, 4))
+
+            for (int i = 0; i < classCodePointList.Count; i++)
             {
-                for (int i = 0; i < classCodePointList.Count; i++)
+                if (classesToStudentMapping.ContainsKey(classCodePointList[i]))
                 {
-                    if (classesToStudentMapping.ContainsKey(classCodePointList[i]))
+
+                    List<string> classStudents = classesToStudentMapping[classCodePointList[i]];
+
+                    foreach (string studentRegNo in classStudents)
                     {
+                        Random rnd = new Random();
+                        var classLabel = lClassDict[classCodePointList[i]];
+                        var studentLabel = lStudentDict[studentRegNo];
 
-                        List<string> classStudents = classesToStudentMapping[classCodePointList[i]];
+                        //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
+                        Point stPoint = studentLabel.Location;
+                        stPoint.X = studentLabel.Location.X;
+                        stPoint.Y = studentLabel.Location.Y + (studentLabel.Size.Height / 2);
 
-                        foreach (string studentRegNo in classStudents)
-                        {
-                            var classLabel = lClassDict[classCodePointList[i]];
-                            var studentLabel = lStudentDict[studentRegNo];
+                        Point clPoint = classLabel.Location;
+                        clPoint.X = classLabel.Location.X + classLabel.Size.Width;
+                        clPoint.Y = classLabel.Location.Y + (classLabel.Size.Height / 2);
 
-                            //subjectLabel.Location.X = subjectLabel.Location.X - subjectLabel.Size.Width;
-                            Point stPoint = studentLabel.Location;
-                            stPoint.X = studentLabel.Location.X;
-                            stPoint.Y = studentLabel.Location.Y + (studentLabel.Size.Height / 2);
-
-                            Point clPoint = classLabel.Location;
-                            clPoint.X = classLabel.Location.X + classLabel.Size.Width;
-                            clPoint.Y = classLabel.Location.Y + (classLabel.Size.Height / 2);
-
-                            e.Graphics.DrawLine(p, clPoint, stPoint);
-                        }
+                        e.Graphics.DrawLine(new Pen(Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)), 4), clPoint, stPoint);
                     }
                 }
             }
