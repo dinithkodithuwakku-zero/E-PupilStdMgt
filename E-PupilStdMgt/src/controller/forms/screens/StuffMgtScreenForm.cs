@@ -108,5 +108,25 @@ namespace E_PupilStdMgt.forms.screens
 
             userCreatePanel.Visible = false;
         }
+
+        private void updatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
