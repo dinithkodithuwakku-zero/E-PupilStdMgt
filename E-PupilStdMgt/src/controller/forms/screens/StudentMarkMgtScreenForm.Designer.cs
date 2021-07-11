@@ -40,9 +40,6 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.closePanelButton = new System.Windows.Forms.Button();
             this.createPanelButton = new System.Windows.Forms.Button();
             this.classSubjectStudentMarkDataGrid = new System.Windows.Forms.DataGridView();
-            this.studentDetailLable = new System.Windows.Forms.Label();
-            this.subjectPicker = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.ID_CLASS_SUBJECT_STUDENT_MARK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.classCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.className = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,20 +48,23 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.studentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentDetailLable = new System.Windows.Forms.Label();
+            this.subjectPicker = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.updatePanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.updateSubjectPicker = new System.Windows.Forms.ComboBox();
+            this.subjectUpdateInput = new System.Windows.Forms.TextBox();
+            this.classUpdateInput = new System.Windows.Forms.TextBox();
+            this.studentDetailUpdatePanelLable = new System.Windows.Forms.Label();
+            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cancelUpdateButton = new System.Windows.Forms.Button();
             this.updatePanelButton = new System.Windows.Forms.Button();
             this.updateExamDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.updateClassPicker = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.updateStudentPointInput = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.classSubjectStudentMarkDataGrid)).BeginInit();
             this.updatePanel.SuspendLayout();
             this.SuspendLayout();
@@ -200,37 +200,6 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.classSubjectStudentMarkDataGrid.TabIndex = 39;
             this.classSubjectStudentMarkDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classSubjectStudentMarkDataGrid_CellClick);
             // 
-            // studentDetailLable
-            // 
-            this.studentDetailLable.AutoSize = true;
-            this.studentDetailLable.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.studentDetailLable.ForeColor = System.Drawing.Color.White;
-            this.studentDetailLable.Location = new System.Drawing.Point(35, 38);
-            this.studentDetailLable.Name = "studentDetailLable";
-            this.studentDetailLable.Size = new System.Drawing.Size(256, 25);
-            this.studentDetailLable.TabIndex = 40;
-            this.studentDetailLable.Text = "Student Name - Reg no 0002";
-            // 
-            // subjectPicker
-            // 
-            this.subjectPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subjectPicker.FormattingEnabled = true;
-            this.subjectPicker.Location = new System.Drawing.Point(628, 106);
-            this.subjectPicker.Name = "subjectPicker";
-            this.subjectPicker.Size = new System.Drawing.Size(161, 28);
-            this.subjectPicker.TabIndex = 42;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(485, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Select Subject";
-            // 
             // ID_CLASS_SUBJECT_STUDENT_MARK
             // 
             this.ID_CLASS_SUBJECT_STUDENT_MARK.HeaderText = "Student Mark Id";
@@ -295,18 +264,49 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.studentPoint.ReadOnly = true;
             this.studentPoint.Width = 125;
             // 
+            // studentDetailLable
+            // 
+            this.studentDetailLable.AutoSize = true;
+            this.studentDetailLable.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.studentDetailLable.ForeColor = System.Drawing.Color.White;
+            this.studentDetailLable.Location = new System.Drawing.Point(35, 38);
+            this.studentDetailLable.Name = "studentDetailLable";
+            this.studentDetailLable.Size = new System.Drawing.Size(256, 25);
+            this.studentDetailLable.TabIndex = 40;
+            this.studentDetailLable.Text = "Student Name - Reg no 0002";
+            // 
+            // subjectPicker
+            // 
+            this.subjectPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.subjectPicker.FormattingEnabled = true;
+            this.subjectPicker.Location = new System.Drawing.Point(628, 106);
+            this.subjectPicker.Name = "subjectPicker";
+            this.subjectPicker.Size = new System.Drawing.Size(161, 28);
+            this.subjectPicker.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(485, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Select Subject";
+            // 
             // updatePanel
             // 
             this.updatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.updatePanel.Controls.Add(this.label10);
+            this.updatePanel.Controls.Add(this.subjectUpdateInput);
+            this.updatePanel.Controls.Add(this.classUpdateInput);
+            this.updatePanel.Controls.Add(this.studentDetailUpdatePanelLable);
             this.updatePanel.Controls.Add(this.deleteUpdatePanelButton);
-            this.updatePanel.Controls.Add(this.updateSubjectPicker);
             this.updatePanel.Controls.Add(this.label5);
             this.updatePanel.Controls.Add(this.cancelUpdateButton);
             this.updatePanel.Controls.Add(this.updatePanelButton);
             this.updatePanel.Controls.Add(this.updateExamDatePicker);
             this.updatePanel.Controls.Add(this.label7);
-            this.updatePanel.Controls.Add(this.updateClassPicker);
             this.updatePanel.Controls.Add(this.label8);
             this.updatePanel.Controls.Add(this.updateStudentPointInput);
             this.updatePanel.Controls.Add(this.label9);
@@ -317,25 +317,51 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.updatePanel.TabIndex = 43;
             this.updatePanel.Visible = false;
             // 
-            // label4
+            // subjectUpdateInput
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.SystemColors.Info;
-            this.label4.Location = new System.Drawing.Point(20, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(215, 28);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Update Student Mark";
+            this.subjectUpdateInput.Enabled = false;
+            this.subjectUpdateInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.subjectUpdateInput.Location = new System.Drawing.Point(567, 154);
+            this.subjectUpdateInput.Name = "subjectUpdateInput";
+            this.subjectUpdateInput.Size = new System.Drawing.Size(196, 27);
+            this.subjectUpdateInput.TabIndex = 56;
             // 
-            // updateSubjectPicker
+            // classUpdateInput
             // 
-            this.updateSubjectPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateSubjectPicker.FormattingEnabled = true;
-            this.updateSubjectPicker.Location = new System.Drawing.Point(602, 154);
-            this.updateSubjectPicker.Name = "updateSubjectPicker";
-            this.updateSubjectPicker.Size = new System.Drawing.Size(161, 28);
-            this.updateSubjectPicker.TabIndex = 52;
+            this.classUpdateInput.Enabled = false;
+            this.classUpdateInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.classUpdateInput.Location = new System.Drawing.Point(195, 154);
+            this.classUpdateInput.Name = "classUpdateInput";
+            this.classUpdateInput.Size = new System.Drawing.Size(196, 27);
+            this.classUpdateInput.TabIndex = 55;
+            // 
+            // studentDetailUpdatePanelLable
+            // 
+            this.studentDetailUpdatePanelLable.AutoSize = true;
+            this.studentDetailUpdatePanelLable.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.studentDetailUpdatePanelLable.ForeColor = System.Drawing.Color.White;
+            this.studentDetailUpdatePanelLable.Location = new System.Drawing.Point(273, 22);
+            this.studentDetailUpdatePanelLable.Name = "studentDetailUpdatePanelLable";
+            this.studentDetailUpdatePanelLable.Size = new System.Drawing.Size(256, 25);
+            this.studentDetailUpdatePanelLable.TabIndex = 54;
+            this.studentDetailUpdatePanelLable.Text = "Student Name - Reg no 0002";
+            // 
+            // deleteUpdatePanelButton
+            // 
+            this.deleteUpdatePanelButton.AutoSize = true;
+            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(503, 317);
+            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
+            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(122, 43);
+            this.deleteUpdatePanelButton.TabIndex = 53;
+            this.deleteUpdatePanelButton.Text = "Delete";
+            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
             // 
             // label5
             // 
@@ -344,9 +370,9 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(459, 154);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 20);
+            this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 51;
-            this.label5.Text = "Select Subject";
+            this.label5.Text = "Subject";
             // 
             // cancelUpdateButton
             // 
@@ -401,15 +427,6 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label7.TabIndex = 47;
             this.label7.Text = "Exam Date";
             // 
-            // updateClassPicker
-            // 
-            this.updateClassPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateClassPicker.FormattingEnabled = true;
-            this.updateClassPicker.Location = new System.Drawing.Point(195, 154);
-            this.updateClassPicker.Name = "updateClassPicker";
-            this.updateClassPicker.Size = new System.Drawing.Size(196, 28);
-            this.updateClassPicker.TabIndex = 46;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -417,9 +434,9 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(37, 154);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 20);
+            this.label8.Size = new System.Drawing.Size(44, 20);
             this.label8.TabIndex = 45;
-            this.label8.Text = "Select Class";
+            this.label8.Text = "Class";
             // 
             // updateStudentPointInput
             // 
@@ -440,33 +457,16 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label9.TabIndex = 43;
             this.label9.Text = "Student Point";
             // 
-            // deleteUpdatePanelButton
+            // label4
             // 
-            this.deleteUpdatePanelButton.AutoSize = true;
-            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
-            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
-            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(503, 317);
-            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
-            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(122, 43);
-            this.deleteUpdatePanelButton.TabIndex = 53;
-            this.deleteUpdatePanelButton.Text = "Delete";
-            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
-            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(273, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(256, 25);
-            this.label10.TabIndex = 54;
-            this.label10.Text = "Student Name - Reg no 0002";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.Info;
+            this.label4.Location = new System.Drawing.Point(20, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(215, 28);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Update Student Mark";
             // 
             // StudentMarkMgtScreenForm
             // 
@@ -521,18 +521,18 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         private System.Windows.Forms.DataGridViewTextBoxColumn examDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn studentPoint;
         private System.Windows.Forms.Panel updatePanel;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label studentDetailUpdatePanelLable;
         private System.Windows.Forms.Button deleteUpdatePanelButton;
-        private System.Windows.Forms.ComboBox updateSubjectPicker;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button cancelUpdateButton;
         private System.Windows.Forms.Button updatePanelButton;
         private System.Windows.Forms.DateTimePicker updateExamDatePicker;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox updateClassPicker;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox updateStudentPointInput;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox subjectUpdateInput;
+        private System.Windows.Forms.TextBox classUpdateInput;
     }
 }

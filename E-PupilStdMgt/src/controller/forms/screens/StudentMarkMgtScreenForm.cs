@@ -45,7 +45,6 @@ namespace E_PupilStdMgt.src.controller.forms.screens
                 foreach (ClassDTO classDTO in list)
                 {
                     classPicker.Items.Add(classDTO.ClassCode);
-                    updateClassPicker.Items.Add(classDTO.ClassCode);
                 }
             }
             catch
@@ -143,7 +142,13 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             {
                 DataGridViewRow row = this.classSubjectStudentMarkDataGrid.Rows[e.RowIndex];
 
+                studentDetailUpdatePanelLable.Text = "Student : "+ row.Cells[5].Value.ToString();
+
                 _classSubjectStudentMarkId = Int16.Parse(row.Cells[0].Value.ToString());
+                classUpdateInput.Text = row.Cells[2].Value.ToString();
+                subjectUpdateInput.Text = row.Cells[4].Value.ToString();
+                updateExamDatePicker.Value = DateTime.Parse(row.Cells[6].Value.ToString());
+                updateStudentPointInput.Text = row.Cells[7].Value.ToString();
 
                 updatePanel.Visible = true;
             }
@@ -161,7 +166,15 @@ namespace E_PupilStdMgt.src.controller.forms.screens
 
         private void cancelUpdateButton_Click(object sender, EventArgs e)
         {
+            studentDetailUpdatePanelLable.Text = "";
 
+            _classSubjectStudentMarkId = 0;
+            classUpdateInput.Text = null;
+            subjectUpdateInput.Text = null;
+            updateExamDatePicker.Value = DateTime.Now;
+            updateStudentPointInput.Text = null;
+
+            updatePanel.Visible = false;
         }
     }
 }
