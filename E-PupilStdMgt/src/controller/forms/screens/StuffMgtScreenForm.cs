@@ -17,6 +17,7 @@ namespace E_PupilStdMgt.forms.screens
     {
         private IStuffServiceCustom iStuffServiceCustom;
         EncryptDecrypt encryptDecrypt = new EncryptDecrypt();
+        private int _stuffId;
         public StuffMgtScreenForm()
         {
             iStuffServiceCustom = ServiceFactory.GetInstance().GetService<StuffServiceImpl>(ServiceFactory.ServiceTypes.STUFF);
@@ -80,7 +81,7 @@ namespace E_PupilStdMgt.forms.screens
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Create new Student!", "Error!");
+                    MessageBox.Show("Unable to Create new User!", "Error!");
                 }
 
             }
@@ -105,28 +106,87 @@ namespace E_PupilStdMgt.forms.screens
             emailInput.Text = null;
             permanentAddressInput.Text = null;
             jobTitlePicker.SelectedIndex = -1;
-
             userCreatePanel.Visible = false;
+
+            _stuffId = 0;
+            updateUserFullNameInput.Text = null;
+            updateUserNICInput.Text = null;
+            updateUserJobTitlePicker.SelectedIndex = -1;
+            updateUserMobileNoInput.Text = null;
+            updateUserEmailInput.Text = null;
+            updateUserAddressInput.Text = null;
+            updateUserPanel.Visible = false;
         }
 
         private void updatePanelButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool isUpdated = iStuffServiceCustom.UpdateStuff(new StuffDTO(_stuffId, updateUserFullNameInput.Text, updateUserNICInput.Text, updateUserJobTitlePicker.SelectedItem.ToString(), updateUserMobileNoInput.Text, updateUserEmailInput.Text, updateUserAddressInput.Text));
 
+                if (isUpdated)
+                {
+                    MessageBox.Show("User Updated!");
+                    LoadStuffDetails();
+                    ClearCreateFormData();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Update User!", "Error!");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
         }
 
-        private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
+            private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool isDeleted = iStuffServiceCustom.DeleteStuff(_stuffId);
 
+                if (isDeleted)
+                {
+                    MessageBox.Show("User Deleted!");
+                    LoadStuffDetails();
+                    ClearCreateFormData();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Delete User!", "Error!");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
         }
 
         private void cancelUpdatePanelButton_Click(object sender, EventArgs e)
         {
-
+            ClearCreateFormData();
         }
 
         private void userDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.userDataGrid.Rows[e.RowIndex];
 
+                _stuffId = Int16.Parse(row.Cells[0].Value.ToString());
+                updateUserFullNameInput.Text = row.Cells[2].Value.ToString();
+                updateUserNICInput.Text = row.Cells[3].Value.ToString();
+                updateUserJobTitlePicker.SelectedItem = row.Cells[4].Value.ToString();
+                updateUserMobileNoInput.Text = row.Cells[5].Value.ToString();
+                updateUserEmailInput.Text = row.Cells[6].Value.ToString();
+                updateUserAddressInput.Text = row.Cells[7].Value.ToString();
+
+                updateUserPanel.Visible = true;
+            }
         }
     }
 }

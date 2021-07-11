@@ -23,6 +23,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return iStuffRepoCustom.Save(new Stuff(stuffDTO.UserName, stuffDTO.Password, stuffDTO.FullName, stuffDTO.Nic, stuffDTO.JobTitle, stuffDTO.MobileNo, stuffDTO.Email, stuffDTO.PermanentAddress));
         }
 
+        public bool DeleteStuff(int stuffId)
+        {
+            return iStuffRepoCustom.Delete(stuffId);
+        }
+
         public List<StuffDTO> FindAllStuff()
         {
             ArrayList stuffList = iStuffRepoCustom.GetAll();
@@ -34,6 +39,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
             }
 
             return list;
+        }
+
+        public bool UpdateStuff(StuffDTO stuffDTO)
+        {
+            return iStuffRepoCustom.Update(new Stuff(stuffDTO.StuffId, stuffDTO.FullName, stuffDTO.Nic, stuffDTO.JobTitle, stuffDTO.MobileNo, stuffDTO.Email, stuffDTO.PermanentAddress));
         }
     }
 }

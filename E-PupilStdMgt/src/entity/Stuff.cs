@@ -31,6 +31,17 @@ namespace E_PupilStdMgt.src.entity
             this.permanentAddress = permanentAddress;
         }
 
+        public Stuff(int stuffId, string fullName, string nic, string jobTitle, string mobileNo, string email, string permanentAddress)
+        {
+            this.stuffId = stuffId;
+            this.fullName = fullName;
+            this.nic = nic;
+            this.jobTitle = jobTitle;
+            this.mobileNo = mobileNo;
+            this.email = email;
+            this.permanentAddress = permanentAddress;
+        }
+
         public Stuff(string userName, string password, string fullName, string nic, string jobTitle, string mobileNo, string email, string permanentAddress)
         {
             this.userName = userName;

@@ -8,7 +8,8 @@ namespace E_PupilStdMgt.src.service.custom
     interface IStuffServiceCustom: ISuperService
     {
         public List<StuffDTO> FindAllStuff();
-
         public bool CreateNewStuff(StuffDTO stuffDTO);
+        public bool UpdateStuff(StuffDTO stuffDTO);
+        public bool DeleteStuff(int stuffId);
     }
 }

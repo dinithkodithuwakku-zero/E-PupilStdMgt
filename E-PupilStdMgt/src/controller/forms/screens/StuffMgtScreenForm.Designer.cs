@@ -60,7 +60,8 @@ namespace E_PupilStdMgt.forms.screens
             this.userNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.createNewUserLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.updateUserPanel = new System.Windows.Forms.Panel();
+            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
             this.cancelUpdatePanelButton = new System.Windows.Forms.Button();
             this.updatePanelButton = new System.Windows.Forms.Button();
             this.updateUserAddressInput = new System.Windows.Forms.TextBox();
@@ -77,10 +78,9 @@ namespace E_PupilStdMgt.forms.screens
             this.updateUserFullNameInput = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).BeginInit();
             this.userCreatePanel.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.updateUserPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // createNewUserButton
@@ -431,31 +431,48 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewUserLabel.TabIndex = 15;
             this.createNewUserLabel.Text = "Create New User";
             // 
-            // panel1
+            // updateUserPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.deleteUpdatePanelButton);
-            this.panel1.Controls.Add(this.cancelUpdatePanelButton);
-            this.panel1.Controls.Add(this.updatePanelButton);
-            this.panel1.Controls.Add(this.updateUserAddressInput);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.updateUserEmailInput);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.updateUserMobileNoInput);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.updateUserJobTitlePicker);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.updateUserNICInput);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.updateUserFullNameInput);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Location = new System.Drawing.Point(39, 42);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(828, 422);
-            this.panel1.TabIndex = 37;
-            this.panel1.Visible = false;
+            this.updateUserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.updateUserPanel.Controls.Add(this.deleteUpdatePanelButton);
+            this.updateUserPanel.Controls.Add(this.cancelUpdatePanelButton);
+            this.updateUserPanel.Controls.Add(this.updatePanelButton);
+            this.updateUserPanel.Controls.Add(this.updateUserAddressInput);
+            this.updateUserPanel.Controls.Add(this.label10);
+            this.updateUserPanel.Controls.Add(this.updateUserEmailInput);
+            this.updateUserPanel.Controls.Add(this.label11);
+            this.updateUserPanel.Controls.Add(this.updateUserMobileNoInput);
+            this.updateUserPanel.Controls.Add(this.label12);
+            this.updateUserPanel.Controls.Add(this.updateUserJobTitlePicker);
+            this.updateUserPanel.Controls.Add(this.label13);
+            this.updateUserPanel.Controls.Add(this.label14);
+            this.updateUserPanel.Controls.Add(this.updateUserNICInput);
+            this.updateUserPanel.Controls.Add(this.label15);
+            this.updateUserPanel.Controls.Add(this.updateUserFullNameInput);
+            this.updateUserPanel.Controls.Add(this.label16);
+            this.updateUserPanel.Controls.Add(this.label19);
+            this.updateUserPanel.Location = new System.Drawing.Point(39, 42);
+            this.updateUserPanel.Name = "updateUserPanel";
+            this.updateUserPanel.Size = new System.Drawing.Size(828, 422);
+            this.updateUserPanel.TabIndex = 37;
+            this.updateUserPanel.Visible = false;
+            // 
+            // deleteUpdatePanelButton
+            // 
+            this.deleteUpdatePanelButton.AutoSize = true;
+            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(470, 332);
+            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
+            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.deleteUpdatePanelButton.TabIndex = 37;
+            this.deleteUpdatePanelButton.Text = "Delete";
+            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
             // 
             // cancelUpdatePanelButton
             // 
@@ -632,30 +649,13 @@ namespace E_PupilStdMgt.forms.screens
             this.label19.TabIndex = 15;
             this.label19.Text = "Update User";
             // 
-            // deleteUpdatePanelButton
-            // 
-            this.deleteUpdatePanelButton.AutoSize = true;
-            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
-            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
-            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(470, 332);
-            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
-            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
-            this.deleteUpdatePanelButton.TabIndex = 37;
-            this.deleteUpdatePanelButton.Text = "Delete";
-            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
-            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
-            // 
             // StuffMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(916, 611);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.updateUserPanel);
             this.Controls.Add(this.userCreatePanel);
             this.Controls.Add(this.userDataGrid);
             this.Controls.Add(this.createNewUserButton);
@@ -665,8 +665,8 @@ namespace E_PupilStdMgt.forms.screens
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).EndInit();
             this.userCreatePanel.ResumeLayout(false);
             this.userCreatePanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.updateUserPanel.ResumeLayout(false);
+            this.updateUserPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -705,7 +705,7 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button closePanelButton;
         private System.Windows.Forms.Button createPanelButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel updateUserPanel;
         private System.Windows.Forms.Button deleteUpdatePanelButton;
         private System.Windows.Forms.Button cancelUpdatePanelButton;
         private System.Windows.Forms.Button updatePanelButton;

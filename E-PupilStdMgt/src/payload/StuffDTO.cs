@@ -30,6 +30,17 @@ namespace E_PupilStdMgt.src.payload
             this.permanentAddress = permanentAddress;
         }
 
+        public StuffDTO(int stuffId, string fullName, string nic, string jobTitle, string mobileNo, string email, string permanentAddress)
+        {
+            this.stuffId = stuffId;
+            this.fullName = fullName;
+            this.nic = nic;
+            this.jobTitle = jobTitle;
+            this.mobileNo = mobileNo;
+            this.email = email;
+            this.permanentAddress = permanentAddress;
+        }
+
         public StuffDTO(int stuffId, string userName, string fullName, string nic, string jobTitle, string mobileNo, string email, string permanentAddress)
         {
             this.stuffId = stuffId;

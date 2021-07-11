@@ -14,7 +14,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
         DBConnection con = new DBConnection();
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_stuff SET STATUS = 0 WHERE ID_STUFF = @stuffId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@stuffId", id.ToString()),
+                };
+
+
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public ArrayList GetAll()
@@ -23,7 +51,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_STUFF, USER_NAME, FULL_NAME, NIC, JOB_TITLE, MOBILE_NO, EMAIL, PERMANENT_ADDRESS from core_stuff";
+                string query = "select ID_STUFF, USER_NAME, FULL_NAME, NIC, JOB_TITLE, MOBILE_NO, EMAIL, PERMANENT_ADDRESS from core_stuff WHERE STATUS = 1";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -97,7 +125,41 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Update(Stuff entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_stuff SET FULL_NAME = @fullName, NIC = @nic, JOB_TITLE = @jobTitle, MOBILE_NO = @mobileNo, EMAIL = @email, PERMANENT_ADDRESS = @permanentAddress WHERE ID_STUFF = @stuffId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@fullName", entity.FullName),
+                    new ParameterClass("@nic", entity.Nic),
+                    new ParameterClass("@jobTitle", entity.JobTitle),
+                    new ParameterClass("@mobileNo", entity.MobileNo),
+                    new ParameterClass("@email", entity.Email),
+                    new ParameterClass("@permanentAddress", entity.PermanentAddress),
+                    new ParameterClass("@stuffId", entity.StuffId.ToString()),
+                };
+
+
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }
