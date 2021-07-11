@@ -34,6 +34,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
                 classSubjectStudentMarkDTO.StudentPoint, new ClassSubject(classSubjectDTO.ClassSubjectId), new Student(classSubjectStudentMarkDTO.StudentDTO.StudentId)));
         }
 
+        public bool DeleteStudentMark(int classSubjectStudentMarkId)
+        {
+            return iClassSubjectStudentMarkRepo.Delete(classSubjectStudentMarkId);
+        }
+
         public List<ClassSubjectStudentMarkDTO> FindClassSubjectStudentMarks()
         {
             ArrayList list = iClassSubjectStudentMarkRepo.GetAll();
@@ -50,10 +55,15 @@ namespace E_PupilStdMgt.src.service.custom.impl
                 // GET STUDENT DETAILS
                 StudentDTO studentDTO = iStudentServiceCustom.FindStudentById(classSubjectStudentMark.Student.StudentId);
 
-                classSubjectStudentMarkDTOs.Add(new ClassSubjectStudentMarkDTO(classSubjectStudentMark.ClassSubjectStudentMarkId, new ClassSubjectDTO(classSubjectStudentMark.ClassSubject.ClassSubjectId,classDTO, subjectDTO), studentDTO, classSubjectStudentMark.ExamDate, classSubjectStudentMark.StudentPoint));
+                classSubjectStudentMarkDTOs.Add(new ClassSubjectStudentMarkDTO(classSubjectStudentMark.ClassSubjectStudentMarkId, new ClassSubjectDTO(classSubjectStudentMark.ClassSubject.ClassSubjectId, classDTO, subjectDTO), studentDTO, classSubjectStudentMark.ExamDate, classSubjectStudentMark.StudentPoint));
             }
 
             return classSubjectStudentMarkDTOs;
+        }
+
+        public bool UpdateStudentMark(ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO)
+        {
+            return iClassSubjectStudentMarkRepo.Update(new ClassSubjectStudentMark(classSubjectStudentMarkDTO.ClassSubjectStudentMarkId, classSubjectStudentMarkDTO.ExamDate, classSubjectStudentMarkDTO.StudentPoint));
         }
     }
 }

@@ -15,7 +15,33 @@ namespace E_PupilStdMgt.src.repository.custom.impl
         DBConnection con = new DBConnection();
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "DELETE FROM core_class_subject_student_mark WHERE ID_CLASS_SUBJECT_STUDENT_MARK = @classSubjectStudentMarkId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@classSubjectStudentMarkId", id.ToString())
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public ArrayList GetAll()
@@ -51,7 +77,6 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Save(ClassSubjectStudentMark entity)
         {
-            Debug.WriteLine(entity.ExamDate);
             try
             {
                 con.Open();
@@ -91,7 +116,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Update(ClassSubjectStudentMark entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_class_subject_student_mark SET EXAM_DATE = @examDate, STUDENT_POINT = @studentPoint WHERE ID_CLASS_SUBJECT_STUDENT_MARK = @classSubjectStudentMarkId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@examDate", entity.ExamDate.ToShortDateString()),
+                    new ParameterClass("@studentPoint", entity.StudentPoint.ToString()),
+                    new ParameterClass("@classSubjectStudentMarkId", entity.ClassSubjectStudentMarkId.ToString())
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

@@ -33,6 +33,13 @@ namespace E_PupilStdMgt.src.entity
             this.studentPoint = studentPoint;
         }
 
+        public ClassSubjectStudentMark(int classSubjectStudentMarkId, DateTime examDate, double studentPoint)
+        {
+            this.classSubjectStudentMarkId = classSubjectStudentMarkId;
+            this.examDate = examDate;
+            this.studentPoint = studentPoint;
+        }
+
         public int ClassSubjectStudentMarkId { get => classSubjectStudentMarkId; set => classSubjectStudentMarkId = value; }
         public DateTime ExamDate { get => examDate; set => examDate = value; }
         public double StudentPoint { get => studentPoint; set => studentPoint = value; }

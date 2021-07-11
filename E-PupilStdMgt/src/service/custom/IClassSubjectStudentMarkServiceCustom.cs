@@ -8,7 +8,8 @@ namespace E_PupilStdMgt.src.service.custom
     interface IClassSubjectStudentMarkServiceCustom: ISuperService
     {
         public bool CreateStudentMark(ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO);
-
+        public bool UpdateStudentMark(ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO);
+        public bool DeleteStudentMark(int classSubjectStudentMarkId);
         public List<ClassSubjectStudentMarkDTO> FindClassSubjectStudentMarks();
     }
 }

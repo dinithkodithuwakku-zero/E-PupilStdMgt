@@ -29,8 +29,8 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.studentPointInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.classPicker = new System.Windows.Forms.ComboBox();
@@ -143,6 +143,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.closePanelButton.TabIndex = 38;
             this.closePanelButton.Text = "Cancel";
             this.closePanelButton.UseVisualStyleBackColor = false;
+            this.closePanelButton.Click += new System.EventHandler(this.closePanelButton_Click);
             // 
             // createPanelButton
             // 
@@ -165,14 +166,14 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // 
             this.classSubjectStudentMarkDataGrid.AllowUserToAddRows = false;
             this.classSubjectStudentMarkDataGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.classSubjectStudentMarkDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.classSubjectStudentMarkDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.classSubjectStudentMarkDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.classSubjectStudentMarkDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_CLASS_SUBJECT_STUDENT_MARK,
@@ -186,14 +187,14 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.classSubjectStudentMarkDataGrid.Location = new System.Drawing.Point(35, 333);
             this.classSubjectStudentMarkDataGrid.Name = "classSubjectStudentMarkDataGrid";
             this.classSubjectStudentMarkDataGrid.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.classSubjectStudentMarkDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.classSubjectStudentMarkDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.classSubjectStudentMarkDataGrid.RowHeadersWidth = 51;
             this.classSubjectStudentMarkDataGrid.RowTemplate.Height = 29;
             this.classSubjectStudentMarkDataGrid.Size = new System.Drawing.Size(754, 248);
@@ -297,7 +298,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // 
             // updatePanel
             // 
-            this.updatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.updatePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.updatePanel.Controls.Add(this.subjectUpdateInput);
             this.updatePanel.Controls.Add(this.classUpdateInput);
             this.updatePanel.Controls.Add(this.studentDetailUpdatePanelLable);
@@ -311,9 +312,9 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.updatePanel.Controls.Add(this.updateStudentPointInput);
             this.updatePanel.Controls.Add(this.label9);
             this.updatePanel.Controls.Add(this.label4);
-            this.updatePanel.Location = new System.Drawing.Point(12, 84);
+            this.updatePanel.Location = new System.Drawing.Point(22, 23);
             this.updatePanel.Name = "updatePanel";
-            this.updatePanel.Size = new System.Drawing.Size(791, 385);
+            this.updatePanel.Size = new System.Drawing.Size(791, 505);
             this.updatePanel.TabIndex = 43;
             this.updatePanel.Visible = false;
             // 
@@ -321,7 +322,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // 
             this.subjectUpdateInput.Enabled = false;
             this.subjectUpdateInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subjectUpdateInput.Location = new System.Drawing.Point(567, 154);
+            this.subjectUpdateInput.Location = new System.Drawing.Point(561, 249);
             this.subjectUpdateInput.Name = "subjectUpdateInput";
             this.subjectUpdateInput.Size = new System.Drawing.Size(196, 27);
             this.subjectUpdateInput.TabIndex = 56;
@@ -330,7 +331,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // 
             this.classUpdateInput.Enabled = false;
             this.classUpdateInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.classUpdateInput.Location = new System.Drawing.Point(195, 154);
+            this.classUpdateInput.Location = new System.Drawing.Point(189, 249);
             this.classUpdateInput.Name = "classUpdateInput";
             this.classUpdateInput.Size = new System.Drawing.Size(196, 27);
             this.classUpdateInput.TabIndex = 55;
@@ -340,7 +341,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.studentDetailUpdatePanelLable.AutoSize = true;
             this.studentDetailUpdatePanelLable.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.studentDetailUpdatePanelLable.ForeColor = System.Drawing.Color.White;
-            this.studentDetailUpdatePanelLable.Location = new System.Drawing.Point(273, 22);
+            this.studentDetailUpdatePanelLable.Location = new System.Drawing.Point(21, 85);
             this.studentDetailUpdatePanelLable.Name = "studentDetailUpdatePanelLable";
             this.studentDetailUpdatePanelLable.Size = new System.Drawing.Size(256, 25);
             this.studentDetailUpdatePanelLable.TabIndex = 54;
@@ -355,7 +356,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
             this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(503, 317);
+            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(497, 412);
             this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
             this.deleteUpdatePanelButton.Size = new System.Drawing.Size(122, 43);
             this.deleteUpdatePanelButton.TabIndex = 53;
@@ -368,7 +369,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(459, 154);
+            this.label5.Location = new System.Drawing.Point(453, 249);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 51;
@@ -383,7 +384,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.cancelUpdateButton.FlatAppearance.BorderSize = 0;
             this.cancelUpdateButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cancelUpdateButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.cancelUpdateButton.Location = new System.Drawing.Point(641, 317);
+            this.cancelUpdateButton.Location = new System.Drawing.Point(635, 412);
             this.cancelUpdateButton.Name = "cancelUpdateButton";
             this.cancelUpdateButton.Size = new System.Drawing.Size(122, 43);
             this.cancelUpdateButton.TabIndex = 50;
@@ -400,7 +401,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.updatePanelButton.FlatAppearance.BorderSize = 0;
             this.updatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.updatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.updatePanelButton.Location = new System.Drawing.Point(363, 317);
+            this.updatePanelButton.Location = new System.Drawing.Point(357, 412);
             this.updatePanelButton.Name = "updatePanelButton";
             this.updatePanelButton.Size = new System.Drawing.Size(122, 43);
             this.updatePanelButton.TabIndex = 49;
@@ -411,9 +412,9 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // updateExamDatePicker
             // 
             this.updateExamDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.updateExamDatePicker.Location = new System.Drawing.Point(602, 86);
+            this.updateExamDatePicker.Location = new System.Drawing.Point(561, 181);
             this.updateExamDatePicker.Name = "updateExamDatePicker";
-            this.updateExamDatePicker.Size = new System.Drawing.Size(161, 27);
+            this.updateExamDatePicker.Size = new System.Drawing.Size(196, 27);
             this.updateExamDatePicker.TabIndex = 48;
             // 
             // label7
@@ -421,7 +422,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(480, 86);
+            this.label7.Location = new System.Drawing.Point(429, 186);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 20);
             this.label7.TabIndex = 47;
@@ -432,7 +433,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(37, 154);
+            this.label8.Location = new System.Drawing.Point(31, 249);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 20);
             this.label8.TabIndex = 45;
@@ -441,7 +442,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             // updateStudentPointInput
             // 
             this.updateStudentPointInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.updateStudentPointInput.Location = new System.Drawing.Point(195, 226);
+            this.updateStudentPointInput.Location = new System.Drawing.Point(189, 321);
             this.updateStudentPointInput.Name = "updateStudentPointInput";
             this.updateStudentPointInput.Size = new System.Drawing.Size(196, 27);
             this.updateStudentPointInput.TabIndex = 44;
@@ -451,7 +452,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(37, 226);
+            this.label9.Location = new System.Drawing.Point(31, 321);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(105, 20);
             this.label9.TabIndex = 43;
@@ -462,7 +463,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.Info;
-            this.label4.Location = new System.Drawing.Point(20, 19);
+            this.label4.Location = new System.Drawing.Point(298, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(215, 28);
             this.label4.TabIndex = 0;

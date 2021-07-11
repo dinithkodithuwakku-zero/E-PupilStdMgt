@@ -93,8 +93,8 @@ namespace E_PupilStdMgt.src.controller.forms.screens
 
         void classPicker_SelectedValueChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine(classPicker.SelectedItem.ToString());
-            LoadSubjectsToPickerByClassCode(classPicker.SelectedItem.ToString());
+            if (classPicker.SelectedIndex != -1)
+                LoadSubjectsToPickerByClassCode(classPicker.SelectedItem.ToString());
         }
 
         private void createPanelButton_Click(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             try
             {
 
-                ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO= new ClassSubjectStudentMarkDTO();
+                ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO = new ClassSubjectStudentMarkDTO();
                 classSubjectStudentMarkDTO.ClassSubjectDTO = new ClassSubjectDTO(new ClassDTO(classPicker.SelectedItem.ToString()), new SubjectDTO(subjectPicker.SelectedItem.ToString()));
                 classSubjectStudentMarkDTO.StudentDTO = new StudentDTO(_studentId);
                 classSubjectStudentMarkDTO.ExamDate = examDatePicker.Value.Date;
@@ -133,7 +133,20 @@ namespace E_PupilStdMgt.src.controller.forms.screens
 
         private void ClearInputForm()
         {
+            classPicker.SelectedIndex = -1;
+            subjectPicker.SelectedIndex = -1;
+            examDatePicker.Value = DateTime.Now;
+            studentPointInput.Text = null;
 
+            studentDetailUpdatePanelLable.Text = "";
+
+            _classSubjectStudentMarkId = 0;
+            classUpdateInput.Text = null;
+            subjectUpdateInput.Text = null;
+            updateExamDatePicker.Value = DateTime.Now;
+            updateStudentPointInput.Text = null;
+
+            updatePanel.Visible = false;
         }
 
         private void classSubjectStudentMarkDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -142,7 +155,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             {
                 DataGridViewRow row = this.classSubjectStudentMarkDataGrid.Rows[e.RowIndex];
 
-                studentDetailUpdatePanelLable.Text = "Student : "+ row.Cells[5].Value.ToString();
+                studentDetailUpdatePanelLable.Text = "Student : " + row.Cells[5].Value.ToString();
 
                 _classSubjectStudentMarkId = Int16.Parse(row.Cells[0].Value.ToString());
                 classUpdateInput.Text = row.Cells[2].Value.ToString();
@@ -156,25 +169,65 @@ namespace E_PupilStdMgt.src.controller.forms.screens
 
         private void updatePanelButton_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+                ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO = new ClassSubjectStudentMarkDTO();
+                classSubjectStudentMarkDTO.ClassSubjectStudentMarkId = _classSubjectStudentMarkId;
+                classSubjectStudentMarkDTO.ExamDate = updateExamDatePicker.Value.Date;
+                classSubjectStudentMarkDTO.StudentPoint = Double.Parse(updateStudentPointInput.Text);
+
+                bool isUpdated = iClassSubjectStudentMarkServiceCustom.UpdateStudentMark(classSubjectStudentMarkDTO);
+
+                if (isUpdated)
+                {
+                    LoadClassSubjectStudentMarkDetails();
+                    ClearInputForm();
+                    MessageBox.Show("Class Subject Student mark Updated!");
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Update Class Subject Student mark!", "Error!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
         }
 
         private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+                bool isDeleted = iClassSubjectStudentMarkServiceCustom.DeleteStudentMark(_classSubjectStudentMarkId);
+
+                if (isDeleted)
+                {
+                    LoadClassSubjectStudentMarkDetails();
+                    ClearInputForm();
+                    MessageBox.Show("Class Subject Student mark Deleted!");
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Delete Class Subject Student mark!", "Error!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
         }
 
         private void cancelUpdateButton_Click(object sender, EventArgs e)
         {
-            studentDetailUpdatePanelLable.Text = "";
+            ClearInputForm();
+        }
 
-            _classSubjectStudentMarkId = 0;
-            classUpdateInput.Text = null;
-            subjectUpdateInput.Text = null;
-            updateExamDatePicker.Value = DateTime.Now;
-            updateStudentPointInput.Text = null;
-
-            updatePanel.Visible = false;
+        private void closePanelButton_Click(object sender, EventArgs e)
+        {
+            ClearInputForm();
         }
     }
 }
