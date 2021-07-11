@@ -20,6 +20,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         private IClassSubjectStudentMarkServiceCustom iClassSubjectStudentMarkServiceCustom;
 
         private int _studentId;
+        private int _classSubjectStudentMarkId;
         public StudentMarkMgtScreenForm(StudentDTO studentDTO)
         {
             iClassServiceCustom = ServiceFactory.GetInstance().GetService<ClassServiceImpl>(ServiceFactory.ServiceTypes.CLASS);
@@ -44,6 +45,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
                 foreach (ClassDTO classDTO in list)
                 {
                     classPicker.Items.Add(classDTO.ClassCode);
+                    updateClassPicker.Items.Add(classDTO.ClassCode);
                 }
             }
             catch
@@ -81,7 +83,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
 
                 foreach (ClassSubjectStudentMarkDTO dto in list)
                 {
-                    this.classSubjectStudentMarkDataGrid.Rows.Add(dto.ClassSubjectDTO.ClassDTO.ClassCode, dto.ClassSubjectDTO.ClassDTO.ClassName, dto.ClassSubjectDTO.SubjectDTO.SubjectCode, dto.ClassSubjectDTO.SubjectDTO.SubjectName, dto.StudentDTO.StudentName, dto.ExamDate.ToShortDateString(), dto.StudentPoint);
+                    this.classSubjectStudentMarkDataGrid.Rows.Add(dto.ClassSubjectStudentMarkId, dto.ClassSubjectDTO.ClassDTO.ClassCode, dto.ClassSubjectDTO.ClassDTO.ClassName, dto.ClassSubjectDTO.SubjectDTO.SubjectCode, dto.ClassSubjectDTO.SubjectDTO.SubjectName, dto.StudentDTO.StudentName, dto.ExamDate.ToShortDateString(), dto.StudentPoint);
                 }
             }
             catch
@@ -111,6 +113,7 @@ namespace E_PupilStdMgt.src.controller.forms.screens
 
                 if (isCreated)
                 {
+                    LoadClassSubjectStudentMarkDetails();
                     MessageBox.Show("Class Subject Student mark Submitted!");
                 }
                 else
@@ -125,6 +128,38 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         }
 
         private void StudentMarkMgtScreenForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearInputForm()
+        {
+
+        }
+
+        private void classSubjectStudentMarkDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.classSubjectStudentMarkDataGrid.Rows[e.RowIndex];
+
+                _classSubjectStudentMarkId = Int16.Parse(row.Cells[0].Value.ToString());
+
+                updatePanel.Visible = true;
+            }
+        }
+
+        private void updatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelUpdateButton_Click(object sender, EventArgs e)
         {
 
         }
