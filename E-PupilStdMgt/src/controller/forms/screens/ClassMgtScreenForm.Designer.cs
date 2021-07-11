@@ -78,7 +78,7 @@ namespace E_PupilStdMgt.forms.screens
             this.classDataGrid.ReadOnly = true;
             this.classDataGrid.RowHeadersWidth = 51;
             this.classDataGrid.RowTemplate.Height = 29;
-            this.classDataGrid.Size = new System.Drawing.Size(802, 248);
+            this.classDataGrid.Size = new System.Drawing.Size(802, 372);
             this.classDataGrid.TabIndex = 0;
             this.classDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.classDataGrid_CellContentClick);
             // 

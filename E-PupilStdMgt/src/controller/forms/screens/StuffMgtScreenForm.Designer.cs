@@ -121,7 +121,7 @@ namespace E_PupilStdMgt.forms.screens
             this.userDataGrid.ReadOnly = true;
             this.userDataGrid.RowHeadersWidth = 51;
             this.userDataGrid.RowTemplate.Height = 29;
-            this.userDataGrid.Size = new System.Drawing.Size(842, 257);
+            this.userDataGrid.Size = new System.Drawing.Size(842, 417);
             this.userDataGrid.TabIndex = 12;
             this.userDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userDataGrid_CellClick);
             // 

@@ -162,19 +162,24 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isDeleted = iSubjectServiceCustom.DeleteSubject(_subjectId);
-
-                if (isDeleted)
+                var confirmResult = MessageBox.Show("Are you sure to delete Subject?",
+                                  "Confirm Delete!!",
+                                  MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Subject Deleted!");
-                    LoadSubjectDetails();
-                    ClearCreateFormData();
-                }
-                else
-                {
-                    MessageBox.Show("Unable to Delete Subject!", "Error!");
-                }
+                    bool isDeleted = iSubjectServiceCustom.DeleteSubject(_subjectId);
 
+                    if (isDeleted)
+                    {
+                        MessageBox.Show("Subject Deleted!");
+                        LoadSubjectDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Delete Subject!", "Error!");
+                    }
+                }
             }
             catch
             {

@@ -150,17 +150,23 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isDeleted = iStudentServiceCustom.DeleteStudent(_studentId);
+                var confirmResult = MessageBox.Show("Are you sure to delete Student?",
+                                  "Confirm Delete!!",
+                                  MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    bool isDeleted = iStudentServiceCustom.DeleteStudent(_studentId);
 
-                if (isDeleted)
-                {
-                    MessageBox.Show("Student Deleted!");
-                    LoadStudentDetails();
-                    ClearCreateFormData();
-                }
-                else
-                {
-                    MessageBox.Show("Unable to Delete Student!", "Error!");
+                    if (isDeleted)
+                    {
+                        MessageBox.Show("Student Deleted!");
+                        LoadStudentDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Delete Student!", "Error!");
+                    }
                 }
             }
             catch

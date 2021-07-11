@@ -103,7 +103,7 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectDataGrid.ReadOnly = true;
             this.subjectDataGrid.RowHeadersWidth = 51;
             this.subjectDataGrid.RowTemplate.Height = 29;
-            this.subjectDataGrid.Size = new System.Drawing.Size(802, 256);
+            this.subjectDataGrid.Size = new System.Drawing.Size(802, 378);
             this.subjectDataGrid.TabIndex = 12;
             this.subjectDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.subjectDataGrid_CellClick);
             // 

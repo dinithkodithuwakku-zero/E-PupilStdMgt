@@ -146,19 +146,24 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isDeleted = iStuffServiceCustom.DeleteStuff(_stuffId);
-
-                if (isDeleted)
+                var confirmResult = MessageBox.Show("Are you sure to delete User?",
+                                  "Confirm Delete!!",
+                                  MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("User Deleted!");
-                    LoadStuffDetails();
-                    ClearCreateFormData();
-                }
-                else
-                {
-                    MessageBox.Show("Unable to Delete User!", "Error!");
-                }
+                    bool isDeleted = iStuffServiceCustom.DeleteStuff(_stuffId);
 
+                    if (isDeleted)
+                    {
+                        MessageBox.Show("User Deleted!");
+                        LoadStuffDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Delete User!", "Error!");
+                    }
+                }
             }
             catch
             {

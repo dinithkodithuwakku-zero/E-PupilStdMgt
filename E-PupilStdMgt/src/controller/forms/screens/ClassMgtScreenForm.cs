@@ -120,12 +120,12 @@ namespace E_PupilStdMgt.forms.screens
 
         private void classDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.classDataGrid.Rows[e.RowIndex];
 
                 _selectedClassId = Int16.Parse(row.Cells[0].Value.ToString());
-                updateClassNameInput.Text =  row.Cells[1].Value.ToString();
+                updateClassNameInput.Text = row.Cells[1].Value.ToString();
                 updateClassCodeInput.Text = row.Cells[2].Value.ToString();
 
                 updateClassIsActiveCheckbox.Checked = Int16.Parse(row.Cells[3].Value.ToString()) == 1 ? true : false;
@@ -174,17 +174,23 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isDeleted = iClassServiceCustom.DeleteClass(_selectedClassId);
+                var confirmResult = MessageBox.Show("Are you sure to delete Class?",
+                                   "Confirm Delete!!",
+                                   MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    bool isDeleted = iClassServiceCustom.DeleteClass(_selectedClassId);
 
-                if (isDeleted)
-                {
-                    MessageBox.Show("Class Deleted!");
-                    LoadClassDetails();
-                    ClearCreateFormData();
-                }
-                else
-                {
-                    MessageBox.Show("Unable to Delete Class!", "Error!");
+                    if (isDeleted)
+                    {
+                        MessageBox.Show("Class Deleted!");
+                        LoadClassDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Delete Class!", "Error!");
+                    }
                 }
 
             }
