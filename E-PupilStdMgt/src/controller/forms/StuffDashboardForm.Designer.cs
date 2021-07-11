@@ -39,6 +39,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.createPanelButton = new System.Windows.Forms.Button();
+            this.selectPenLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.parentPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -163,12 +164,23 @@ namespace E_PupilStdMgt.src.controller.forms
             this.createPanelButton.UseVisualStyleBackColor = false;
             this.createPanelButton.Click += new System.EventHandler(this.createPanelButton_Click);
             // 
+            // selectPenLabel
+            // 
+            this.selectPenLabel.AutoSize = true;
+            this.selectPenLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.selectPenLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.selectPenLabel.Location = new System.Drawing.Point(14, 57);
+            this.selectPenLabel.Name = "selectPenLabel";
+            this.selectPenLabel.Size = new System.Drawing.Size(0, 20);
+            this.selectPenLabel.TabIndex = 13;
+            // 
             // StuffDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1235, 740);
+            this.Controls.Add(this.selectPenLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.createPanelButton);
             this.Controls.Add(this.panel2);
@@ -199,5 +211,6 @@ namespace E_PupilStdMgt.src.controller.forms
         private System.Windows.Forms.Label studentLabel;
         private System.Windows.Forms.Label classLabel;
         private System.Windows.Forms.Label subjectLabel;
+        private System.Windows.Forms.Label selectPenLabel;
     }
 }

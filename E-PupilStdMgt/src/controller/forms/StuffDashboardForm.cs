@@ -33,6 +33,7 @@ namespace E_PupilStdMgt.src.controller.forms
         Dictionary<string, List<string>> classesToSubjectMapping = new Dictionary<string, List<string>>();
         Dictionary<string, List<string>> classesToStudentMapping = new Dictionary<string, List<string>>();
 
+        private Label selectedSubCodeLabel;
         public StuffDashboardForm()
         {
             iSubjectServiceCustom = ServiceFactory.GetInstance().GetService<SubjectServiceImpl>(ServiceFactory.ServiceTypes.SUBJECT);
@@ -213,10 +214,12 @@ namespace E_PupilStdMgt.src.controller.forms
             {
                 this.classCodePoint = label.Name;
                 classCodePointList.Add(label.Name);
+
+                this.selectPenLabel.Text = "You select " + label.Text + " Class";
             }
             else
             {
-                MessageBox.Show("Already selected a class, Please select a Subject!");
+                MessageBox.Show("Already selected a class, Please select a Subject or Student!");
             }
 
             AddClassSubjectMapping();
@@ -228,6 +231,7 @@ namespace E_PupilStdMgt.src.controller.forms
         {
             if (!string.IsNullOrEmpty(this.subjectCodePoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
+                this.selectPenLabel.Text = "";
 
                 ClassSubjectDTO classSubjectDTO = new ClassSubjectDTO();
 
@@ -296,6 +300,8 @@ namespace E_PupilStdMgt.src.controller.forms
                 {
                     this.subjectCodePoint = label.Name;
                     subjectCodePointList.Add(label.Name);
+
+                    this.selectPenLabel.Text = "You select " + label.Text + " Subject";
                 }
                 else
                 {
@@ -321,6 +327,8 @@ namespace E_PupilStdMgt.src.controller.forms
                 {
                     this.studentRegNoPoint = label.Name;
                     studentRegNoPointList.Add(label.Name);
+
+                    this.selectPenLabel.Text = "You select " + label.Text + " Student";
                 }
                 else
                 {
@@ -339,6 +347,7 @@ namespace E_PupilStdMgt.src.controller.forms
         {
             if (!string.IsNullOrEmpty(this.studentRegNoPoint) && !string.IsNullOrEmpty(this.classCodePoint))
             {
+                this.selectPenLabel.Text = "";
 
                 ClassStudentDTO classStudentDTO = new ClassStudentDTO();
 
@@ -413,7 +422,7 @@ namespace E_PupilStdMgt.src.controller.forms
                      e.Graphics.DrawLine(p, p1List[x], p2List[x]);
                  }
              }*/
-            
+
 
             for (int i = 0; i < classCodePointList.Count; i++)
             {
