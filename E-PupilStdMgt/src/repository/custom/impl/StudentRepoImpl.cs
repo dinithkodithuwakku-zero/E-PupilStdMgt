@@ -15,7 +15,34 @@ namespace E_PupilStdMgt.src.repository.custom.impl
         DBConnection con = new DBConnection();
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_student SET STATUS = 0 WHERE ID_STUDENT = @stdId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@stdId", id.ToString()),
+                };
+
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public Student FindStudentByRegNo(string regNo)
@@ -24,7 +51,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STUDENT_REG_NO = '" + regNo + "'";
+                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STATUS = 1 AND STUDENT_REG_NO = '" + regNo + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -91,7 +118,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE ID_STUDENT = '" + id + "'";
+                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STATUS = 1 AND ID_STUDENT = '" + id + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -146,7 +173,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student";
+                string query = "select ID_STUDENT, STUDENT_REG_NO, STUDENT_NAME, STUDENT_MOBILE_NO, STUDENT_EMAIL, PERMANENT_ADDRESS, GENDER from core_student WHERE STATUS = 1";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -217,7 +244,39 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Update(Student entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_student SET STUDENT_NAME = @stdName, STUDENT_MOBILE_NO = @stdMobileNo, GENDER = @gender, STUDENT_EMAIL = @stdEmail, PERMANENT_ADDRESS = @stdPermanentAddress WHERE ID_STUDENT = @stdId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@stdName", entity.StudentName),
+                    new ParameterClass("@stdMobileNo", entity.MobileNo),
+                    new ParameterClass("@gender", entity.Gender),
+                    new ParameterClass("@stdEmail", entity.Email),
+                    new ParameterClass("@stdPermanentAddress", entity.PermanentAddress),
+                    new ParameterClass("@stdId", entity.StudentId.ToString()),
+                };
+
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

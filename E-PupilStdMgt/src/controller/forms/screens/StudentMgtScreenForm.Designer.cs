@@ -54,7 +54,8 @@ namespace E_PupilStdMgt.forms.screens
             this.stdNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.createNewStudentLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.studentUpdatePanel = new System.Windows.Forms.Panel();
+            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
             this.cancelUpdatePanelButton = new System.Windows.Forms.Button();
             this.updatePanelButton = new System.Windows.Forms.Button();
             this.updateStudentAddressInput = new System.Windows.Forms.TextBox();
@@ -70,10 +71,9 @@ namespace E_PupilStdMgt.forms.screens
             this.updateStudentNameInput = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGrid)).BeginInit();
             this.studentCreatePanel.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.studentUpdatePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // studentDataGrid
@@ -96,7 +96,7 @@ namespace E_PupilStdMgt.forms.screens
             this.studentDataGrid.ReadOnly = true;
             this.studentDataGrid.RowHeadersWidth = 51;
             this.studentDataGrid.RowTemplate.Height = 29;
-            this.studentDataGrid.Size = new System.Drawing.Size(847, 262);
+            this.studentDataGrid.Size = new System.Drawing.Size(847, 389);
             this.studentDataGrid.TabIndex = 0;
             this.studentDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentDataGrid_CellClick);
             // 
@@ -176,7 +176,6 @@ namespace E_PupilStdMgt.forms.screens
             // studentCreatePanel
             // 
             this.studentCreatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.studentCreatePanel.Controls.Add(this.panel1);
             this.studentCreatePanel.Controls.Add(this.closePanelButton);
             this.studentCreatePanel.Controls.Add(this.createPanelButton);
             this.studentCreatePanel.Controls.Add(this.permentAddressInput);
@@ -362,30 +361,47 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewStudentLabel.TabIndex = 14;
             this.createNewStudentLabel.Text = "Create New Student";
             // 
-            // panel1
+            // studentUpdatePanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.deleteUpdatePanelButton);
-            this.panel1.Controls.Add(this.cancelUpdatePanelButton);
-            this.panel1.Controls.Add(this.updatePanelButton);
-            this.panel1.Controls.Add(this.updateStudentAddressInput);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.updateStudentEmailInput);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.updateStudentGenderPicker);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.updateStudentRegNoInput);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.updateStudentMobileNoInput);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.updateStudentNameInput);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Location = new System.Drawing.Point(3, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(819, 485);
-            this.panel1.TabIndex = 30;
-            this.panel1.Visible = false;
+            this.studentUpdatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.studentUpdatePanel.Controls.Add(this.deleteUpdatePanelButton);
+            this.studentUpdatePanel.Controls.Add(this.cancelUpdatePanelButton);
+            this.studentUpdatePanel.Controls.Add(this.updatePanelButton);
+            this.studentUpdatePanel.Controls.Add(this.updateStudentAddressInput);
+            this.studentUpdatePanel.Controls.Add(this.label7);
+            this.studentUpdatePanel.Controls.Add(this.updateStudentEmailInput);
+            this.studentUpdatePanel.Controls.Add(this.label8);
+            this.studentUpdatePanel.Controls.Add(this.updateStudentGenderPicker);
+            this.studentUpdatePanel.Controls.Add(this.label9);
+            this.studentUpdatePanel.Controls.Add(this.updateStudentRegNoInput);
+            this.studentUpdatePanel.Controls.Add(this.label10);
+            this.studentUpdatePanel.Controls.Add(this.updateStudentMobileNoInput);
+            this.studentUpdatePanel.Controls.Add(this.label11);
+            this.studentUpdatePanel.Controls.Add(this.updateStudentNameInput);
+            this.studentUpdatePanel.Controls.Add(this.label12);
+            this.studentUpdatePanel.Controls.Add(this.label13);
+            this.studentUpdatePanel.Location = new System.Drawing.Point(40, 29);
+            this.studentUpdatePanel.Name = "studentUpdatePanel";
+            this.studentUpdatePanel.Size = new System.Drawing.Size(819, 485);
+            this.studentUpdatePanel.TabIndex = 30;
+            this.studentUpdatePanel.Visible = false;
+            // 
+            // deleteUpdatePanelButton
+            // 
+            this.deleteUpdatePanelButton.AutoSize = true;
+            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(464, 391);
+            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
+            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.deleteUpdatePanelButton.TabIndex = 30;
+            this.deleteUpdatePanelButton.Text = "Delete";
+            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
             // 
             // cancelUpdatePanelButton
             // 
@@ -417,7 +433,7 @@ namespace E_PupilStdMgt.forms.screens
             this.updatePanelButton.Name = "updatePanelButton";
             this.updatePanelButton.Size = new System.Drawing.Size(149, 53);
             this.updatePanelButton.TabIndex = 28;
-            this.updatePanelButton.Text = "Create";
+            this.updatePanelButton.Text = "Update";
             this.updatePanelButton.UseVisualStyleBackColor = false;
             this.updatePanelButton.Click += new System.EventHandler(this.updatePanelButton_Click);
             // 
@@ -552,29 +568,13 @@ namespace E_PupilStdMgt.forms.screens
             this.label13.TabIndex = 14;
             this.label13.Text = "Update Student";
             // 
-            // deleteUpdatePanelButton
-            // 
-            this.deleteUpdatePanelButton.AutoSize = true;
-            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
-            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
-            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(464, 391);
-            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
-            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
-            this.deleteUpdatePanelButton.TabIndex = 30;
-            this.deleteUpdatePanelButton.Text = "Delete";
-            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
-            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
-            // 
             // StudentMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(916, 611);
+            this.Controls.Add(this.studentUpdatePanel);
             this.Controls.Add(this.studentCreatePanel);
             this.Controls.Add(this.createNewStudentButton);
             this.Controls.Add(this.studentDataGrid);
@@ -584,8 +584,8 @@ namespace E_PupilStdMgt.forms.screens
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGrid)).EndInit();
             this.studentCreatePanel.ResumeLayout(false);
             this.studentCreatePanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.studentUpdatePanel.ResumeLayout(false);
+            this.studentUpdatePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -618,7 +618,7 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_MOBILE_NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn PERMANENT_ADDRESS;
         private System.Windows.Forms.DataGridViewTextBoxColumn GENDER;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel studentUpdatePanel;
         private System.Windows.Forms.Button deleteUpdatePanelButton;
         private System.Windows.Forms.Button cancelUpdatePanelButton;
         private System.Windows.Forms.Button updatePanelButton;

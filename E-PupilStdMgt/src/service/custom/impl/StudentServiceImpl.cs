@@ -26,7 +26,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
         public List<StudentDTO> FindStudents(StudentDTO studentDTO)
         {
             Student student = new Student();
-            student.StudentRegNo= studentDTO.StudentRegNo;
+            student.StudentRegNo = studentDTO.StudentRegNo;
             student.Status = studentDTO.Status;
 
             ArrayList studentList = iStudentRepoCustom.FindStudents(student);
@@ -68,6 +68,16 @@ namespace E_PupilStdMgt.src.service.custom.impl
         {
             Student student = iStudentRepoCustom.FindStudentById(id);
             return new StudentDTO(student.StudentId, student.StudentRegNo, student.StudentName, student.MobileNo, student.Gender, student.Email, student.PermanentAddress);
+        }
+
+        public bool UpdateStudent(StudentDTO studentDTO)
+        {
+            return iStudentRepoCustom.Update(new Student(studentDTO.StudentId, studentDTO.StudentRegNo, studentDTO.StudentName, studentDTO.MobileNo, studentDTO.Gender, studentDTO.Email, studentDTO.PermanentAddress));
+        }
+
+        public bool DeleteStudent(int studentId)
+        {
+            return iStudentRepoCustom.Delete(studentId);
         }
     }
 }
