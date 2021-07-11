@@ -412,5 +412,101 @@ namespace E_PupilStdMgt.src.repository.custom.impl
                 con.Close();
             }
         }
+
+        public bool DeleteSubjectMapping(ClassSubject classSubject)
+        {
+            try
+            {
+                con.Open();
+                string query = "DELETE FROM core_class_subject WHERE ID_CLASS = @classId AND ID_SUBJECT = @subjectId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@classId", classSubject.ClassEntity.ClassId.ToString()),
+                    new ParameterClass("@subjectId", classSubject.SubjectEntity.SubjectId.ToString()),
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public ClassStudent FindClassStudentByClassCodeAndStudentRegNo(string classCode, string studentRegNo)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select cs.ID_CLASS_STUDENT, c.ID_CLASS as ID_CLASS, c.CLASS_NAME as CLASS_NAME, c.CLASS_CODE as CLASS_CODE, c.IS_ACTIVE as IS_ACTIVE, cs.ID_STUDENT from core_class_student cs INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS INNER JOIN core_student s ON cs.ID_STUDENT = s.ID_STUDENT WHERE c.CLASS_CODE = '" + classCode + "' and s.STUDENT_REG_NO = '" + studentRegNo + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+                if (reader.Read())
+                {
+
+                    Student studentEntity = new Student();
+                    studentEntity.StudentId = Int16.Parse(reader["ID_STUDENT"].ToString());
+                    return new ClassStudent(Int16.Parse(reader["ID_CLASS_STUDENT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())), studentEntity);
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public bool DeleteStudentMapping(ClassStudent classStudent)
+        {
+            try
+            {
+                con.Open();
+                string query = "DELETE FROM core_class_student WHERE ID_CLASS = @classId AND ID_STUDENT = @studentId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@classId", classStudent.ClassEntity.ClassId.ToString()),
+                    new ParameterClass("@studentId", classStudent.StudentEntity.StudentId.ToString()),
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

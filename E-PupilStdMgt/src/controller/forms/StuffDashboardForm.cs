@@ -243,9 +243,9 @@ namespace E_PupilStdMgt.src.controller.forms
                 subjectDTO.SubjectCode = this.subjectCodePoint;
                 classSubjectDTO.SubjectDTO = subjectDTO;
 
-                bool isMapCreated = iClassServiceCustom.AddSubjectMapping(classSubjectDTO);
+                int status = iClassServiceCustom.AddSubjectMapping(classSubjectDTO);
 
-                if (isMapCreated)
+                if (status == 1)
                 {
                     if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
                     {
@@ -264,9 +264,39 @@ namespace E_PupilStdMgt.src.controller.forms
                     this.classCodePoint = null;
                     parentPanel.Invalidate();
                 }
-                else
+                else if (status == 0)
                 {
                     MessageBox.Show("Unable to create class - subject mapping");
+                }
+                else
+                {
+                    var confirmResult = MessageBox.Show($"Are you sure to delete Class - {this.classCodePoint} Subject - {this.subjectCodePoint} map?",
+                                     "Confirm Delete!!",
+                                     MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        bool isDeletedClassSubjectMap = iClassServiceCustom.DeleteSubjectMapping(classSubjectDTO);
+                        if (isDeletedClassSubjectMap)
+                        {
+                            GetClassesToSubjectMapping();
+                            if (classesToSubjectMapping.ContainsKey(this.classCodePoint))
+                            {
+                                List<string> classSubjects = classesToSubjectMapping[this.classCodePoint];
+                                classSubjects.Remove(this.subjectCodePoint);
+
+                                classesToSubjectMapping[this.classCodePoint] = classSubjects;
+                            }
+
+                            MessageBox.Show($"Deleted Class - {this.classCodePoint} Subject - {this.subjectCodePoint} map", "Success!");
+                            this.subjectCodePoint = null;
+                            this.classCodePoint = null;
+                            parentPanel.Invalidate();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Unable to Delete Class - {this.classCodePoint} Subject - {this.subjectCodePoint} map", "Error!");
+                        }
+                    }
                 }
             }
 
@@ -359,9 +389,9 @@ namespace E_PupilStdMgt.src.controller.forms
                 studentDTO.StudentRegNo = this.studentRegNoPoint;
                 classStudentDTO.StudentDTO = studentDTO;
 
-                bool isMapCreated = iClassServiceCustom.AddStudentMapping(classStudentDTO);
+                int status = iClassServiceCustom.AddStudentMapping(classStudentDTO);
 
-                if (isMapCreated)
+                if (status == 1)
                 {
                     if (classesToStudentMapping.ContainsKey(this.classCodePoint))
                     {
@@ -379,9 +409,39 @@ namespace E_PupilStdMgt.src.controller.forms
                     this.classCodePoint = null;
                     parentPanel.Invalidate();
                 }
-                else
+                else if (status == 0)
                 {
                     MessageBox.Show("Unable to create class - student mapping");
+                }
+                else
+                {
+                    var confirmResult = MessageBox.Show($"Are you sure to delete Class - {this.classCodePoint} Student - {this.studentRegNoPoint} map?",
+                                    "Confirm Delete!!",
+                                    MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        bool isDeletedClassStudentMap = iClassServiceCustom.DeleteStudentMapping(classStudentDTO);
+                        if (isDeletedClassStudentMap)
+                        {
+                            GetClassesToStudentMapping();
+                            if (classesToStudentMapping.ContainsKey(this.classCodePoint))
+                            {
+                                List<string> classSubjects = classesToStudentMapping[this.classCodePoint];
+                                classSubjects.Remove(this.studentRegNoPoint);
+
+                                classesToStudentMapping[this.classCodePoint] = classSubjects;
+                            }
+
+                            MessageBox.Show($"Deleted Class - {this.classCodePoint} Student - {this.studentRegNoPoint} map", "Success!");
+                            this.studentRegNoPoint = null;
+                            this.classCodePoint = null;
+                            parentPanel.Invalidate();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Unable to Delete Class - {this.classCodePoint} Student - {this.subjectCodePoint} map", "Error!");
+                        }
+                    }
                 }
             }
 

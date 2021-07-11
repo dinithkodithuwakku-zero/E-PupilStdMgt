@@ -11,8 +11,10 @@ namespace E_PupilStdMgt.src.service.custom
         public bool CreateClass(ClassDTO classDTO);
         public bool UpdateClass(ClassDTO classDTO);
         public bool DeleteClass(int classId);
-        public bool AddSubjectMapping(ClassSubjectDTO classSubjectDTO);
-        public bool AddStudentMapping(ClassStudentDTO classStudentDTO);
+        public int AddSubjectMapping(ClassSubjectDTO classSubjectDTO);
+        public bool DeleteSubjectMapping(ClassSubjectDTO classSubjectDTO);
+        public int AddStudentMapping(ClassStudentDTO classStudentDTO);
+        public bool DeleteStudentMapping(ClassStudentDTO classStudentDTO);
         public List<ClassSubjectDTO> FindSubjectMapping();
         public List<ClassStudentDTO> FindStudentMapping();
         public ClassDTO FindClassByCode(string classCode);

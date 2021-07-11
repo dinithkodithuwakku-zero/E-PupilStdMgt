@@ -23,24 +23,50 @@ namespace E_PupilStdMgt.src.service.custom.impl
             iStudentServiceCustom = ServiceFactory.GetInstance().GetService<StudentServiceImpl>(ServiceFactory.ServiceTypes.STUDENT);
         }
 
-        public bool AddSubjectMapping(ClassSubjectDTO classSubjectDTO)
+        public int AddSubjectMapping(ClassSubjectDTO classSubjectDTO)
         {
-            ClassSubject classSubject = new ClassSubject();
-            classSubject.ClassEntity = iClassRepoCustom.FindClassByCode(classSubjectDTO.ClassDTO.ClassCode);
-            SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectByCode(classSubjectDTO.SubjectDTO.SubjectCode);
-            classSubject.SubjectEntity = new Subject(subjectDTO.SubjectId, subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints); ;
+            // FIRST CHECK ALREADY ADDED CLASS SUBJECT MAPPING
+            // IF YES, WE SHOULD ASK TO DELETE MAPPING OR CREATE MAPPING
+            ClassSubject classSubject = iClassRepoCustom.FindClassSubjectByClassCodeAndSubjectCode(classSubjectDTO.ClassDTO.ClassCode, classSubjectDTO.SubjectDTO.SubjectCode);
+            if (classSubject != null)
+            {
+                // FOUND MAPPING
+                return 9;
+            }
+            else
+            {
+                classSubject = new ClassSubject();
+                classSubject.ClassEntity = iClassRepoCustom.FindClassByCode(classSubjectDTO.ClassDTO.ClassCode);
+                SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectByCode(classSubjectDTO.SubjectDTO.SubjectCode);
+                classSubject.SubjectEntity = new Subject(subjectDTO.SubjectId, subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints);
 
-            return iClassRepoCustom.AddSubjectMapping(classSubject);
+                return iClassRepoCustom.AddSubjectMapping(classSubject) ? 1 : 0;
+            }
+
+            // RETURN 1 - CREATE NEW MAP, 0 - UNABLE TO CREATE MAP, 9 - ALREADY ADDED
         }
 
-        public bool AddStudentMapping(ClassStudentDTO classStudentDTO)
+        public int AddStudentMapping(ClassStudentDTO classStudentDTO)
         {
-            ClassStudent classStudent = new ClassStudent();
-            classStudent.ClassEntity = iClassRepoCustom.FindClassByCode(classStudentDTO.ClassDTO.ClassCode);
-            StudentDTO studentDTO = iStudentServiceCustom.FindStudentByRegNo(classStudentDTO.StudentDTO.StudentRegNo);
-            classStudent.StudentEntity = new Student(studentDTO.StudentId, studentDTO.StudentRegNo, studentDTO.StudentName, studentDTO.MobileNo, studentDTO.Gender, studentDTO.Email, studentDTO.PermanentAddress);
+            // FIRST CHECK ALREADY ADDED CLASS STUDENT MAPPING
+            // IF YES, WE SHOULD ASK TO DELETE MAPPING OR CREATE MAPPING
+            ClassStudent classStudent = iClassRepoCustom.FindClassStudentByClassCodeAndStudentRegNo(classStudentDTO.ClassDTO.ClassCode, classStudentDTO.StudentDTO.StudentRegNo);
 
-            return iClassRepoCustom.AddStudentMapping(classStudent);
+            if (classStudent != null)
+            {
+                return 9;
+            }
+            else
+            {
+                classStudent = new ClassStudent();
+                classStudent.ClassEntity = iClassRepoCustom.FindClassByCode(classStudentDTO.ClassDTO.ClassCode);
+                StudentDTO studentDTO = iStudentServiceCustom.FindStudentByRegNo(classStudentDTO.StudentDTO.StudentRegNo);
+                classStudent.StudentEntity = new Student(studentDTO.StudentId, studentDTO.StudentRegNo, studentDTO.StudentName, studentDTO.MobileNo, studentDTO.Gender, studentDTO.Email, studentDTO.PermanentAddress);
+
+                return iClassRepoCustom.AddStudentMapping(classStudent) ? 1 : 0;
+            }
+
+            // RETURN 1 - CREATE NEW MAP, 0 - UNABLE TO CREATE MAP, 9 - ALREADY ADDED
         }
 
         public bool CreateClass(ClassDTO classDTO)
@@ -114,7 +140,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
         public List<ClassSubjectDTO> FindSubjectMappingByStudentAndClass(string classCode, int studentId)
         {
-            ClassDTO  classDTO = this.FindClassByCode(classCode);
+            ClassDTO classDTO = this.FindClassByCode(classCode);
             ArrayList classSubjectList = iClassRepoCustom.FindSubjectMappingByStudentAndClass(classDTO.ClassId, studentId);
             List<ClassSubjectDTO> list = new List<ClassSubjectDTO>();
             foreach (ClassSubject cs in classSubjectList)
@@ -152,6 +178,20 @@ namespace E_PupilStdMgt.src.service.custom.impl
         public bool DeleteClass(int classId)
         {
             return iClassRepoCustom.Delete(classId);
+        }
+
+        public bool DeleteSubjectMapping(ClassSubjectDTO classSubjectDTO)
+        {
+            ClassSubject classSubject = iClassRepoCustom.FindClassSubjectByClassCodeAndSubjectCode(classSubjectDTO.ClassDTO.ClassCode, classSubjectDTO.SubjectDTO.SubjectCode);
+
+            return iClassRepoCustom.DeleteSubjectMapping(classSubject);
+        }
+
+        public bool DeleteStudentMapping(ClassStudentDTO classStudentDTO)
+        {
+            ClassStudent classStudent= iClassRepoCustom.FindClassStudentByClassCodeAndStudentRegNo(classStudentDTO.ClassDTO.ClassCode, classStudentDTO.StudentDTO.StudentRegNo);
+
+            return iClassRepoCustom.DeleteStudentMapping(classStudent);
         }
     }
 }
