@@ -17,6 +17,7 @@ namespace E_PupilStdMgt.forms.screens
     public partial class SubjectMgtScreenForm : Form
     {
         private ISubjectServiceCustom iSubjectServiceCustom;
+        private int _subjectId;
 
         DBConnection con = new DBConnection();
         public SubjectMgtScreenForm()
@@ -103,6 +104,82 @@ namespace E_PupilStdMgt.forms.screens
             subjectDurationInput.Text = null;
             subjectTotalPointsInput.Text = null;
             subjectCreatePanel.Visible = false;
+
+            _subjectId = 0;
+            updateSubjectNameInput.Text = null;
+            updateSubjectCodeInput.Text = null;
+            updateSubjectDurationInput.Text = null;
+            updateSubjectTotalPointsInput.Text = null;
+            subjectUpdatePanel.Visible = false;
+        }
+
+        private void subjectDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.subjectDataGrid.Rows[e.RowIndex];
+
+                _subjectId = Int16.Parse(row.Cells[0].Value.ToString());
+                updateSubjectNameInput.Text = row.Cells[1].Value.ToString();
+                updateSubjectCodeInput.Text = row.Cells[2].Value.ToString();
+                updateSubjectDurationInput.Text = row.Cells[3].Value.ToString();
+                updateSubjectTotalPointsInput.Text = row.Cells[4].Value.ToString();
+
+                subjectUpdatePanel.Visible = true;
+            }
+        }
+
+        private void cancelUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+            ClearCreateFormData();
+        }
+
+        private void updatePanelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isUpdated = iSubjectServiceCustom.UpdateSubject(new SubjectDTO(_subjectId, updateSubjectNameInput.Text, updateSubjectCodeInput.Text, Int16.Parse(updateSubjectDurationInput.Text), Double.Parse(updateSubjectTotalPointsInput.Text)));
+
+                if (isUpdated)
+                {
+                    MessageBox.Show("Subject Updated!");
+                    LoadSubjectDetails();
+                    ClearCreateFormData();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Update Subject!", "Error!");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
+        }
+
+        private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isDeleted = iSubjectServiceCustom.DeleteSubject(_subjectId);
+
+                if (isDeleted)
+                {
+                    MessageBox.Show("Subject Deleted!");
+                    LoadSubjectDetails();
+                    ClearCreateFormData();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Delete Subject!", "Error!");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
         }
     }
 }

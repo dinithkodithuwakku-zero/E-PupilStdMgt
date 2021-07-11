@@ -24,6 +24,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return iSubjectRepoCustom.Save(new Subject(subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints));
         }
 
+        public bool DeleteSubject(int subjectId)
+        {
+            return iSubjectRepoCustom.Delete(subjectId);
+        }
+
         public List<SubjectDTO> FindAllSubjects()
         {
             ArrayList subjectList = iSubjectRepoCustom.GetAll();
@@ -37,7 +42,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return list;
         }
 
-      
+
 
         public SubjectDTO FindSubjectByCode(string code)
         {
@@ -51,6 +56,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
             if (subject != null)
                 return new SubjectDTO(subject.SubjectId, subject.SubjectName, subject.SubjectCode, subject.SubjectDuration, subject.SubjectTotalPoints);
             return null;
+        }
+
+        public bool UpdateSubject(SubjectDTO subjectDTO)
+        {
+            return iSubjectRepoCustom.Update(new Subject(subjectDTO.SubjectId, subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints));
         }
     }
 }

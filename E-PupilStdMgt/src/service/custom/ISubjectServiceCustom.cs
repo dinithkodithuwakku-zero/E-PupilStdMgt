@@ -9,6 +9,8 @@ namespace E_PupilStdMgt.src.service.custom
     {
         public List<SubjectDTO> FindAllSubjects();
         public bool CreateNewSubject(SubjectDTO subjectDTO);
+        public bool UpdateSubject(SubjectDTO subjectDTO);
+        public bool DeleteSubject(int subjectId);
         public SubjectDTO FindSubjectByCode(string code);
         public SubjectDTO FindSubjectById(int id);
     }

@@ -15,7 +15,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_subject SET STATUS = 0 WHERE ID_SUBJECT = @subjectId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@subjectId", id.ToString()),
+                };
+
+
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public Subject FindSubjectByCode(string code)
@@ -24,7 +52,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE SUBJECT_CODE = '" + code + "'";
+                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE STATUS = 1 AND SUBJECT_CODE = '" + code + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -53,7 +81,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE ID_SUBJECT = '" + id + "'";
+                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE STATUS = 1 AND ID_SUBJECT = '" + id + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -82,7 +110,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject";
+                string query = "select ID_SUBJECT, SUBJECT_NAME, SUBJECT_CODE, SUBJECT_DURATION, SUBJECT_TOTAL_POINTS from core_subject WHERE STATUS = 1";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -152,7 +180,39 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Update(Subject entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_subject SET SUBJECT_NAME = @subjectName, SUBJECT_CODE = @subjectCode, SUBJECT_DURATION = @subjectDuration, SUBJECT_TOTAL_POINTS = @subjectTotalPoints WHERE ID_SUBJECT = @subjectId";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@subjectName", entity.SubjectName),
+                    new ParameterClass("@subjectCode", entity.SubjectCode),
+                    new ParameterClass("@subjectDuration", entity.SubjectDuration.ToString()),
+                    new ParameterClass("@subjectTotalPoints", entity.SubjectTotalPoints.ToString("0.00")),
+                    new ParameterClass("@subjectId", entity.SubjectId.ToString()),
+                };
+
+
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

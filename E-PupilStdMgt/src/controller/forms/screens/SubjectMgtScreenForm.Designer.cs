@@ -31,7 +31,13 @@ namespace E_PupilStdMgt.forms.screens
         {
             this.createNewSubjectButton = new System.Windows.Forms.Button();
             this.subjectDataGrid = new System.Windows.Forms.DataGridView();
+            this.ID_SUBJECT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_DURATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SUBJECT_TOTAL_POINTS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectCreatePanel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.closePanelButton = new System.Windows.Forms.Button();
             this.createPanelButton = new System.Windows.Forms.Button();
             this.subjectTotalPointsInput = new System.Windows.Forms.TextBox();
@@ -43,14 +49,23 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectNameInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.createNewSubjectLabel = new System.Windows.Forms.Label();
-            this.ID_SUBJECT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_CODE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_DURATION = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SUBJECT_TOTAL_POINTS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
+            this.subjectUpdatePanel = new System.Windows.Forms.Panel();
+            this.deleteUpdatePanelButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cancelUpdatePanelButton = new System.Windows.Forms.Button();
+            this.updatePanelButton = new System.Windows.Forms.Button();
+            this.updateSubjectTotalPointsInput = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.updateSubjectDurationInput = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.updateSubjectCodeInput = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.updateSubjectNameInput = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subjectDataGrid)).BeginInit();
             this.subjectCreatePanel.SuspendLayout();
+            this.subjectUpdatePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // createNewSubjectButton
@@ -90,6 +105,47 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectDataGrid.RowTemplate.Height = 29;
             this.subjectDataGrid.Size = new System.Drawing.Size(802, 256);
             this.subjectDataGrid.TabIndex = 12;
+            this.subjectDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.subjectDataGrid_CellClick);
+            // 
+            // ID_SUBJECT
+            // 
+            this.ID_SUBJECT.HeaderText = "Subject Id";
+            this.ID_SUBJECT.MinimumWidth = 6;
+            this.ID_SUBJECT.Name = "ID_SUBJECT";
+            this.ID_SUBJECT.ReadOnly = true;
+            this.ID_SUBJECT.Width = 125;
+            // 
+            // SUBJECT_NAME
+            // 
+            this.SUBJECT_NAME.HeaderText = "Subject Name";
+            this.SUBJECT_NAME.MinimumWidth = 6;
+            this.SUBJECT_NAME.Name = "SUBJECT_NAME";
+            this.SUBJECT_NAME.ReadOnly = true;
+            this.SUBJECT_NAME.Width = 250;
+            // 
+            // SUBJECT_CODE
+            // 
+            this.SUBJECT_CODE.HeaderText = "Subject Code";
+            this.SUBJECT_CODE.MinimumWidth = 6;
+            this.SUBJECT_CODE.Name = "SUBJECT_CODE";
+            this.SUBJECT_CODE.ReadOnly = true;
+            this.SUBJECT_CODE.Width = 175;
+            // 
+            // SUBJECT_DURATION
+            // 
+            this.SUBJECT_DURATION.HeaderText = "Subject Duration";
+            this.SUBJECT_DURATION.MinimumWidth = 6;
+            this.SUBJECT_DURATION.Name = "SUBJECT_DURATION";
+            this.SUBJECT_DURATION.ReadOnly = true;
+            this.SUBJECT_DURATION.Width = 125;
+            // 
+            // SUBJECT_TOTAL_POINTS
+            // 
+            this.SUBJECT_TOTAL_POINTS.HeaderText = "Subject Total Points";
+            this.SUBJECT_TOTAL_POINTS.MinimumWidth = 6;
+            this.SUBJECT_TOTAL_POINTS.Name = "SUBJECT_TOTAL_POINTS";
+            this.SUBJECT_TOTAL_POINTS.ReadOnly = true;
+            this.SUBJECT_TOTAL_POINTS.Width = 125;
             // 
             // subjectCreatePanel
             // 
@@ -111,6 +167,17 @@ namespace E_PupilStdMgt.forms.screens
             this.subjectCreatePanel.Size = new System.Drawing.Size(688, 417);
             this.subjectCreatePanel.TabIndex = 13;
             this.subjectCreatePanel.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(56, 224);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "(Weeks)";
             // 
             // closePanelButton
             // 
@@ -233,56 +300,176 @@ namespace E_PupilStdMgt.forms.screens
             this.createNewSubjectLabel.TabIndex = 15;
             this.createNewSubjectLabel.Text = "Create New Subject";
             // 
-            // ID_SUBJECT
+            // subjectUpdatePanel
             // 
-            this.ID_SUBJECT.HeaderText = "Subject Id";
-            this.ID_SUBJECT.MinimumWidth = 6;
-            this.ID_SUBJECT.Name = "ID_SUBJECT";
-            this.ID_SUBJECT.ReadOnly = true;
-            this.ID_SUBJECT.Width = 125;
+            this.subjectUpdatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.subjectUpdatePanel.Controls.Add(this.deleteUpdatePanelButton);
+            this.subjectUpdatePanel.Controls.Add(this.label6);
+            this.subjectUpdatePanel.Controls.Add(this.cancelUpdatePanelButton);
+            this.subjectUpdatePanel.Controls.Add(this.updatePanelButton);
+            this.subjectUpdatePanel.Controls.Add(this.updateSubjectTotalPointsInput);
+            this.subjectUpdatePanel.Controls.Add(this.label7);
+            this.subjectUpdatePanel.Controls.Add(this.updateSubjectDurationInput);
+            this.subjectUpdatePanel.Controls.Add(this.label8);
+            this.subjectUpdatePanel.Controls.Add(this.updateSubjectCodeInput);
+            this.subjectUpdatePanel.Controls.Add(this.label9);
+            this.subjectUpdatePanel.Controls.Add(this.updateSubjectNameInput);
+            this.subjectUpdatePanel.Controls.Add(this.label10);
+            this.subjectUpdatePanel.Controls.Add(this.label11);
+            this.subjectUpdatePanel.Location = new System.Drawing.Point(112, 64);
+            this.subjectUpdatePanel.Name = "subjectUpdatePanel";
+            this.subjectUpdatePanel.Size = new System.Drawing.Size(688, 417);
+            this.subjectUpdatePanel.TabIndex = 33;
+            this.subjectUpdatePanel.Visible = false;
             // 
-            // SUBJECT_NAME
+            // deleteUpdatePanelButton
             // 
-            this.SUBJECT_NAME.HeaderText = "Subject Name";
-            this.SUBJECT_NAME.MinimumWidth = 6;
-            this.SUBJECT_NAME.Name = "SUBJECT_NAME";
-            this.SUBJECT_NAME.ReadOnly = true;
-            this.SUBJECT_NAME.Width = 250;
+            this.deleteUpdatePanelButton.AutoSize = true;
+            this.deleteUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.deleteUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.deleteUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.deleteUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.deleteUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.deleteUpdatePanelButton.Location = new System.Drawing.Point(323, 318);
+            this.deleteUpdatePanelButton.Name = "deleteUpdatePanelButton";
+            this.deleteUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.deleteUpdatePanelButton.TabIndex = 33;
+            this.deleteUpdatePanelButton.Text = "Delete";
+            this.deleteUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.deleteUpdatePanelButton.Click += new System.EventHandler(this.deleteUpdatePanelButton_Click);
             // 
-            // SUBJECT_CODE
+            // label6
             // 
-            this.SUBJECT_CODE.HeaderText = "Subject Code";
-            this.SUBJECT_CODE.MinimumWidth = 6;
-            this.SUBJECT_CODE.Name = "SUBJECT_CODE";
-            this.SUBJECT_CODE.ReadOnly = true;
-            this.SUBJECT_CODE.Width = 175;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(56, 224);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 20);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "(Weeks)";
             // 
-            // SUBJECT_DURATION
+            // cancelUpdatePanelButton
             // 
-            this.SUBJECT_DURATION.HeaderText = "Subject Duration";
-            this.SUBJECT_DURATION.MinimumWidth = 6;
-            this.SUBJECT_DURATION.Name = "SUBJECT_DURATION";
-            this.SUBJECT_DURATION.ReadOnly = true;
-            this.SUBJECT_DURATION.Width = 125;
+            this.cancelUpdatePanelButton.AutoSize = true;
+            this.cancelUpdatePanelButton.BackColor = System.Drawing.Color.IndianRed;
+            this.cancelUpdatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelUpdatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.cancelUpdatePanelButton.FlatAppearance.BorderSize = 0;
+            this.cancelUpdatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cancelUpdatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.cancelUpdatePanelButton.Location = new System.Drawing.Point(482, 318);
+            this.cancelUpdatePanelButton.Name = "cancelUpdatePanelButton";
+            this.cancelUpdatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.cancelUpdatePanelButton.TabIndex = 31;
+            this.cancelUpdatePanelButton.Text = "Cancel";
+            this.cancelUpdatePanelButton.UseVisualStyleBackColor = false;
+            this.cancelUpdatePanelButton.Click += new System.EventHandler(this.cancelUpdatePanelButton_Click);
             // 
-            // SUBJECT_TOTAL_POINTS
+            // updatePanelButton
             // 
-            this.SUBJECT_TOTAL_POINTS.HeaderText = "Subject Total Points";
-            this.SUBJECT_TOTAL_POINTS.MinimumWidth = 6;
-            this.SUBJECT_TOTAL_POINTS.Name = "SUBJECT_TOTAL_POINTS";
-            this.SUBJECT_TOTAL_POINTS.ReadOnly = true;
-            this.SUBJECT_TOTAL_POINTS.Width = 125;
+            this.updatePanelButton.AutoSize = true;
+            this.updatePanelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(136)))), ((int)(((byte)(88)))));
+            this.updatePanelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.updatePanelButton.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.updatePanelButton.FlatAppearance.BorderSize = 0;
+            this.updatePanelButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updatePanelButton.ForeColor = System.Drawing.SystemColors.Info;
+            this.updatePanelButton.Location = new System.Drawing.Point(164, 318);
+            this.updatePanelButton.Name = "updatePanelButton";
+            this.updatePanelButton.Size = new System.Drawing.Size(149, 53);
+            this.updatePanelButton.TabIndex = 30;
+            this.updatePanelButton.Text = "Update";
+            this.updatePanelButton.UseVisualStyleBackColor = false;
+            this.updatePanelButton.Click += new System.EventHandler(this.updatePanelButton_Click);
             // 
-            // label5
+            // updateSubjectTotalPointsInput
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(56, 224);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "(Weeks)";
+            this.updateSubjectTotalPointsInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateSubjectTotalPointsInput.Location = new System.Drawing.Point(555, 204);
+            this.updateSubjectTotalPointsInput.Name = "updateSubjectTotalPointsInput";
+            this.updateSubjectTotalPointsInput.Size = new System.Drawing.Size(76, 27);
+            this.updateSubjectTotalPointsInput.TabIndex = 25;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(362, 204);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(147, 20);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Subject Total Points";
+            // 
+            // updateSubjectDurationInput
+            // 
+            this.updateSubjectDurationInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateSubjectDurationInput.Location = new System.Drawing.Point(249, 204);
+            this.updateSubjectDurationInput.Name = "updateSubjectDurationInput";
+            this.updateSubjectDurationInput.Size = new System.Drawing.Size(76, 27);
+            this.updateSubjectDurationInput.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(56, 204);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 20);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Subject Duration";
+            // 
+            // updateSubjectCodeInput
+            // 
+            this.updateSubjectCodeInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateSubjectCodeInput.Location = new System.Drawing.Point(249, 148);
+            this.updateSubjectCodeInput.Name = "updateSubjectCodeInput";
+            this.updateSubjectCodeInput.Size = new System.Drawing.Size(382, 27);
+            this.updateSubjectCodeInput.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(56, 148);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(99, 20);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Subject Code";
+            // 
+            // updateSubjectNameInput
+            // 
+            this.updateSubjectNameInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.updateSubjectNameInput.Location = new System.Drawing.Point(249, 90);
+            this.updateSubjectNameInput.Name = "updateSubjectNameInput";
+            this.updateSubjectNameInput.Size = new System.Drawing.Size(382, 27);
+            this.updateSubjectNameInput.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(56, 90);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(106, 20);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Subject Name";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(27, 28);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(115, 20);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Update Subject";
             // 
             // SubjectMgtScreenForm
             // 
@@ -290,6 +477,7 @@ namespace E_PupilStdMgt.forms.screens
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(916, 611);
+            this.Controls.Add(this.subjectUpdatePanel);
             this.Controls.Add(this.subjectCreatePanel);
             this.Controls.Add(this.subjectDataGrid);
             this.Controls.Add(this.createNewSubjectButton);
@@ -299,6 +487,8 @@ namespace E_PupilStdMgt.forms.screens
             ((System.ComponentModel.ISupportInitialize)(this.subjectDataGrid)).EndInit();
             this.subjectCreatePanel.ResumeLayout(false);
             this.subjectCreatePanel.PerformLayout();
+            this.subjectUpdatePanel.ResumeLayout(false);
+            this.subjectUpdatePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +516,19 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_DURATION;
         private System.Windows.Forms.DataGridViewTextBoxColumn SUBJECT_TOTAL_POINTS;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel subjectUpdatePanel;
+        private System.Windows.Forms.Button deleteUpdatePanelButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button cancelUpdatePanelButton;
+        private System.Windows.Forms.Button updatePanelButton;
+        private System.Windows.Forms.TextBox updateSubjectTotalPointsInput;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox updateSubjectDurationInput;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox updateSubjectCodeInput;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox updateSubjectNameInput;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }
