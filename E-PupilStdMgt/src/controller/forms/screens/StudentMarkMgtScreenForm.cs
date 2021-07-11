@@ -123,5 +123,10 @@ namespace E_PupilStdMgt.src.controller.forms.screens
                 MessageBox.Show("Connection Error", "Error!");
             }
         }
+
+        private void StudentMarkMgtScreenForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

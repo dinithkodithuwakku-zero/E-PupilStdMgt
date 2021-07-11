@@ -15,6 +15,7 @@ namespace E_PupilStdMgt.forms.screens
     public partial class ClassMgtScreenForm : Form
     {
         private IClassServiceCustom iClassServiceCustom;
+        private int _selectedClassId;
 
         public ClassMgtScreenForm()
         {
@@ -109,6 +110,88 @@ namespace E_PupilStdMgt.forms.screens
             classCodeInput.Text = null;
             isActiveCheckBox.Checked = false;
             classCreatePanel.Visible = false;
+
+            _selectedClassId = 0;
+            updateClassNameInput.Text = null;
+            updateClassCodeInput.Text = null;
+            updateClassIsActiveCheckbox.Checked = false;
+            classUpdatePanel.Visible = false;
+        }
+
+        private void classDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.classDataGrid.Rows[e.RowIndex];
+
+                _selectedClassId = Int16.Parse(row.Cells[0].Value.ToString());
+                updateClassNameInput.Text =  row.Cells[1].Value.ToString();
+                updateClassCodeInput.Text = row.Cells[2].Value.ToString();
+
+                updateClassIsActiveCheckbox.Checked = Int16.Parse(row.Cells[3].Value.ToString()) == 1 ? true : false;
+
+                classUpdatePanel.Visible = true;
+            }
+        }
+
+        private void cancelPanelButton_Click(object sender, EventArgs e)
+        {
+            ClearCreateFormData();
+        }
+
+        private void updatePanelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                ClassDTO classDTO = new ClassDTO();
+                classDTO.ClassId = _selectedClassId;
+                classDTO.ClassName = updateClassNameInput.Text;
+                classDTO.ClassCode = updateClassCodeInput.Text;
+                classDTO.IsActive = updateClassIsActiveCheckbox.Checked ? 1 : 0;
+
+                bool isUpdated = iClassServiceCustom.UpdateClass(classDTO);
+
+                if (isUpdated)
+                {
+                    MessageBox.Show("Class Updated!");
+                    LoadClassDetails();
+                    ClearCreateFormData();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Update Class!", "Error!");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
+        }
+
+        private void deletePanelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isDeleted = iClassServiceCustom.DeleteClass(_selectedClassId);
+
+                if (isDeleted)
+                {
+                    MessageBox.Show("Class Deleted!");
+                    LoadClassDetails();
+                    ClearCreateFormData();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to Delete Class!", "Error!");
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Connection Error", "Error!");
+            }
         }
     }
 }

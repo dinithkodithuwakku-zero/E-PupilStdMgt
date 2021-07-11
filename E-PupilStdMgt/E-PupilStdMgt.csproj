@@ -5,15 +5,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>E_PupilStdMgt</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>E_PupilStdMgt.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.25" />
     <PackageReference Include="MySqlConnector" Version="1.3.10" />
     <PackageReference Include="Renci.SshNet.Async" Version="1.4.0" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.14" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="omp_smsDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>omp_smsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -26,6 +33,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="omp_smsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>omp_smsDataSet.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

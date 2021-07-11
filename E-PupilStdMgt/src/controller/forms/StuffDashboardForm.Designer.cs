@@ -161,6 +161,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.createPanelButton.TabIndex = 12;
             this.createPanelButton.Text = "Report Window";
             this.createPanelButton.UseVisualStyleBackColor = false;
+            this.createPanelButton.Click += new System.EventHandler(this.createPanelButton_Click);
             // 
             // StuffDashboardForm
             // 

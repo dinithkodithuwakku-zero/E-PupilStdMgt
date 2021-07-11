@@ -9,6 +9,8 @@ namespace E_PupilStdMgt.src.service.custom
     {
         public List<ClassDTO> FindAllClasses();
         public bool CreateClass(ClassDTO classDTO);
+        public bool UpdateClass(ClassDTO classDTO);
+        public bool DeleteClass(int classId);
         public bool AddSubjectMapping(ClassSubjectDTO classSubjectDTO);
         public bool AddStudentMapping(ClassStudentDTO classStudentDTO);
         public List<ClassSubjectDTO> FindSubjectMapping();

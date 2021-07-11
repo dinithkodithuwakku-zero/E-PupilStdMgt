@@ -137,5 +137,21 @@ namespace E_PupilStdMgt.src.service.custom.impl
             Class classEntity = iClassRepoCustom.Search(id);
             return new ClassDTO(classEntity.ClassId, classEntity.ClassName, classEntity.ClassCode, classEntity.IsActive);
         }
+
+        public bool UpdateClass(ClassDTO classDTO)
+        {
+            Class classEntity = new Class();
+            classEntity.ClassId = classDTO.ClassId;
+            classEntity.ClassName = classDTO.ClassName;
+            classEntity.ClassCode = classDTO.ClassCode;
+            classEntity.IsActive = classDTO.IsActive;
+
+            return iClassRepoCustom.Update(classEntity);
+        }
+
+        public bool DeleteClass(int classId)
+        {
+            return iClassRepoCustom.Delete(classId);
+        }
     }
 }

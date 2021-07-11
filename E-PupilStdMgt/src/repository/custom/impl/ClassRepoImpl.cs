@@ -137,7 +137,64 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            /*
+            try
+            {
+                con.Open();
+                string query = "DELETE FROM core_class WHERE ID_CLASS = @classId;";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@classId", id.ToString())
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+            */
+
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_class SET STATUS = @status WHERE ID_CLASS = @classId;";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@status", "0"),
+                    new ParameterClass("@classId", id.ToString())
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public Class FindClassByCode(string code)
@@ -145,7 +202,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             try
             {
                 con.Open();
-                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE CLASS_CODE = '" + code + "'";
+                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE STATUS = 1 AND CLASS_CODE = '" + code + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -174,7 +231,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             {
                 con.Open();
                 ArrayList list = new ArrayList();
-                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class";
+                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE STATUS = 1";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
                 while (reader.Read())
@@ -204,12 +261,13 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             try
             {
                 con.Open();
-                string query = "INSERT INTO core_class(CLASS_NAME, CLASS_CODE, IS_ACTIVE) VALUES(@className, @classCode, @isActive)";
+                string query = "INSERT INTO core_class(CLASS_NAME, CLASS_CODE, IS_ACTIVE, STATUS) VALUES(@className, @classCode, @isActive, @status)";
 
                 ParameterClass[] parameterClasses = {
                     new ParameterClass("@className", entity.ClassName),
                     new ParameterClass("@classCode", entity.ClassCode),
-                    new ParameterClass("@isActive", entity.IsActive.ToString())
+                    new ParameterClass("@isActive", entity.IsActive.ToString()),
+                    new ParameterClass("@status", "1"),
                 };
                 int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
 
@@ -237,7 +295,7 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             try
             {
                 con.Open();
-                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE ID_CLASS = '" + id + "'";
+                string query = "select ID_CLASS, CLASS_NAME, CLASS_CODE, IS_ACTIVE from core_class WHERE STATUS = 1 AND ID_CLASS = '" + id + "'";
 
                 MySqlDataReader reader = con.ExecuteReader(query);
 
@@ -262,7 +320,36 @@ namespace E_PupilStdMgt.src.repository.custom.impl
 
         public bool Update(Class entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                con.Open();
+                string query = "UPDATE core_class SET CLASS_NAME = @className, CLASS_CODE = @classCode, IS_ACTIVE = @isActive WHERE ID_CLASS = @classId;";
+
+                ParameterClass[] parameterClasses = {
+                    new ParameterClass("@className", entity.ClassName),
+                    new ParameterClass("@classCode", entity.ClassCode),
+                    new ParameterClass("@isActive", entity.IsActive.ToString()),
+                    new ParameterClass("@classId", entity.ClassId.ToString())
+                };
+                int affected = con.ExecuteQueryWithParameters(query, parameterClasses);
+
+                if (affected != -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public ArrayList FindSubjectMappingByStudentAndClass(int classId, int studentId)

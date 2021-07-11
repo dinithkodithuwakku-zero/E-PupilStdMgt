@@ -40,9 +40,6 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.closePanelButton = new System.Windows.Forms.Button();
             this.createPanelButton = new System.Windows.Forms.Button();
             this.classSubjectStudentMarkDataGrid = new System.Windows.Forms.DataGridView();
-            this.studentDetailLable = new System.Windows.Forms.Label();
-            this.subjectPicker = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.classCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.className = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +47,9 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.studentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentDetailLable = new System.Windows.Forms.Label();
+            this.subjectPicker = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.classSubjectStudentMarkDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,37 +182,6 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.classSubjectStudentMarkDataGrid.Size = new System.Drawing.Size(754, 248);
             this.classSubjectStudentMarkDataGrid.TabIndex = 39;
             // 
-            // studentDetailLable
-            // 
-            this.studentDetailLable.AutoSize = true;
-            this.studentDetailLable.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.studentDetailLable.ForeColor = System.Drawing.Color.White;
-            this.studentDetailLable.Location = new System.Drawing.Point(35, 38);
-            this.studentDetailLable.Name = "studentDetailLable";
-            this.studentDetailLable.Size = new System.Drawing.Size(256, 25);
-            this.studentDetailLable.TabIndex = 40;
-            this.studentDetailLable.Text = "Student Name - Reg no 0002";
-            // 
-            // subjectPicker
-            // 
-            this.subjectPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.subjectPicker.FormattingEnabled = true;
-            this.subjectPicker.Location = new System.Drawing.Point(628, 106);
-            this.subjectPicker.Name = "subjectPicker";
-            this.subjectPicker.Size = new System.Drawing.Size(161, 28);
-            this.subjectPicker.TabIndex = 42;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(485, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Select Subject";
-            // 
             // classCode
             // 
             this.classCode.HeaderText = "Class Code";
@@ -268,6 +237,37 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             this.studentPoint.Name = "studentPoint";
             this.studentPoint.ReadOnly = true;
             this.studentPoint.Width = 125;
+            // 
+            // studentDetailLable
+            // 
+            this.studentDetailLable.AutoSize = true;
+            this.studentDetailLable.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.studentDetailLable.ForeColor = System.Drawing.Color.White;
+            this.studentDetailLable.Location = new System.Drawing.Point(35, 38);
+            this.studentDetailLable.Name = "studentDetailLable";
+            this.studentDetailLable.Size = new System.Drawing.Size(256, 25);
+            this.studentDetailLable.TabIndex = 40;
+            this.studentDetailLable.Text = "Student Name - Reg no 0002";
+            // 
+            // subjectPicker
+            // 
+            this.subjectPicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.subjectPicker.FormattingEnabled = true;
+            this.subjectPicker.Location = new System.Drawing.Point(628, 106);
+            this.subjectPicker.Name = "subjectPicker";
+            this.subjectPicker.Size = new System.Drawing.Size(161, 28);
+            this.subjectPicker.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(485, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Select Subject";
             // 
             // StudentMarkMgtScreenForm
             // 

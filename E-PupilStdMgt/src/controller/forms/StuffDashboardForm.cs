@@ -397,6 +397,13 @@ namespace E_PupilStdMgt.src.controller.forms
             }*/
         }
 
+        private void createPanelButton_Click(object sender, EventArgs e)
+        {
+            ReportScreenForm reportScreenForm = new ReportScreenForm();
+
+            reportScreenForm.Show();
+        }
+
         private void parentPanel_Paint(object sender, PaintEventArgs e)
         {
             /* using (var p = new Pen(Color.Blue, 4))
