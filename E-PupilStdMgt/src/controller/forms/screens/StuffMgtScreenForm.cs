@@ -10,6 +10,7 @@ using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
 using E_PupilStdMgt.src.utill;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -71,19 +72,43 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isCreated = iStuffServiceCustom.CreateNewStuff(new StuffDTO(userNameInput.Text, encryptDecrypt.Encrypt(passwordInput.Text), fullNameInput.Text, nicInput.Text, jobTitlePicker.SelectedItem.ToString(), mobileNoInput.Text, emailInput.Text, permanentAddressInput.Text));
+                StuffDTO stuffDTO = new StuffDTO(userNameInput.Text, encryptDecrypt.Encrypt(passwordInput.Text), fullNameInput.Text, nicInput.Text, jobTitlePicker.SelectedItem != null ? jobTitlePicker.SelectedItem.ToString() : "", mobileNoInput.Text, emailInput.Text, permanentAddressInput.Text);
+                stuffDTO.Validate();
 
-                if (isCreated)
+
+                if (!passwordInput.Text.Equals("") || !userNameInput.Text.Equals(""))
                 {
-                    MessageBox.Show("New User Created!");
-                    LoadStuffDetails();
-                    ClearCreateFormData();
+                    bool isValidEmail = IsValidEmail(emailInput.Text);
+
+                    if (isValidEmail)
+                    {
+
+                        bool isCreated = iStuffServiceCustom.CreateNewStuff(stuffDTO);
+
+                        if (isCreated)
+                        {
+                            MessageBox.Show("New User Created!");
+                            LoadStuffDetails();
+                            ClearCreateFormData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to Create new User!", "Error!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid email!", "Error!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Create new User!", "Error!");
+                    MessageBox.Show("Login credentials required!", "Error!");
                 }
-
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
@@ -122,19 +147,36 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isUpdated = iStuffServiceCustom.UpdateStuff(new StuffDTO(_stuffId, updateUserFullNameInput.Text, updateUserNICInput.Text, updateUserJobTitlePicker.SelectedItem.ToString(), updateUserMobileNoInput.Text, updateUserEmailInput.Text, updateUserAddressInput.Text));
+                StuffDTO stuffDTO = new StuffDTO(_stuffId, updateUserFullNameInput.Text, updateUserNICInput.Text, updateUserJobTitlePicker.SelectedItem.ToString(), updateUserMobileNoInput.Text, updateUserEmailInput.Text, updateUserAddressInput.Text);
 
-                if (isUpdated)
+                stuffDTO.Validate();
+
+                bool isValidEmail = IsValidEmail(updateUserEmailInput.Text);
+
+                if (isValidEmail)
                 {
-                    MessageBox.Show("User Updated!");
-                    LoadStuffDetails();
-                    ClearCreateFormData();
+
+                    bool isUpdated = iStuffServiceCustom.UpdateStuff(stuffDTO);
+
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("User Updated!");
+                        LoadStuffDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Update User!", "Error!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Update User!", "Error!");
+                    MessageBox.Show("Invalid email!", "Error!");
                 }
-
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
@@ -142,7 +184,20 @@ namespace E_PupilStdMgt.forms.screens
             }
         }
 
-            private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void deleteUpdatePanelButton_Click(object sender, EventArgs e)
         {
             try
             {

@@ -9,6 +9,7 @@ using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -84,22 +85,51 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isCreated = iStudentServiceCustom.CreateNewStudent(new StudentDTO(stdRegNoInput.Text, stdNameInput.Text, stdMobileNoInput.Text, genderPicker.SelectedItem.ToString(), stdEmailInput.Text, permentAddressInput.Text));
+                StudentDTO studentDTO = new StudentDTO(stdRegNoInput.Text, stdNameInput.Text, stdMobileNoInput.Text, genderPicker.SelectedItem == null ? "" : genderPicker.SelectedItem.ToString(), stdEmailInput.Text, permentAddressInput.Text);
+                studentDTO.Validate();
 
-                if (isCreated)
+                bool isValidEmail = IsValidEmail(stdEmailInput.Text);
+
+                if (isValidEmail)
                 {
-                    MessageBox.Show("New Student Created!");
-                    LoadStudentDetails();
-                    ClearCreateFormData();
+                    bool isCreated = isValidEmail && iStudentServiceCustom.CreateNewStudent(studentDTO);
+
+                    if (isCreated)
+                    {
+                        MessageBox.Show("New Student Created!");
+                        LoadStudentDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Create new Student!", "Error!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Create new Student!", "Error!");
+                    MessageBox.Show("Invalid email!", "Error!");
                 }
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
+            }
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
 
@@ -127,18 +157,34 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isUpdated = iStudentServiceCustom.UpdateStudent(new StudentDTO(_studentId, updateStudentRegNoInput.Text, updateStudentNameInput.Text, updateStudentMobileNoInput.Text, updateStudentGenderPicker.SelectedItem.ToString(), updateStudentEmailInput.Text, updateStudentAddressInput.Text));
+                StudentDTO studentDTO = new StudentDTO(_studentId, updateStudentRegNoInput.Text, updateStudentNameInput.Text, updateStudentMobileNoInput.Text, updateStudentGenderPicker.SelectedItem.ToString(), updateStudentEmailInput.Text, updateStudentAddressInput.Text);
+                studentDTO.Validate();
 
-                if (isUpdated)
+                bool isValidEmail = IsValidEmail(updateStudentEmailInput.Text);
+
+                if (isValidEmail)
                 {
-                    MessageBox.Show("Student Updated!");
-                    LoadStudentDetails();
-                    ClearCreateFormData();
+                    bool isUpdated = iStudentServiceCustom.UpdateStudent(studentDTO);
+
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("Student Updated!");
+                        LoadStudentDetails();
+                        ClearCreateFormData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Update Student!", "Error!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Update Student!", "Error!");
+                    MessageBox.Show("Invalid email!", "Error!");
                 }
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
