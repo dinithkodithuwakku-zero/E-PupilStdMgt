@@ -10,6 +10,7 @@ using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace E_PupilStdMgt.forms.screens
@@ -77,7 +78,10 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isCreated = iSubjectServiceCustom.CreateNewSubject(new SubjectDTO(subjectNameInput.Text, subjectCodeInput.Text, Int16.Parse(subjectDurationInput.Text), Double.Parse(subjectTotalPointsInput.Text)));
+                SubjectDTO subjectDTO = new SubjectDTO(subjectNameInput.Text, subjectCodeInput.Text, subjectDurationInput.Text.Equals("") ? 0 : Int16.Parse(subjectDurationInput.Text), subjectTotalPointsInput.Text.Equals("") ? 0 : Double.Parse(subjectTotalPointsInput.Text));
+                subjectDTO.Validate();
+
+                bool isCreated = iSubjectServiceCustom.CreateNewSubject(subjectDTO);
 
                 if (isCreated)
                 {
@@ -90,6 +94,10 @@ namespace E_PupilStdMgt.forms.screens
                     MessageBox.Show("Unable to Create new Subject!", "Error!");
                 }
 
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
@@ -138,7 +146,10 @@ namespace E_PupilStdMgt.forms.screens
         {
             try
             {
-                bool isUpdated = iSubjectServiceCustom.UpdateSubject(new SubjectDTO(_subjectId, updateSubjectNameInput.Text, updateSubjectCodeInput.Text, Int16.Parse(updateSubjectDurationInput.Text), Double.Parse(updateSubjectTotalPointsInput.Text)));
+                SubjectDTO subjectDTO = new SubjectDTO(_subjectId, updateSubjectNameInput.Text, updateSubjectCodeInput.Text, updateSubjectDurationInput.Text.Equals("") ? 0 : Int16.Parse(updateSubjectDurationInput.Text), updateSubjectTotalPointsInput.Text.Equals("") ? 0 : Double.Parse(updateSubjectTotalPointsInput.Text));
+                subjectDTO.Validate();
+
+                bool isUpdated = iSubjectServiceCustom.UpdateSubject(subjectDTO);
 
                 if (isUpdated)
                 {
@@ -151,6 +162,10 @@ namespace E_PupilStdMgt.forms.screens
                     MessageBox.Show("Unable to Update Subject!", "Error!");
                 }
 
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
