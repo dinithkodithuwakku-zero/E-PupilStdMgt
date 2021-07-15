@@ -5,6 +5,7 @@ using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -59,6 +60,9 @@ namespace E_PupilStdMgt.forms.screens
             try
             {
                 SchoolDTO schoolDTO = new SchoolDTO(Int16.Parse(schoolId), schoolNameInput.Text, schoolDescriptionInput.Text, schoolContactNoInput.Text, schoolAddressInput.Text, schoolBadgeFilePath);
+
+                schoolDTO.Validate();
+
                 Boolean isUpdated = iSchoolServiceCustom.UpdateSchool(schoolDTO);
 
                 if (isUpdated)
@@ -71,6 +75,10 @@ namespace E_PupilStdMgt.forms.screens
                 }
 
                 LoadSchoolDetails();
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {

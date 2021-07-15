@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace E_PupilStdMgt.src.payload
@@ -27,7 +27,12 @@ namespace E_PupilStdMgt.src.payload
         }
 
         public int ClassId { get => classId; set => classId = value; }
+        [Required(ErrorMessage = "Class name is a required field.")]
+        [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage ="Class name input no special characters allowed!")]
         public string ClassName { get => className; set => className = value; }
+
+        [Required(ErrorMessage = "Class code is a required field.")]
+        [RegularExpression("^[a-zA-Z0-9]+$", ErrorMessage = "Class code input no special characters allowed!")]
         public string ClassCode { get => classCode; set => classCode = value; }
         public int IsActive { get => isActive; set => isActive = value; }
 
@@ -44,6 +49,23 @@ namespace E_PupilStdMgt.src.payload
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public void Validate()
+        {
+            ValidationContext context = new ValidationContext(this, serviceProvider: null, items: null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(this, context, results, true);
+
+            if (isValid == false)
+            {
+                StringBuilder sbrErrors = new StringBuilder();
+                foreach (var validationResult in results)
+                {
+                    sbrErrors.AppendLine(validationResult.ErrorMessage);
+                }
+                throw new ValidationException(sbrErrors.ToString());
+            }
         }
     }
 }

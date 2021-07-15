@@ -9,6 +9,7 @@ using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -83,6 +84,8 @@ namespace E_PupilStdMgt.forms.screens
                 classDTO.ClassCode = classCodeInput.Text;
                 classDTO.IsActive = isActiveCheckBox.Checked ? 1 : 0;
 
+                classDTO.Validate();
+
                 bool isCreated = iClassServiceCustom.CreateClass(classDTO);
 
                 if (isCreated)
@@ -96,6 +99,10 @@ namespace E_PupilStdMgt.forms.screens
                     MessageBox.Show("Unable to Create new Class!", "Error!");
                 }
 
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
@@ -150,6 +157,8 @@ namespace E_PupilStdMgt.forms.screens
                 classDTO.ClassCode = updateClassCodeInput.Text;
                 classDTO.IsActive = updateClassIsActiveCheckbox.Checked ? 1 : 0;
 
+                classDTO.Validate();
+
                 bool isUpdated = iClassServiceCustom.UpdateClass(classDTO);
 
                 if (isUpdated)
@@ -163,6 +172,10 @@ namespace E_PupilStdMgt.forms.screens
                     MessageBox.Show("Unable to Update Class!", "Error!");
                 }
 
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
