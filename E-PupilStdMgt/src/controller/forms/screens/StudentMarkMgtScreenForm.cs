@@ -9,7 +9,7 @@ using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
-using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_PupilStdMgt.src.controller.forms.screens
 {
@@ -101,24 +101,44 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         {
             try
             {
-
-                ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO = new ClassSubjectStudentMarkDTO();
-                classSubjectStudentMarkDTO.ClassSubjectDTO = new ClassSubjectDTO(new ClassDTO(classPicker.SelectedItem.ToString()), new SubjectDTO(subjectPicker.SelectedItem.ToString()));
-                classSubjectStudentMarkDTO.StudentDTO = new StudentDTO(_studentId);
-                classSubjectStudentMarkDTO.ExamDate = examDatePicker.Value.Date;
-                classSubjectStudentMarkDTO.StudentPoint = Double.Parse(studentPointInput.Text);
-
-                bool isCreated = iClassSubjectStudentMarkServiceCustom.CreateStudentMark(classSubjectStudentMarkDTO);
-
-                if (isCreated)
+                if (classPicker.SelectedItem != null && subjectPicker.SelectedItem != null)
                 {
-                    LoadClassSubjectStudentMarkDetails();
-                    MessageBox.Show("Class Subject Student mark Submitted!");
+                    double studentPoint;
+                    if (!studentPointInput.Text.Equals("") && double.TryParse(studentPointInput.Text, out studentPoint))
+                    {
+                        ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO = new ClassSubjectStudentMarkDTO();
+                        classSubjectStudentMarkDTO.ClassSubjectDTO = new ClassSubjectDTO(new ClassDTO(classPicker.SelectedItem.ToString()), new SubjectDTO(subjectPicker.SelectedItem.ToString()));
+                        classSubjectStudentMarkDTO.StudentDTO = new StudentDTO(_studentId);
+                        classSubjectStudentMarkDTO.ExamDate = examDatePicker.Value.Date;
+                        classSubjectStudentMarkDTO.StudentPoint = studentPoint;
+
+                        classSubjectStudentMarkDTO.Validate();
+
+                        bool isCreated = iClassSubjectStudentMarkServiceCustom.CreateStudentMark(classSubjectStudentMarkDTO);
+
+                        if (isCreated)
+                        {
+                            LoadClassSubjectStudentMarkDetails();
+                            MessageBox.Show("Class Subject Student mark Submitted!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to Submit Class Subject Student mark!", "Error!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student point input invalid!", "Validation error!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Submit Class Subject Student mark!", "Error!");
+                    MessageBox.Show("Select Class and Subject!", "Validation error!");
                 }
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {
@@ -171,24 +191,37 @@ namespace E_PupilStdMgt.src.controller.forms.screens
         {
             try
             {
-
-                ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO = new ClassSubjectStudentMarkDTO();
-                classSubjectStudentMarkDTO.ClassSubjectStudentMarkId = _classSubjectStudentMarkId;
-                classSubjectStudentMarkDTO.ExamDate = updateExamDatePicker.Value.Date;
-                classSubjectStudentMarkDTO.StudentPoint = Double.Parse(updateStudentPointInput.Text);
-
-                bool isUpdated = iClassSubjectStudentMarkServiceCustom.UpdateStudentMark(classSubjectStudentMarkDTO);
-
-                if (isUpdated)
+                double studentPoint;
+                if (!updateStudentPointInput.Text.Equals("") && double.TryParse(updateStudentPointInput.Text, out studentPoint))
                 {
-                    LoadClassSubjectStudentMarkDetails();
-                    ClearInputForm();
-                    MessageBox.Show("Class Subject Student mark Updated!");
+                    ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO = new ClassSubjectStudentMarkDTO();
+                    classSubjectStudentMarkDTO.ClassSubjectStudentMarkId = _classSubjectStudentMarkId;
+                    classSubjectStudentMarkDTO.ExamDate = updateExamDatePicker.Value.Date;
+                    classSubjectStudentMarkDTO.StudentPoint = studentPoint;
+
+                    classSubjectStudentMarkDTO.Validate();
+
+                    bool isUpdated = iClassSubjectStudentMarkServiceCustom.UpdateStudentMark(classSubjectStudentMarkDTO);
+
+                    if (isUpdated)
+                    {
+                        LoadClassSubjectStudentMarkDetails();
+                        ClearInputForm();
+                        MessageBox.Show("Class Subject Student mark Updated!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Update Class Subject Student mark!", "Error!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Update Class Subject Student mark!", "Error!");
+                    MessageBox.Show("Student point input invalid!", "Validation error!");
                 }
+            }
+            catch (ValidationException Exp)
+            {
+                MessageBox.Show(this, Exp.Message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch
             {

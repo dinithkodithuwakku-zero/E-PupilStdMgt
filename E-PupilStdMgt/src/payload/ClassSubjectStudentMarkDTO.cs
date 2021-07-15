@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
+
 
 namespace E_PupilStdMgt.src.payload
 {
@@ -27,6 +29,9 @@ namespace E_PupilStdMgt.src.payload
 
         public int ClassSubjectStudentMarkId { get => classSubjectStudentMarkId; set => classSubjectStudentMarkId = value; }
         public DateTime ExamDate { get => examDate; set => examDate = value; }
+
+        [Required(ErrorMessage = "Student point is a required field.")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Student mobile no input allow only numbers!")]
         public double StudentPoint { get => studentPoint; set => studentPoint = value; }
         internal ClassSubjectDTO ClassSubjectDTO { get => classSubjectDTO; set => classSubjectDTO = value; }
         internal StudentDTO StudentDTO { get => studentDTO; set => studentDTO = value; }
@@ -44,6 +49,23 @@ namespace E_PupilStdMgt.src.payload
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public void Validate()
+        {
+            ValidationContext context = new ValidationContext(this, serviceProvider: null, items: null);
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(this, context, results, true);
+
+            if (isValid == false)
+            {
+                StringBuilder sbrErrors = new StringBuilder();
+                foreach (var validationResult in results)
+                {
+                    sbrErrors.AppendLine(validationResult.ErrorMessage);
+                }
+                throw new ValidationException(sbrErrors.ToString());
+            }
         }
     }
 }
