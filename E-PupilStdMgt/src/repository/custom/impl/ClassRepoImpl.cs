@@ -508,5 +508,63 @@ namespace E_PupilStdMgt.src.repository.custom.impl
                 con.Close();
             }
         }
+
+        public ArrayList GetSubjectMapping(string classCode)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select cs.ID_CLASS_SUBJECT, c.ID_CLASS as ID_CLASS, c.CLASS_NAME as CLASS_NAME, c.CLASS_CODE as CLASS_CODE, c.IS_ACTIVE as IS_ACTIVE, cs.ID_SUBJECT from core_class_subject cs INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS WHERE c.CLASS_CODE = '" + classCode + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+                while (reader.Read())
+                {
+
+                    Subject subjectEntity = new Subject();
+                    subjectEntity.SubjectId = Int16.Parse(reader["ID_SUBJECT"].ToString());
+                    list.Add(new ClassSubject(Int16.Parse(reader["ID_CLASS_SUBJECT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())), subjectEntity));
+                }
+
+                return list;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public ArrayList GetStudentMapping(string classCode)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select cs.ID_CLASS_STUDENT, c.ID_CLASS as ID_CLASS, c.CLASS_NAME as CLASS_NAME, c.CLASS_CODE as CLASS_CODE, c.IS_ACTIVE as IS_ACTIVE, cs.ID_STUDENT from core_class_student cs INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS WHERE c.CLASS_CODE = '" + classCode + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+                while (reader.Read())
+                {
+
+                    Student studentEntity = new Student();
+                    studentEntity.StudentId = Int16.Parse(reader["ID_STUDENT"].ToString());
+                    list.Add(new ClassStudent(Int16.Parse(reader["ID_CLASS_STUDENT"].ToString()), new Class(Int16.Parse(reader["ID_CLASS"].ToString()), reader["CLASS_NAME"].ToString(), reader["CLASS_CODE"].ToString(), Int16.Parse(reader["IS_ACTIVE"].ToString())), studentEntity));
+                }
+
+                return list;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

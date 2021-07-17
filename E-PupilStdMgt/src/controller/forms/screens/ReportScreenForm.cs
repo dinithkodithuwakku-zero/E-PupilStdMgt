@@ -27,5 +27,11 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             StudentMarkListReport studentMarkListReport = new StudentMarkListReport();
             studentMarkListReport.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClassMappingReport classMappingReport = new ClassMappingReport();
+            classMappingReport.Show();
+        }
     }
 }

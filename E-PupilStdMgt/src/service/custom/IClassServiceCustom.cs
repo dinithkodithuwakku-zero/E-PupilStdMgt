@@ -16,7 +16,9 @@ namespace E_PupilStdMgt.src.service.custom
         public int AddStudentMapping(ClassStudentDTO classStudentDTO);
         public bool DeleteStudentMapping(ClassStudentDTO classStudentDTO);
         public List<ClassSubjectDTO> FindSubjectMapping();
+        public List<ClassSubjectDTO> FindSubjectMapping(string classCode);
         public List<ClassStudentDTO> FindStudentMapping();
+        public List<ClassStudentDTO> FindStudentMapping(string classCode);
         public ClassDTO FindClassByCode(string classCode);
         public List<SubjectDTO> FindAllSubjectsByClassCodeAndStudentId(string classCode, int studentId);
         public List<ClassSubjectDTO> FindSubjectMappingByStudentAndClass(string classCode, int studentId);

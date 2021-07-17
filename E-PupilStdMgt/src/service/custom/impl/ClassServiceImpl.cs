@@ -193,5 +193,31 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
             return iClassRepoCustom.DeleteStudentMapping(classStudent);
         }
+
+        public List<ClassSubjectDTO> FindSubjectMapping(string classCode)
+        {
+            ArrayList classSubjectList = iClassRepoCustom.GetSubjectMapping(classCode);
+            List<ClassSubjectDTO> list = new List<ClassSubjectDTO>();
+            foreach (ClassSubject cs in classSubjectList)
+            {
+                SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectById(cs.SubjectEntity.SubjectId);
+                list.Add(new ClassSubjectDTO(cs.ClassSubjectId, new ClassDTO(cs.ClassEntity.ClassId, cs.ClassEntity.ClassName, cs.ClassEntity.ClassCode, cs.ClassEntity.IsActive), subjectDTO));
+            }
+
+            return list;
+        }
+
+        public List<ClassStudentDTO> FindStudentMapping(string classCode)
+        {
+            ArrayList classStudentList = iClassRepoCustom.GetStudentMapping(classCode);
+            List<ClassStudentDTO> list = new List<ClassStudentDTO>();
+            foreach (ClassStudent cs in classStudentList)
+            {
+                StudentDTO studentDTO = iStudentServiceCustom.FindStudentById(cs.StudentEntity.StudentId);
+                list.Add(new ClassStudentDTO(cs.ClassStudentId, new ClassDTO(cs.ClassEntity.ClassId, cs.ClassEntity.ClassName, cs.ClassEntity.ClassCode, cs.ClassEntity.IsActive), studentDTO));
+            }
+
+            return list;
+        }
     }
 }
