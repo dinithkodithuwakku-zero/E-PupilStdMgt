@@ -22,6 +22,7 @@ namespace E_PupilStdMgt.forms.screens
         private ISubjectServiceCustom iSubjectServiceCustom;
         private IStudentServiceCustom iStudentServiceCustom;
         private IClassSubjectStudentMarkServiceCustom iClassSubjectStudentMarkServiceCustom;
+        private ArrayList chartLabels = new ArrayList();
         public DashboardScreenForm()
         {
             iClassServiceCustom = ServiceFactory.GetInstance().GetService<ClassServiceImpl>(ServiceFactory.ServiceTypes.CLASS);
@@ -69,6 +70,11 @@ namespace E_PupilStdMgt.forms.screens
             {
                 ArrayList studentGPAList = iClassSubjectStudentMarkServiceCustom.CalculateStudentsGPA();
 
+                foreach (StudentGPADTO studentGPADTO in studentGPAList)
+                {
+                    chartLabels.Add(studentGPADTO.StudentRegNo);
+                }
+
 
                 /*BindingList<StudentGPADTO> dataSource = new BindingList<StudentGPADTO>();
 
@@ -94,28 +100,52 @@ namespace E_PupilStdMgt.forms.screens
                 studentGPAChart.Title.Text = "Student Avg GPA";
                 studentGPAChart.Series.Add(chartSeries);*/
 
-                ChartSeries series = new ChartSeries("sadasdasd");
+                ChartSeries series = new ChartSeries("GPA");
 
                 ChartDataBindModel dataSeriesModel = new ChartDataBindModel(studentGPAList);
 
 
-                dataSeriesModel.YNames = new string[] { "Population" };
+                dataSeriesModel.YNames = new string[] { "Gpa" };
 
 
                 series.SeriesModel = dataSeriesModel;
 
-                ChartDataBindAxisLabelModel dataLabelsModel = new ChartDataBindAxisLabelModel(studentGPAList);
 
-                dataLabelsModel.LabelName = "City";
+                this.studentGPAChart.Series.Add(series);
 
-                studentGPAChart.Series.Add(series);
+                this.studentGPAChart.PrimaryYAxis.Title = "GPA";
 
-                studentGPAChart.PrimaryXAxis.LabelsImpl = dataLabelsModel;
+                this.studentGPAChart.PrimaryXAxis.Title = "Student Reg No";
+                
+                this.studentGPAChart.PrimaryXAxis.ValueType = ChartValueType.Custom;
+                this.studentGPAChart.PrimaryXAxis.Range.Interval = 1;
+                this.studentGPAChart.PrimaryXAxis.LabelAlignment = System.Drawing.StringAlignment.Center;
             }
             catch (Exception ep)
             {
                 MessageBox.Show("Something went wrong! " + ep.Message);
             }
+        }
+
+        private void studentGPAChart_ChartFormatAxisLabel(object sender, ChartFormatAxisLabelEventArgs e)
+        {
+            int index = (int)e.Value;
+
+            if (e.AxisOrientation == ChartOrientation.Horizontal)
+
+            {
+
+                if (index >= 0 && index < chartLabels.Count)
+
+                {
+
+                    e.Label = chartLabels[index].ToString();
+
+                }
+
+            }
+
+            e.Handled = true;
         }
     }
 }

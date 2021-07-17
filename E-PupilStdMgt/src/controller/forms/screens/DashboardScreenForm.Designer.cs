@@ -144,6 +144,7 @@ namespace E_PupilStdMgt.forms.screens
             this.studentGPAChart.Title.Name = "Default";
             this.studentGPAChart.Titles.Add(this.studentGPAChart.Title);
             this.studentGPAChart.VisualTheme = "";
+            this.studentGPAChart.ChartFormatAxisLabel += new Syncfusion.Windows.Forms.Chart.ChartFormatAxisLabelEventHandler(this.studentGPAChart_ChartFormatAxisLabel);
             // 
             // noOfStudentsLabel
             // 

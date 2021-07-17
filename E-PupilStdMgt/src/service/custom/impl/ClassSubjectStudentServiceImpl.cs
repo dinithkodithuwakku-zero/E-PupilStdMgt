@@ -51,7 +51,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
                 }
             }
 
-            ArrayList arrayList = new ArrayList();
+            ArrayList arrayList = new ArrayList(); 
 
             foreach (var item in studentDict)
             {
