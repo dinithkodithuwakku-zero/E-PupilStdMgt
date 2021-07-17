@@ -278,5 +278,32 @@ namespace E_PupilStdMgt.src.repository.custom.impl
                 con.Close();
             }
         }
+
+        public ArrayList FindAllStudentsByClassCode(string classCode)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select s.ID_STUDENT, s.STUDENT_REG_NO, s.STUDENT_NAME, s.STUDENT_MOBILE_NO, s.STUDENT_EMAIL, s.PERMANENT_ADDRESS, s.GENDER from core_student s INNER JOIN core_class_student cs ON s.ID_STUDENT = cs.ID_STUDENT INNER JOIN core_class c ON c.ID_CLASS = cs.ID_CLASS WHERE s.STATUS = 1 AND c.CLASS_CODE = '" + classCode + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                while (reader.Read())
+                {
+                    list.Add(new Student(Int16.Parse(reader["ID_STUDENT"].ToString()), reader["STUDENT_REG_NO"].ToString(), reader["STUDENT_NAME"].ToString(), reader["STUDENT_MOBILE_NO"].ToString(), reader["GENDER"].ToString(), reader["STUDENT_EMAIL"].ToString(), reader["PERMANENT_ADDRESS"].ToString()));
+                }
+
+                return list;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }

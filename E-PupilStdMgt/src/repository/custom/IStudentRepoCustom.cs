@@ -12,5 +12,7 @@ namespace E_PupilStdMgt.src.repository.custom
         public ArrayList FindStudents(Student student);
         public Student FindStudentByRegNo(string regNo); 
         public Student FindStudentById(int id);
+
+        public ArrayList FindAllStudentsByClassCode(string classCode);
     }
 }

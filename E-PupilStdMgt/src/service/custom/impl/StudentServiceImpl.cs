@@ -79,5 +79,18 @@ namespace E_PupilStdMgt.src.service.custom.impl
         {
             return iStudentRepoCustom.Delete(studentId);
         }
+
+        public List<StudentDTO> FindAllStudentsByClassCode(string classCode)
+        {
+            ArrayList studentList = iStudentRepoCustom.FindAllStudentsByClassCode(classCode);
+            List<StudentDTO> list = new List<StudentDTO>();
+
+            foreach (Student s in studentList)
+            {
+                list.Add(new StudentDTO(s.StudentId, s.StudentRegNo, s.StudentName, s.MobileNo, s.Gender, s.Email, s.PermanentAddress));
+            }
+
+            return list;
+        }
     }
 }
