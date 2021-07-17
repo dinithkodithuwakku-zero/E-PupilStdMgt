@@ -11,6 +11,7 @@ using E_PupilStdMgt.src.payload;
 using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
+using E_PupilStdMgt.forms;
 
 namespace E_PupilStdMgt.src.controller.forms
 {
@@ -471,6 +472,30 @@ namespace E_PupilStdMgt.src.controller.forms
             ReportScreenForm reportScreenForm = new ReportScreenForm();
 
             reportScreenForm.Show();
+        }
+
+        private void panel3_MouseClick(object sender, MouseEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to exit?",
+                                 "Confirm Exit!!",
+                                 MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void panel4_MouseClick(object sender, MouseEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to logout?",
+                                 "Confirm logout!!",
+                                 MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                RolePickingForm rolePickingForm = new RolePickingForm();
+                rolePickingForm.Show();
+                this.Hide();
+            }
         }
 
         private void parentPanel_Paint(object sender, PaintEventArgs e)

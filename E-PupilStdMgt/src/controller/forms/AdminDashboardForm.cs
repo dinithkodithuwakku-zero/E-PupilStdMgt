@@ -179,5 +179,18 @@ namespace E_PupilStdMgt.forms
                 Application.Exit();
             }
         }
+
+        private void panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to logout?",
+                                  "Confirm logout!!",
+                                  MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                RolePickingForm rolePickingForm = new RolePickingForm();
+                rolePickingForm.Show();
+                this.Hide();
+            }
+        }
     }
 }

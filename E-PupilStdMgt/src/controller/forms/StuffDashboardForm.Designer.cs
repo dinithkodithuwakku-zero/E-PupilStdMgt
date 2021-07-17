@@ -30,6 +30,9 @@ namespace E_PupilStdMgt.src.controller.forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.userTypeLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.parentPanel = new System.Windows.Forms.Panel();
@@ -40,13 +43,22 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel2 = new System.Windows.Forms.Panel();
             this.createPanelButton = new System.Windows.Forms.Button();
             this.selectPenLabel = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.parentPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.userTypeLabel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -54,6 +66,40 @@ namespace E_PupilStdMgt.src.controller.forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1235, 41);
             this.panel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel3.Location = new System.Drawing.Point(3, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(199, 38);
+            this.panel3.TabIndex = 8;
+            this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.Info;
+            this.label4.Location = new System.Drawing.Point(38, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 23);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Exit Application";
+            this.label4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::E_PupilStdMgt.Properties.Resources.outline_cancel_white_36dp;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
             // 
             // userTypeLabel
             // 
@@ -174,6 +220,40 @@ namespace E_PupilStdMgt.src.controller.forms
             this.selectPenLabel.Size = new System.Drawing.Size(0, 20);
             this.selectPenLabel.TabIndex = 13;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel4.Location = new System.Drawing.Point(234, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(125, 38);
+            this.panel4.TabIndex = 9;
+            this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseClick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.Info;
+            this.label5.Location = new System.Drawing.Point(38, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 23);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Logout";
+            this.label5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseClick);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::E_PupilStdMgt.Properties.Resources.outline_logout_white_24dp;
+            this.pictureBox2.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseClick);
+            // 
             // StuffDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -191,9 +271,15 @@ namespace E_PupilStdMgt.src.controller.forms
             this.Text = "StuffDashboardForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.parentPanel.ResumeLayout(false);
             this.parentPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +299,11 @@ namespace E_PupilStdMgt.src.controller.forms
         private System.Windows.Forms.Label classLabel;
         private System.Windows.Forms.Label subjectLabel;
         private System.Windows.Forms.Label selectPenLabel;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

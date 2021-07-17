@@ -73,6 +73,16 @@ namespace E_PupilStdMgt.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout {
+            get {
+                object obj = ResourceManager.GetObject("logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap outline_account_circle_white_36dp {
             get {
                 object obj = ResourceManager.GetObject("outline_account_circle_white_36dp", resourceCulture);
@@ -116,6 +126,16 @@ namespace E_PupilStdMgt.Properties {
         internal static System.Drawing.Bitmap outline_login_white_24dp {
             get {
                 object obj = ResourceManager.GetObject("outline_login_white_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_logout_white_24dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_logout_white_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

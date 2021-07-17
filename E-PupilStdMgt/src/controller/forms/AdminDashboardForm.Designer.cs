@@ -30,6 +30,9 @@ namespace E_PupilStdMgt.forms
         private void InitializeComponent()
         {
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.logoutPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,6 +63,8 @@ namespace E_PupilStdMgt.forms
             this.label1 = new System.Windows.Forms.Label();
             this.formLoaderPanel = new System.Windows.Forms.Panel();
             this.sidePanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoutPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.subjectMgtPanelButton.SuspendLayout();
@@ -82,6 +87,7 @@ namespace E_PupilStdMgt.forms
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.sidePanel.Controls.Add(this.panel2);
             this.sidePanel.Controls.Add(this.panel1);
             this.sidePanel.Controls.Add(this.subjectMgtPanelButton);
             this.sidePanel.Controls.Add(this.classMgtPanelButton);
@@ -95,6 +101,40 @@ namespace E_PupilStdMgt.forms
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(273, 726);
             this.sidePanel.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.logoutPictureBox);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel2.Location = new System.Drawing.Point(0, 608);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(273, 50);
+            this.panel2.TabIndex = 8;
+            this.panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseClick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.Info;
+            this.label3.Location = new System.Drawing.Point(96, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 23);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Logout";
+            this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseClick);
+            // 
+            // logoutPictureBox
+            // 
+            this.logoutPictureBox.Image = global::E_PupilStdMgt.Properties.Resources.outline_logout_white_24dp;
+            this.logoutPictureBox.Location = new System.Drawing.Point(1, 1);
+            this.logoutPictureBox.Name = "logoutPictureBox";
+            this.logoutPictureBox.Size = new System.Drawing.Size(63, 47);
+            this.logoutPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoutPictureBox.TabIndex = 0;
+            this.logoutPictureBox.TabStop = false;
+            this.logoutPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseClick);
             // 
             // panel1
             // 
@@ -444,6 +484,9 @@ namespace E_PupilStdMgt.forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dashboardForm_MouseDown);
             this.sidePanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoutPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -506,5 +549,8 @@ namespace E_PupilStdMgt.forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox logoutPictureBox;
     }
 }
