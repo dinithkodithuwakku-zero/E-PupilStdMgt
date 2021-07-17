@@ -30,6 +30,9 @@ namespace E_PupilStdMgt.forms
         private void InitializeComponent()
         {
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.subjectMgtPanelButton = new System.Windows.Forms.Panel();
             this.subjectMgtButtonLabel = new System.Windows.Forms.Label();
             this.subjectMgtButtonImage = new System.Windows.Forms.PictureBox();
@@ -57,6 +60,8 @@ namespace E_PupilStdMgt.forms
             this.label1 = new System.Windows.Forms.Label();
             this.formLoaderPanel = new System.Windows.Forms.Panel();
             this.sidePanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.subjectMgtPanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subjectMgtButtonImage)).BeginInit();
             this.classMgtPanelButton.SuspendLayout();
@@ -77,6 +82,7 @@ namespace E_PupilStdMgt.forms
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.sidePanel.Controls.Add(this.panel1);
             this.sidePanel.Controls.Add(this.subjectMgtPanelButton);
             this.sidePanel.Controls.Add(this.classMgtPanelButton);
             this.sidePanel.Controls.Add(this.stuffMgtPanelButton);
@@ -89,6 +95,40 @@ namespace E_PupilStdMgt.forms
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(273, 726);
             this.sidePanel.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel1.Location = new System.Drawing.Point(0, 664);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(273, 50);
+            this.panel1.TabIndex = 7;
+            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label2_MouseClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.Info;
+            this.label2.Location = new System.Drawing.Point(96, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(138, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Exit Application";
+            this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label2_MouseClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::E_PupilStdMgt.Properties.Resources.outline_cancel_white_36dp;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label2_MouseClick);
             // 
             // subjectMgtPanelButton
             // 
@@ -404,6 +444,9 @@ namespace E_PupilStdMgt.forms
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dashboardForm_MouseDown);
             this.sidePanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.subjectMgtPanelButton.ResumeLayout(false);
             this.subjectMgtPanelButton.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.subjectMgtButtonImage)).EndInit();
@@ -460,5 +503,8 @@ namespace E_PupilStdMgt.forms
         private System.Windows.Forms.PictureBox subjectMgtButtonImage;
         private System.Windows.Forms.Panel formLoaderPanel;
         private System.Windows.Forms.Label currentPanelTitleLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

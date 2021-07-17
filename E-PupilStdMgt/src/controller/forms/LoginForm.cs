@@ -5,15 +5,24 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using E_PupilStdMgt.src.payload;
+using E_PupilStdMgt.src.service;
+using E_PupilStdMgt.src.service.custom;
+using E_PupilStdMgt.src.service.custom.impl;
+using E_PupilStdMgt.forms;
+using E_PupilStdMgt.src.controller.forms;
 
 namespace E_PupilStdMgt.forms
 {
     public partial class LoginForm : Form
     {
         private Int16 _loginType; // 1 is admin, 2 is stuff 
+        private ILoginServiceCustom iLoginServiceCustom;
+
         public LoginForm(Int16 loginType)
         {
 
+            iLoginServiceCustom = ServiceFactory.GetInstance().GetService<LoginServiceImpl>(ServiceFactory.ServiceTypes.LOGIN);
             _loginType = loginType;
             InitializeComponent();
 
@@ -76,7 +85,39 @@ namespace E_PupilStdMgt.forms
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_loginType.ToString());
+            try
+            {
+                LoginDTO loginDTO = new LoginDTO();
+                loginDTO.UserName = userNameInput.Text;
+                loginDTO.Password = passwordInput.Text;
+                loginDTO.UserType = _loginType;
+
+
+                bool isChecked = iLoginServiceCustom.CheckLoginCredientials(loginDTO);
+                if (isChecked)
+                {
+                    if (_loginType == 1)
+                    {
+                        AdminDashboardForm adminDashboardForm = new AdminDashboardForm();
+                        adminDashboardForm.Show();
+                        this.Hide();
+                    }
+                    else if (_loginType == 2)
+                    {
+                        StuffDashboardForm stuffDashboardForm = new StuffDashboardForm();
+                        stuffDashboardForm.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("User not found! Please check user name and password!!", "Error - 401");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong!! " + ex.Message, "Error");
+            }
         }
 
         private void backgroundPanel_Paint(object sender, PaintEventArgs e)

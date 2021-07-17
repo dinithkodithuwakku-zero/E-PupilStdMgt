@@ -168,5 +168,16 @@ namespace E_PupilStdMgt.forms
             this.formLoaderPanel.Controls.Add(subjectMgtScreenForm);
             subjectMgtScreenForm.Show();
         }
+
+        private void label2_MouseClick(object sender, MouseEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to exit?",
+                                  "Confirm Exit!!",
+                                  MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

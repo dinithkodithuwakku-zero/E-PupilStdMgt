@@ -45,6 +45,35 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             }
         }
 
+        public Stuff FindStuffByUserName(string userName)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select ID_STUFF, USER_NAME, PASSWORD,  FULL_NAME, NIC, JOB_TITLE, MOBILE_NO, EMAIL, PERMANENT_ADDRESS from core_stuff WHERE STATUS = 1 AND USER_NAME = '" + userName + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                if (reader.Read())
+                {
+                    return new Stuff(Int16.Parse(reader["ID_STUFF"].ToString()), reader["USER_NAME"].ToString(), reader["PASSWORD"].ToString(), reader["FULL_NAME"].ToString(), reader["NIC"].ToString(), reader["JOB_TITLE"].ToString(), reader["MOBILE_NO"].ToString(), reader["EMAIL"].ToString(), reader["PERMANENT_ADDRESS"].ToString());
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public ArrayList GetAll()
         {
             try

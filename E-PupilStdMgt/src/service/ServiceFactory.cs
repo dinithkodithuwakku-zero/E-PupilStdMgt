@@ -11,7 +11,7 @@ namespace E_PupilStdMgt.src.service
 
         public enum ServiceTypes
         {
-            SCHOOL, CLASS, SUBJECT, STUDENT, STUFF, ClASS_SUBJECT_STUDENT_MARK
+            SCHOOL, CLASS, SUBJECT, STUDENT, STUFF, ClASS_SUBJECT_STUDENT_MARK, LOGIN
         }
         public ServiceFactory()
         {
@@ -42,6 +42,8 @@ namespace E_PupilStdMgt.src.service
                     return (T)Convert.ChangeType(new StuffServiceImpl(), typeof(T));
                 case ServiceTypes.ClASS_SUBJECT_STUDENT_MARK:
                     return (T)Convert.ChangeType(new ClassSubjectStudentServiceImpl(), typeof(T));
+                case ServiceTypes.LOGIN:
+                    return (T)Convert.ChangeType(new LoginServiceImpl(), typeof(T));
                 default:
                     return default;
             }

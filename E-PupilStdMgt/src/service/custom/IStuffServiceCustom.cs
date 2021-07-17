@@ -11,5 +11,6 @@ namespace E_PupilStdMgt.src.service.custom
         public bool CreateNewStuff(StuffDTO stuffDTO);
         public bool UpdateStuff(StuffDTO stuffDTO);
         public bool DeleteStuff(int stuffId);
+        public StuffDTO FindStuffByUserName(string userName);
     }
 }

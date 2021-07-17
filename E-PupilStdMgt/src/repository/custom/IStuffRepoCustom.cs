@@ -7,5 +7,6 @@ namespace E_PupilStdMgt.src.repository.custom
 {
     interface IStuffRepoCustom : ICrudRepo<Stuff, int>
     {
+        Stuff FindStuffByUserName(string userName);
     }
 }

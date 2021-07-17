@@ -41,6 +41,16 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return list;
         }
 
+        public StuffDTO FindStuffByUserName(string userName)
+        {
+            Stuff stuff = iStuffRepoCustom.FindStuffByUserName(userName);
+
+            if (stuff != null)
+                return new StuffDTO(stuff.StuffId, stuff.UserName, stuff.Password, stuff.FullName, stuff.Nic, stuff.JobTitle, stuff.MobileNo, stuff.Email, stuff.PermanentAddress);
+            else return null;
+
+        }
+
         public bool UpdateStuff(StuffDTO stuffDTO)
         {
             return iStuffRepoCustom.Update(new Stuff(stuffDTO.StuffId, stuffDTO.FullName, stuffDTO.Nic, stuffDTO.JobTitle, stuffDTO.MobileNo, stuffDTO.Email, stuffDTO.PermanentAddress));

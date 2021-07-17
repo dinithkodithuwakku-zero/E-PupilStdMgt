@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.Diagnostics;
 
 namespace E_PupilStdMgt.src.utill
 {
@@ -46,7 +47,7 @@ namespace E_PupilStdMgt.src.utill
                         cs.Write(cipherBytes, 0, cipherBytes.Length);
                         cs.Close();
                     }
-                    cipherText = Encoding.Unicode.GetString(ms.ToArray());
+                     cipherText = Encoding.Unicode.GetString(ms.ToArray());
                 }
             }
             return cipherText;

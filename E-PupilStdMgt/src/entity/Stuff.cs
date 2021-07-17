@@ -65,6 +65,8 @@ namespace E_PupilStdMgt.src.entity
             Email = email;
             PermanentAddress = permanentAddress;
         }
+        
+
 
         public int StuffId { get => stuffId; set => stuffId = value; }
         public string UserName { get => userName; set => userName = value; }
