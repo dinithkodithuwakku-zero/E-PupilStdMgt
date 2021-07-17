@@ -46,6 +46,33 @@ namespace E_PupilStdMgt.src.repository.custom.impl
             }
         }
 
+        public ArrayList FindAllSubjectsByClassCode(string classCode)
+        {
+            try
+            {
+                con.Open();
+                ArrayList list = new ArrayList();
+                string query = "select s.ID_SUBJECT, s.SUBJECT_NAME, s.SUBJECT_CODE, s.SUBJECT_DURATION, s.SUBJECT_TOTAL_POINTS from core_subject s INNER JOIN core_class_subject cs ON s.ID_SUBJECT = cs.ID_SUBJECT INNER JOIN core_class c ON cs.ID_CLASS = c.ID_CLASS WHERE s.STATUS = 1 AND c.CLASS_CODE = '" + classCode + "'";
+
+                MySqlDataReader reader = con.ExecuteReader(query);
+
+                while (reader.Read())
+                {
+                    list.Add(new Subject(Int16.Parse(reader["ID_SUBJECT"].ToString()), reader["SUBJECT_NAME"].ToString(), reader["SUBJECT_CODE"].ToString(), Int16.Parse(reader["SUBJECT_DURATION"].ToString()), Double.Parse(reader["SUBJECT_TOTAL_POINTS"].ToString())));
+                }
+
+                return list;
+            }
+            catch
+            {
+                throw new Exception();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         public Subject FindSubjectByCode(string code)
         {
             try

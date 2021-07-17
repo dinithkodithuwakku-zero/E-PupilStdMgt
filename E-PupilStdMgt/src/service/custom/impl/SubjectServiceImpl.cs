@@ -42,7 +42,18 @@ namespace E_PupilStdMgt.src.service.custom.impl
             return list;
         }
 
+        public List<SubjectDTO> FindAllSubjectsByClassCode(string classCode)
+        {
+            ArrayList subjectList = iSubjectRepoCustom.FindAllSubjectsByClassCode(classCode);
+            List<SubjectDTO> list = new List<SubjectDTO>();
 
+            foreach (Subject s in subjectList)
+            {
+                list.Add(new SubjectDTO(s.SubjectId, s.SubjectName, s.SubjectCode, s.SubjectDuration, s.SubjectTotalPoints));
+            }
+
+            return list;
+        }
 
         public SubjectDTO FindSubjectByCode(string code)
         {

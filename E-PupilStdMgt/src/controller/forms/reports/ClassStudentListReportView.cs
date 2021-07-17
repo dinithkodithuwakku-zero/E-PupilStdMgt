@@ -82,38 +82,45 @@ namespace E_PupilStdMgt.src.controller.forms.reports
 
         private void ToCsV(DataGridView dGV, string filename)
         {
-            string stOutput = "";
-            // Export titles:
-            string sHeaders = "";
-
-            for (int j = 0; j < dGV.Columns.Count; j++)
-                sHeaders = sHeaders.ToString() + Convert.ToString(dGV.Columns[j].HeaderText) + ",";
-            stOutput += sHeaders + "\r\n";
-            // Export data.
-            for (int i = 0; i < dGV.RowCount; i++)
+            if (dGV.Rows.Count > 0)
             {
-                string stLine = "";
-                for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
-                {
-                    string cellValue = Convert.ToString(dGV.Rows[i].Cells[j].Value);
-                    if (cellValue.Contains(","))
-                    {
-                        cellValue = cellValue.Replace(",", string.Empty);
-                    }
-                    stLine = stLine.ToString() + cellValue + ",";
-                }
+                string stOutput = "";
+                // Export titles:
+                string sHeaders = "";
 
-                Debug.WriteLine(stLine);
-                stOutput += stLine + "\r\n";
+                for (int j = 0; j < dGV.Columns.Count; j++)
+                    sHeaders = sHeaders.ToString() + Convert.ToString(dGV.Columns[j].HeaderText) + ",";
+                stOutput += sHeaders + "\r\n";
+                // Export data.
+                for (int i = 0; i < dGV.RowCount; i++)
+                {
+                    string stLine = "";
+                    for (int j = 0; j < dGV.Rows[i].Cells.Count; j++)
+                    {
+                        string cellValue = Convert.ToString(dGV.Rows[i].Cells[j].Value);
+                        if (cellValue.Contains(","))
+                        {
+                            cellValue = cellValue.Replace(",", string.Empty);
+                        }
+                        stLine = stLine.ToString() + cellValue + ",";
+                    }
+
+                    Debug.WriteLine(stLine);
+                    stOutput += stLine + "\r\n";
+                }
+                Encoding utf16 = Encoding.GetEncoding(1254);
+                byte[] output = utf16.GetBytes(stOutput);
+                FileStream fs = new FileStream(filename, FileMode.Create);
+                BinaryWriter bw = new BinaryWriter(fs);
+                bw.Write(output, 0, output.Length); //write the encoded file
+                bw.Flush();
+                bw.Close();
+                fs.Close();
             }
-            Encoding utf16 = Encoding.GetEncoding(1254);
-            byte[] output = utf16.GetBytes(stOutput);
-            FileStream fs = new FileStream(filename, FileMode.Create);
-            BinaryWriter bw = new BinaryWriter(fs);
-            bw.Write(output, 0, output.Length); //write the encoded file
-            bw.Flush();
-            bw.Close();
-            fs.Close();
+            else
+            {
+                MessageBox.Show("No Record To Generete!", "Info");
+            }
         }
     }
 }

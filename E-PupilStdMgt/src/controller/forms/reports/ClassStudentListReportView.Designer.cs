@@ -51,11 +51,11 @@ namespace E_PupilStdMgt.src.controller.forms.reports
             this.printReportButton.FlatAppearance.BorderSize = 0;
             this.printReportButton.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.printReportButton.ForeColor = System.Drawing.SystemColors.Info;
-            this.printReportButton.Location = new System.Drawing.Point(683, 94);
+            this.printReportButton.Location = new System.Drawing.Point(637, 94);
             this.printReportButton.Name = "printReportButton";
-            this.printReportButton.Size = new System.Drawing.Size(192, 43);
+            this.printReportButton.Size = new System.Drawing.Size(238, 43);
             this.printReportButton.TabIndex = 41;
-            this.printReportButton.Text = "Print Report";
+            this.printReportButton.Text = "Generate CSV Report";
             this.printReportButton.UseVisualStyleBackColor = false;
             this.printReportButton.Click += new System.EventHandler(this.printReportButton_Click);
             // 

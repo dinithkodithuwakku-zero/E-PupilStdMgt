@@ -13,5 +13,6 @@ namespace E_PupilStdMgt.src.service.custom
         public bool DeleteSubject(int subjectId);
         public SubjectDTO FindSubjectByCode(string code);
         public SubjectDTO FindSubjectById(int id);
+        public List<SubjectDTO> FindAllSubjectsByClassCode(string classCode);
     }
 }

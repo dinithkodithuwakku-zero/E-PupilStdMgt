@@ -21,5 +21,11 @@ namespace E_PupilStdMgt.src.controller.forms.screens
             ClassStudentListReportView classStudentListReportView = new ClassStudentListReportView();
             classStudentListReportView.Show();
         }
+
+        private void studentMarkListReportButton_Click(object sender, EventArgs e)
+        {
+            StudentMarkListReport studentMarkListReport = new StudentMarkListReport();
+            studentMarkListReport.Show();
+        }
     }
 }

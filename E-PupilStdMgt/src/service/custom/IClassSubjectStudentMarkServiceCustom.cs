@@ -11,5 +11,6 @@ namespace E_PupilStdMgt.src.service.custom
         public bool UpdateStudentMark(ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO);
         public bool DeleteStudentMark(int classSubjectStudentMarkId);
         public List<ClassSubjectStudentMarkDTO> FindClassSubjectStudentMarks();
+        public List<ClassSubjectStudentMarkDTO> FindClassSubjectStudentMarks(string classCode, string subjectCode);
     }
 }
