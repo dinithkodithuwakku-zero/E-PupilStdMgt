@@ -54,6 +54,7 @@ namespace E_PupilStdMgt.forms.screens
             this.label6 = new System.Windows.Forms.Label();
             this.cancelPanelButton = new System.Windows.Forms.Button();
             this.updatePanelButton = new System.Windows.Forms.Button();
+            this.printCSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.classDataGrid)).BeginInit();
             this.classCreatePanel.SuspendLayout();
             this.classUpdatePanel.SuspendLayout();
@@ -373,6 +374,23 @@ namespace E_PupilStdMgt.forms.screens
             this.updatePanelButton.UseVisualStyleBackColor = false;
             this.updatePanelButton.Click += new System.EventHandler(this.updatePanelButton_Click);
             // 
+            // printCSV
+            // 
+            this.printCSV.AutoSize = true;
+            this.printCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.printCSV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printCSV.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.printCSV.FlatAppearance.BorderSize = 0;
+            this.printCSV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.printCSV.ForeColor = System.Drawing.SystemColors.Info;
+            this.printCSV.Location = new System.Drawing.Point(439, 56);
+            this.printCSV.Name = "printCSV";
+            this.printCSV.Size = new System.Drawing.Size(192, 53);
+            this.printCSV.TabIndex = 22;
+            this.printCSV.Text = "Print CSV";
+            this.printCSV.UseVisualStyleBackColor = false;
+            this.printCSV.Click += new System.EventHandler(this.printCSV_Click);
+            // 
             // ClassMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -383,6 +401,7 @@ namespace E_PupilStdMgt.forms.screens
             this.Controls.Add(this.classCreatePanel);
             this.Controls.Add(this.createNewClassButton);
             this.Controls.Add(this.classDataGrid);
+            this.Controls.Add(this.printCSV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClassMgtScreenForm";
             this.Text = "ClassMgtScreenForm";
@@ -425,5 +444,6 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.CheckBox updateClassIsActiveCheckbox;
         private System.Windows.Forms.TextBox updateClassCodeInput;
         private System.Windows.Forms.TextBox updateClassNameInput;
+        private System.Windows.Forms.Button printCSV;
     }
 }

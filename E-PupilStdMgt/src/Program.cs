@@ -20,8 +20,8 @@ namespace E_PupilStdMgt
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new RolePickingForm());
-            //Application.Run(new AdminDashboardForm());
-            Application.Run(new StuffDashboardForm());
+            Application.Run(new AdminDashboardForm());
+            //Application.Run(new StuffDashboardForm());
         }
     }
 }

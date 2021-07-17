@@ -187,6 +187,7 @@ namespace E_PupilStdMgt.src.controller.forms
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StuffDashboardForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StuffDashboardForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

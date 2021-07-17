@@ -63,6 +63,7 @@ namespace E_PupilStdMgt.forms.screens
             this.updateSubjectNameInput = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.printCSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.subjectDataGrid)).BeginInit();
             this.subjectCreatePanel.SuspendLayout();
             this.subjectUpdatePanel.SuspendLayout();
@@ -471,6 +472,23 @@ namespace E_PupilStdMgt.forms.screens
             this.label11.TabIndex = 15;
             this.label11.Text = "Update Subject";
             // 
+            // printCSV
+            // 
+            this.printCSV.AutoSize = true;
+            this.printCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.printCSV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printCSV.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.printCSV.FlatAppearance.BorderSize = 0;
+            this.printCSV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.printCSV.ForeColor = System.Drawing.SystemColors.Info;
+            this.printCSV.Location = new System.Drawing.Point(446, 47);
+            this.printCSV.Name = "printCSV";
+            this.printCSV.Size = new System.Drawing.Size(192, 53);
+            this.printCSV.TabIndex = 39;
+            this.printCSV.Text = "Print CSV";
+            this.printCSV.UseVisualStyleBackColor = false;
+            this.printCSV.Click += new System.EventHandler(this.printCSV_Click);
+            // 
             // SubjectMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -481,6 +499,7 @@ namespace E_PupilStdMgt.forms.screens
             this.Controls.Add(this.subjectCreatePanel);
             this.Controls.Add(this.subjectDataGrid);
             this.Controls.Add(this.createNewSubjectButton);
+            this.Controls.Add(this.printCSV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SubjectMgtScreenForm";
             this.Text = "SubjectMgtScreenForm";
@@ -530,5 +549,6 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.TextBox updateSubjectNameInput;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button printCSV;
     }
 }

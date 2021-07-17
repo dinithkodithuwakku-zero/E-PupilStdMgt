@@ -71,6 +71,7 @@ namespace E_PupilStdMgt.forms.screens
             this.updateStudentNameInput = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.printCSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGrid)).BeginInit();
             this.studentCreatePanel.SuspendLayout();
             this.studentUpdatePanel.SuspendLayout();
@@ -191,9 +192,9 @@ namespace E_PupilStdMgt.forms.screens
             this.studentCreatePanel.Controls.Add(this.stdNameInput);
             this.studentCreatePanel.Controls.Add(this.label2);
             this.studentCreatePanel.Controls.Add(this.createNewStudentLabel);
-            this.studentCreatePanel.Location = new System.Drawing.Point(40, 29);
+            this.studentCreatePanel.Location = new System.Drawing.Point(19, 53);
             this.studentCreatePanel.Name = "studentCreatePanel";
-            this.studentCreatePanel.Size = new System.Drawing.Size(819, 485);
+            this.studentCreatePanel.Size = new System.Drawing.Size(829, 534);
             this.studentCreatePanel.TabIndex = 11;
             this.studentCreatePanel.Visible = false;
             // 
@@ -380,9 +381,9 @@ namespace E_PupilStdMgt.forms.screens
             this.studentUpdatePanel.Controls.Add(this.updateStudentNameInput);
             this.studentUpdatePanel.Controls.Add(this.label12);
             this.studentUpdatePanel.Controls.Add(this.label13);
-            this.studentUpdatePanel.Location = new System.Drawing.Point(40, 29);
+            this.studentUpdatePanel.Location = new System.Drawing.Point(29, 34);
             this.studentUpdatePanel.Name = "studentUpdatePanel";
-            this.studentUpdatePanel.Size = new System.Drawing.Size(819, 485);
+            this.studentUpdatePanel.Size = new System.Drawing.Size(819, 519);
             this.studentUpdatePanel.TabIndex = 30;
             this.studentUpdatePanel.Visible = false;
             // 
@@ -568,16 +569,34 @@ namespace E_PupilStdMgt.forms.screens
             this.label13.TabIndex = 14;
             this.label13.Text = "Update Student";
             // 
+            // printCSV
+            // 
+            this.printCSV.AutoSize = true;
+            this.printCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.printCSV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printCSV.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.printCSV.FlatAppearance.BorderSize = 0;
+            this.printCSV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.printCSV.ForeColor = System.Drawing.SystemColors.Info;
+            this.printCSV.Location = new System.Drawing.Point(458, 53);
+            this.printCSV.Name = "printCSV";
+            this.printCSV.Size = new System.Drawing.Size(192, 53);
+            this.printCSV.TabIndex = 31;
+            this.printCSV.Text = "Print CSV";
+            this.printCSV.UseVisualStyleBackColor = false;
+            this.printCSV.Click += new System.EventHandler(this.printCSV_Click);
+            // 
             // StudentMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(916, 611);
-            this.Controls.Add(this.studentUpdatePanel);
             this.Controls.Add(this.studentCreatePanel);
+            this.Controls.Add(this.studentUpdatePanel);
             this.Controls.Add(this.createNewStudentButton);
             this.Controls.Add(this.studentDataGrid);
+            this.Controls.Add(this.printCSV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudentMgtScreenForm";
             this.Text = "StudentMgtScreenForm";
@@ -635,5 +654,6 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.TextBox updateStudentNameInput;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button printCSV;
     }
 }

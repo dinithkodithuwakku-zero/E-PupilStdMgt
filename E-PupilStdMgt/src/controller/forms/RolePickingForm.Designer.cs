@@ -45,7 +45,7 @@ namespace E_PupilStdMgt.forms
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.welcomeLabel.ForeColor = System.Drawing.SystemColors.Info;
-            this.welcomeLabel.Location = new System.Drawing.Point(294, 74);
+            this.welcomeLabel.Location = new System.Drawing.Point(293, 73);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(186, 46);
             this.welcomeLabel.TabIndex = 0;
@@ -62,7 +62,7 @@ namespace E_PupilStdMgt.forms
             this.formPanel.Controls.Add(this.welcomeLabel);
             this.formPanel.Location = new System.Drawing.Point(0, 0);
             this.formPanel.Name = "formPanel";
-            this.formPanel.Size = new System.Drawing.Size(800, 450);
+            this.formPanel.Size = new System.Drawing.Size(799, 448);
             this.formPanel.TabIndex = 1;
             this.formPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.formPanel_Paint);
             this.formPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.formPanel_MouseDown);

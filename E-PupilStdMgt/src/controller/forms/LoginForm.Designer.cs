@@ -62,7 +62,7 @@ namespace E_PupilStdMgt.forms
             this.backgroundPanel.Controls.Add(this.titleLabel);
             this.backgroundPanel.Location = new System.Drawing.Point(0, 0);
             this.backgroundPanel.Name = "backgroundPanel";
-            this.backgroundPanel.Size = new System.Drawing.Size(500, 597);
+            this.backgroundPanel.Size = new System.Drawing.Size(502, 596);
             this.backgroundPanel.TabIndex = 0;
             this.backgroundPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.backgroundPanel_Paint);
             // 

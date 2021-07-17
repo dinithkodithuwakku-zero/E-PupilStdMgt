@@ -102,6 +102,10 @@ namespace E_PupilStdMgt.src.controller.forms.reports
                         {
                             cellValue = cellValue.Replace(",", string.Empty);
                         }
+                        if (cellValue.Contains(Environment.NewLine))
+                        {
+                            cellValue = cellValue.Replace(Environment.NewLine, " ");
+                        }
                         stLine = stLine.ToString() + cellValue + ",";
                     }
 

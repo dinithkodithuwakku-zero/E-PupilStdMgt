@@ -10,6 +10,7 @@ using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
 using System.ComponentModel.DataAnnotations;
+using E_PupilStdMgt.src.utill;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -67,7 +68,6 @@ namespace E_PupilStdMgt.forms.screens
 
                 stdRegNoInput.Text = "REG" + nextRegNo;
                 studentCreatePanel.Visible = true;
-
             }
             catch
             {
@@ -241,6 +241,17 @@ namespace E_PupilStdMgt.forms.screens
                 updateStudentGenderPicker.SelectedItem = row.Cells[6].Value.ToString();
 
                 studentUpdatePanel.Visible = true;
+            }
+        }
+
+        private void printCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.csv)|*.csv";
+            sfd.FileName = $"Student-CSV.csv";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                new GenerateCSV().ToCsV(studentDataGrid, sfd.FileName);
             }
         }
     }

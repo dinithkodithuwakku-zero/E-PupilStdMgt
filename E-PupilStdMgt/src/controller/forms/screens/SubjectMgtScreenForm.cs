@@ -11,6 +11,7 @@ using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
 using System.ComponentModel.DataAnnotations;
+using E_PupilStdMgt.src.utill;
 
 
 namespace E_PupilStdMgt.forms.screens
@@ -199,6 +200,17 @@ namespace E_PupilStdMgt.forms.screens
             catch
             {
                 MessageBox.Show("Connection Error", "Error!");
+            }
+        }
+
+        private void printCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.csv)|*.csv";
+            sfd.FileName = $"Subject-CSV.csv";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                new GenerateCSV().ToCsV(subjectDataGrid, sfd.FileName);
             }
         }
     }

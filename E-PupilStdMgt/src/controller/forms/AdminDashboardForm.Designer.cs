@@ -383,13 +383,12 @@ namespace E_PupilStdMgt.forms
             // 
             // formLoaderPanel
             // 
-            this.formLoaderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.formLoaderPanel.Location = new System.Drawing.Point(273, 40);
             this.formLoaderPanel.Name = "formLoaderPanel";
             this.formLoaderPanel.Size = new System.Drawing.Size(1021, 686);
             this.formLoaderPanel.TabIndex = 1;
             // 
-            // dashboardForm
+            // AdminDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -399,7 +398,7 @@ namespace E_PupilStdMgt.forms
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.sidePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "dashboardForm";
+            this.Name = "AdminDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashboardForm";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DashboardForm_KeyDown);

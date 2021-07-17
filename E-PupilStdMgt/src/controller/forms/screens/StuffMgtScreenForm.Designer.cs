@@ -78,6 +78,7 @@ namespace E_PupilStdMgt.forms.screens
             this.updateUserFullNameInput = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.printCSV = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userDataGrid)).BeginInit();
             this.userCreatePanel.SuspendLayout();
             this.updateUserPanel.SuspendLayout();
@@ -212,9 +213,9 @@ namespace E_PupilStdMgt.forms.screens
             this.userCreatePanel.Controls.Add(this.userNameInput);
             this.userCreatePanel.Controls.Add(this.label2);
             this.userCreatePanel.Controls.Add(this.createNewUserLabel);
-            this.userCreatePanel.Location = new System.Drawing.Point(39, 42);
+            this.userCreatePanel.Location = new System.Drawing.Point(39, 52);
             this.userCreatePanel.Name = "userCreatePanel";
-            this.userCreatePanel.Size = new System.Drawing.Size(828, 505);
+            this.userCreatePanel.Size = new System.Drawing.Size(828, 495);
             this.userCreatePanel.TabIndex = 13;
             this.userCreatePanel.Visible = false;
             // 
@@ -451,9 +452,9 @@ namespace E_PupilStdMgt.forms.screens
             this.updateUserPanel.Controls.Add(this.updateUserFullNameInput);
             this.updateUserPanel.Controls.Add(this.label16);
             this.updateUserPanel.Controls.Add(this.label19);
-            this.updateUserPanel.Location = new System.Drawing.Point(39, 42);
+            this.updateUserPanel.Location = new System.Drawing.Point(39, 56);
             this.updateUserPanel.Name = "updateUserPanel";
-            this.updateUserPanel.Size = new System.Drawing.Size(828, 422);
+            this.updateUserPanel.Size = new System.Drawing.Size(828, 408);
             this.updateUserPanel.TabIndex = 37;
             this.updateUserPanel.Visible = false;
             // 
@@ -649,6 +650,23 @@ namespace E_PupilStdMgt.forms.screens
             this.label19.TabIndex = 15;
             this.label19.Text = "Update User";
             // 
+            // printCSV
+            // 
+            this.printCSV.AutoSize = true;
+            this.printCSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.printCSV.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printCSV.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.printCSV.FlatAppearance.BorderSize = 0;
+            this.printCSV.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.printCSV.ForeColor = System.Drawing.SystemColors.Info;
+            this.printCSV.Location = new System.Drawing.Point(482, 31);
+            this.printCSV.Name = "printCSV";
+            this.printCSV.Size = new System.Drawing.Size(192, 53);
+            this.printCSV.TabIndex = 38;
+            this.printCSV.Text = "Print CSV";
+            this.printCSV.UseVisualStyleBackColor = false;
+            this.printCSV.Click += new System.EventHandler(this.printCSV_Click);
+            // 
             // StuffMgtScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -659,6 +677,7 @@ namespace E_PupilStdMgt.forms.screens
             this.Controls.Add(this.userCreatePanel);
             this.Controls.Add(this.userDataGrid);
             this.Controls.Add(this.createNewUserButton);
+            this.Controls.Add(this.printCSV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StuffMgtScreenForm";
             this.Text = "StuffMgtScreenForm";
@@ -723,5 +742,6 @@ namespace E_PupilStdMgt.forms.screens
         private System.Windows.Forms.TextBox updateUserFullNameInput;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button printCSV;
     }
 }

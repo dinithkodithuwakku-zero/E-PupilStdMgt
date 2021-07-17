@@ -11,6 +11,7 @@ using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
 using E_PupilStdMgt.src.utill;
 using System.ComponentModel.DataAnnotations;
+using E_PupilStdMgt.src.utill;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -246,6 +247,17 @@ namespace E_PupilStdMgt.forms.screens
                 updateUserAddressInput.Text = row.Cells[7].Value.ToString();
 
                 updateUserPanel.Visible = true;
+            }
+        }
+
+        private void printCSV_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.csv)|*.csv";
+            sfd.FileName = $"Stuff_User-CSV.csv";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                new GenerateCSV().ToCsV(userDataGrid, sfd.FileName);
             }
         }
     }
