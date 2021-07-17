@@ -53,7 +53,7 @@ namespace E_PupilStdMgt.forms.screens
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.noOfClassesLabel);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(16, 29);
+            this.panel1.Location = new System.Drawing.Point(36, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(243, 164);
             this.panel1.TabIndex = 0;
@@ -83,7 +83,7 @@ namespace E_PupilStdMgt.forms.screens
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.noOfSubjectsLabel);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(320, 29);
+            this.panel2.Location = new System.Drawing.Point(374, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(241, 164);
             this.panel2.TabIndex = 1;
@@ -114,9 +114,9 @@ namespace E_PupilStdMgt.forms.screens
             this.panel3.Controls.Add(this.studentGPAChart);
             this.panel3.Controls.Add(this.noOfStudentsLabel);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(16, 235);
+            this.panel3.Location = new System.Drawing.Point(36, 235);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(865, 344);
+            this.panel3.Size = new System.Drawing.Size(935, 413);
             this.panel3.TabIndex = 2;
             // 
             // studentGPAChart
@@ -127,7 +127,7 @@ namespace E_PupilStdMgt.forms.screens
             // 
             // 
             // 
-            this.studentGPAChart.Legend.Location = new System.Drawing.Point(697, 81);
+            this.studentGPAChart.Legend.Location = new System.Drawing.Point(783, 81);
             this.studentGPAChart.Localize = null;
             this.studentGPAChart.Location = new System.Drawing.Point(29, 61);
             this.studentGPAChart.Name = "studentGPAChart";
@@ -135,7 +135,7 @@ namespace E_PupilStdMgt.forms.screens
             this.studentGPAChart.PrimaryXAxis.Margin = true;
             this.studentGPAChart.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
             this.studentGPAChart.PrimaryYAxis.Margin = true;
-            this.studentGPAChart.Size = new System.Drawing.Size(818, 264);
+            this.studentGPAChart.Size = new System.Drawing.Size(904, 333);
             this.studentGPAChart.TabIndex = 2;
             this.studentGPAChart.Text = "Student GPA";
             // 
@@ -171,7 +171,7 @@ namespace E_PupilStdMgt.forms.screens
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panel4.Controls.Add(this.noOfStuffUsersLabel);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(629, 29);
+            this.panel4.Location = new System.Drawing.Point(719, 29);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(252, 164);
             this.panel4.TabIndex = 3;
@@ -201,7 +201,7 @@ namespace E_PupilStdMgt.forms.screens
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(916, 611);
+            this.ClientSize = new System.Drawing.Size(1021, 686);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
