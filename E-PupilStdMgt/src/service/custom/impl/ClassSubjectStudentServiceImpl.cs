@@ -25,6 +25,46 @@ namespace E_PupilStdMgt.src.service.custom.impl
             iStudentServiceCustom = ServiceFactory.GetInstance().GetService<StudentServiceImpl>(ServiceFactory.ServiceTypes.STUDENT);
         }
 
+        public ArrayList CalculateStudentsGPA()
+        {
+
+            Dictionary<string, double> studentDict = new Dictionary<string, double>();
+
+            ArrayList list = iClassSubjectStudentMarkRepo.GetAll();
+
+            foreach (ClassSubjectStudentMark classSubjectStudentMark in list)
+            {
+                // GET SUBJECT DETAILS
+                SubjectDTO subjectDTO = iSubjectServiceCustom.FindSubjectById(classSubjectStudentMark.ClassSubject.SubjectEntity.SubjectId);
+
+                // GET STUDENT DETAILS
+                StudentDTO studentDTO = iStudentServiceCustom.FindStudentById(classSubjectStudentMark.Student.StudentId);
+
+                if (studentDict.ContainsKey(studentDTO.StudentRegNo))
+                {
+                    double value = studentDict[studentDTO.StudentRegNo];
+                    studentDict[studentDTO.StudentRegNo] =  (value + classSubjectStudentMark.StudentPoint) / subjectDTO.SubjectTotalPoints;
+                }
+                else
+                {
+                    studentDict.Add(studentDTO.StudentRegNo, classSubjectStudentMark.StudentPoint / subjectDTO.SubjectTotalPoints);
+                }
+            }
+
+            ArrayList arrayList = new ArrayList();
+
+            foreach (var item in studentDict)
+            {
+                StudentGPADTO studentGPADTO = new StudentGPADTO();
+                studentGPADTO.StudentRegNo = item.Key;
+                studentGPADTO.Gpa = item.Value;
+
+                arrayList.Add(studentGPADTO);
+            }
+
+            return arrayList;
+        }
+
         public bool CreateStudentMark(ClassSubjectStudentMarkDTO classSubjectStudentMarkDTO)
         {
 

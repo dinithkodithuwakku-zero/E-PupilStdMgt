@@ -15,7 +15,8 @@ namespace E_PupilStdMgt
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RolePickingForm());
+            // Application.Run(new RolePickingForm());
+            Application.Run(new AdminDashboardForm());
         }
     }
 }

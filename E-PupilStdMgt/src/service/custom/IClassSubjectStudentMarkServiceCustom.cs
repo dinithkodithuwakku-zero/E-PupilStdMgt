@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using E_PupilStdMgt.src.payload;
@@ -12,5 +13,6 @@ namespace E_PupilStdMgt.src.service.custom
         public bool DeleteStudentMark(int classSubjectStudentMarkId);
         public List<ClassSubjectStudentMarkDTO> FindClassSubjectStudentMarks();
         public List<ClassSubjectStudentMarkDTO> FindClassSubjectStudentMarks(string classCode, string subjectCode);
+        public ArrayList CalculateStudentsGPA();
     }
 }

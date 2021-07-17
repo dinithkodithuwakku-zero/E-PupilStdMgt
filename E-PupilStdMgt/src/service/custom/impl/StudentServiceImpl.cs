@@ -92,5 +92,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
             return list;
         }
+
+        public int CountNumberOfStudents()
+        {
+            ArrayList studentList = iStudentRepoCustom.GetAll();
+            return studentList.Count;
+        }
     }
 }

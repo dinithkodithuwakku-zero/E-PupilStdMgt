@@ -19,6 +19,12 @@ namespace E_PupilStdMgt.src.service.custom.impl
             iSubjectRepoCustom = RepoFactory.GetInstance().GetRepo<SubjectRepoImpl>(RepoFactory.RepoTypes.SUBJECT);
         }
 
+        public int CountNumberOfSubjects()
+        {
+            ArrayList subjectList = iSubjectRepoCustom.GetAll();
+            return subjectList.Count;
+        }
+
         public bool CreateNewSubject(SubjectDTO subjectDTO)
         {
             return iSubjectRepoCustom.Save(new Subject(subjectDTO.SubjectName, subjectDTO.SubjectCode, subjectDTO.SubjectDuration, subjectDTO.SubjectTotalPoints));

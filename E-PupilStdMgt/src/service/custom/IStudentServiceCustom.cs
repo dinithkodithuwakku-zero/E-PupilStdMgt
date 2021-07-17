@@ -16,5 +16,6 @@ namespace E_PupilStdMgt.src.service.custom
         public StudentDTO FindStudentByRegNo(string regNo);
         public StudentDTO FindStudentById(int id);
         public List<StudentDTO> FindAllStudentsByClassCode(string classCode);
+        public int CountNumberOfStudents();
     }
 }

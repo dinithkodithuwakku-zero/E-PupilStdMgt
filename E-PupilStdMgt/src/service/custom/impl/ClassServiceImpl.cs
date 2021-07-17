@@ -219,5 +219,11 @@ namespace E_PupilStdMgt.src.service.custom.impl
 
             return list;
         }
+
+        public int CountNumberOfClasses()
+        {
+            ArrayList classList = iClassRepoCustom.GetAll();
+            return classList.Count;
+        }
     }
 }

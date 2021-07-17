@@ -18,6 +18,13 @@ namespace E_PupilStdMgt.src.service.custom.impl
         {
             iStuffRepoCustom = RepoFactory.GetInstance().GetRepo<StuffRepoImpl>(RepoFactory.RepoTypes.STUFF);
         }
+
+        public int CountNumberOfStuffUsers()
+        {
+            ArrayList stuffList = iStuffRepoCustom.GetAll();
+            return stuffList.Count;
+        }
+
         public bool CreateNewStuff(StuffDTO stuffDTO)
         {
             return iStuffRepoCustom.Save(new Stuff(stuffDTO.UserName, stuffDTO.Password, stuffDTO.FullName, stuffDTO.Nic, stuffDTO.JobTitle, stuffDTO.MobileNo, stuffDTO.Email, stuffDTO.PermanentAddress));

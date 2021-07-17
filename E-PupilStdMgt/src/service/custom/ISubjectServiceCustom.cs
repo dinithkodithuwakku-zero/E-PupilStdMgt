@@ -14,5 +14,6 @@ namespace E_PupilStdMgt.src.service.custom
         public SubjectDTO FindSubjectByCode(string code);
         public SubjectDTO FindSubjectById(int id);
         public List<SubjectDTO> FindAllSubjectsByClassCode(string classCode);
+        public int CountNumberOfSubjects();
     }
 }
