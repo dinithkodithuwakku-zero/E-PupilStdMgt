@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Configuration;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
@@ -12,10 +10,10 @@ namespace E_PupilStdMgt.src.db
     class DBConnection
     {
         MySql.Data.MySqlClient.MySqlConnection conn;
-        static string host = "localhost";
-        static string database = "omp_sms";
-        static string userDB = "root";
-        static string password = "1234";
+        static string host = ConfigurationManager.AppSettings.Get("host");
+        static string database = ConfigurationManager.AppSettings.Get("database");
+        static string userDB = ConfigurationManager.AppSettings.Get("userDB");
+        static string password = ConfigurationManager.AppSettings.Get("password");
         public static string strProvider = "server=" + host + ";database=" + database + ";uid=" + userDB + ";pwd=" + password;
         public bool Open()
         {

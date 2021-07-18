@@ -42,6 +42,9 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>omp_smsDataSet.Designer.cs</LastGenOutput>
     </None>
+    <None Update="Resources\App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

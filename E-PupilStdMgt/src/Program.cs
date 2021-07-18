@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using E_PupilStdMgt.forms;
+using System.Diagnostics;
 
 namespace E_PupilStdMgt
 {
