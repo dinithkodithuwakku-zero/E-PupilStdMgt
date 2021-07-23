@@ -21,7 +21,7 @@ namespace E_PupilStdMgt.forms
         }
 
 
-
+        // when ESC button pressed
         private void DashboardForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -37,6 +37,7 @@ namespace E_PupilStdMgt.forms
             }
         }
 
+        // when comonent loaded, make changes to the form controls in the panel
         private void LoadDashboardScreen()
         {
             dashboardPanelButton.BackColor = Color.FromArgb(46, 51, 73);
@@ -169,6 +170,7 @@ namespace E_PupilStdMgt.forms
             subjectMgtScreenForm.Show();
         }
 
+        // exit button
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to exit?",
@@ -180,6 +182,7 @@ namespace E_PupilStdMgt.forms
             }
         }
 
+        // logout button
         private void panel2_MouseClick(object sender, MouseEventArgs e)
         {
             var confirmResult = MessageBox.Show("Are you sure you want to logout?",

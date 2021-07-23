@@ -4,21 +4,39 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
 using E_PupilStdMgt.src.utill;
+using E_PupilStdMgt.Properties;
+using System.Diagnostics;
+using System.IO;
 
 namespace E_PupilStdMgt.src.db
 {
     class DBConnection
     {
+        //string FileName = string.Format("{0}Resources\\config.txt", Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\")));
+        string FileName = string.Format("{0}Resources\\config.txt", Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory));
+
         MySql.Data.MySqlClient.MySqlConnection conn;
         static string host = ConfigurationManager.AppSettings.Get("host");
         static string database = ConfigurationManager.AppSettings.Get("database");
         static string userDB = ConfigurationManager.AppSettings.Get("userDB");
         static string password = ConfigurationManager.AppSettings.Get("password");
         public static string strProvider = "server=" + host + ";database=" + database + ";uid=" + userDB + ";pwd=" + password;
+
+
         public bool Open()
         {
             try
             {
+                if (File.Exists(FileName))
+                {
+                    string[] lines = File.ReadAllLines(FileName);
+
+                    host = lines[0].Split("=")[1];
+                    database = lines[1].Split("=")[1];
+                    userDB = lines[2].Split("=")[1];
+                    password = lines[3].Split("=")[1];
+                }
+
                 strProvider = "server=" + host + ";database=" + database + ";uid=" + userDB + ";pwd=" + password;
                 conn = new MySqlConnection(strProvider);
                 conn.Open();
