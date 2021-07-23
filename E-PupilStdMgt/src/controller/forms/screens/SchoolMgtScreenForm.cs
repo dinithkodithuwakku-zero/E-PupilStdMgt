@@ -6,6 +6,7 @@ using E_PupilStdMgt.src.service;
 using E_PupilStdMgt.src.service.custom;
 using E_PupilStdMgt.src.service.custom.impl;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace E_PupilStdMgt.forms.screens
 {
@@ -41,11 +42,16 @@ namespace E_PupilStdMgt.forms.screens
                 schoolId = schoolDTO.SchoolId.ToString();
                 schoolBadgeFilePath = schoolDTO.SchoolBadgeImagePath;
             }
+            catch (FileNotFoundException ffe)
+            {
+                MessageBox.Show("School badge not found! loading static image", "Error!");
+                schoolBadgeImageUploader.Image = Image.FromFile(string.Format("{0}Resources\\esoft_badge.jpg", Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory)));
+            }
             catch
             {
                 MessageBox.Show("Unable to load school details!", "Error!");
             }
-            
+
         }
 
         public void ButtonProperties()

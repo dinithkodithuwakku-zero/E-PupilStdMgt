@@ -1,7 +1,7 @@
 ﻿using E_PupilStdMgt.src.payload;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 using E_PupilStdMgt.src.entity;
 using E_PupilStdMgt.src.repository;
 using E_PupilStdMgt.src.repository.custom;
@@ -21,6 +21,7 @@ namespace E_PupilStdMgt.src.service.custom.impl
         public SchoolDTO GetSchoolDetails()
         {
             School school = iSchoolRepoCustom.GetOne();
+            Debug.WriteLine(school.SchoolBadgeImagePath);
             return new SchoolDTO(school.SchoolId, school.SchoolName, school.SchoolDescription, school.SchoolContactNo, school.SchoolAddress, school.SchoolBadgeImagePath);
         }
 

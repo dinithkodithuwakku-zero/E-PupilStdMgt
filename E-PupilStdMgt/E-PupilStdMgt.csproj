@@ -51,6 +51,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Update="Resources\esoft_badge.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,4 +1,4 @@
 ﻿host= localhost;
 database=omp_sms;
-userDB=roo1t;
+userDB=root;
 password=1234;
